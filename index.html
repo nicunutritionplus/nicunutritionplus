@@ -696,3 +696,23 @@
     });
   })();
 </script>
+<script data-goatcounter="https://nicunutritionplus.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<div class="visitor-counter">
+  <span data-i18n-en>Visitors</span>
+  <span data-i18n-es>Visitantes</span>:
+  <span id="visitor-count">Loading...</span>
+</div>
+
+<script>
+  var t = setInterval(function() {
+    if (window.goatcounter && window.goatcounter.visit_count) {
+      clearInterval(t);
+
+      window.goatcounter.visit_count({
+        append: '#visitor-count'
+      });
+    }
+  }, 100);
+</script>
