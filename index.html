@@ -242,6 +242,11 @@
     display: inline-block; margin-top: 1.5rem; font-size: 0.85rem; color: var(--ink-soft);
     border: 1px dashed var(--border); border-radius: 10px; padding: 0.6rem 0.9rem;
   }
+  .ai-disclosure {
+    margin-top: 1.6rem; font-size: 0.76rem; line-height: 1.6; color: var(--ink-soft);
+    opacity: 0.75; max-width: 80ch;
+  }
+  .ai-disclosure strong { font-weight: 600; }
 
   /* ============ ABOUT ============ */
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 3.5rem); align-items: start; }
@@ -348,6 +353,67 @@
 </header>
 
 <main id="top">
+  <!-- EVIDENCE-BASED CONTENT -->
+  <section id="content">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n-en>Evidence-based content</p>
+        <p class="eyebrow" data-i18n-es>Contenido basado en evidencia</p>
+        <h2 data-i18n-en>Recent thinking on neonatal nutrition</h2><h2 data-i18n-es>Ideas recientes sobre nutrición neonatal</h2>
+        <p data-i18n-en>A running collection of articles and research summaries on preterm and neonatal nutrition. New pieces added regularly.</p>
+        <p data-i18n-es>Una colección en curso de artículos y resúmenes de investigación sobre nutrición neonatal y del prematuro. Se agregan piezas nuevas regularmente.</p>
+      </div>
+      <div class="content-grid">
+        <article class="content-card">
+          <div class="tag-strip"></div>
+          <div class="body">
+            <span class="kind" data-i18n-en>RCT Tracker</span><span class="kind" data-i18n-es>Rastreador de ECA</span>
+            <h3 data-i18n-en>Randomized Clinical Trials: what the evidence actually shows</h3>
+            <h3 data-i18n-es>Ensayos Clínicos Aleatorizados: qué muestra realmente la evidencia</h3>
+            <p class="teaser" data-i18n-en>List and summaries of RCTs published in 2026</p>
+            <p class="teaser" data-i18n-es>Lista y resúmenes de ECAs publicados en el 2026</p>
+            <a class="read" href="2026_list.html"><span data-i18n-en>Read more →</span><span data-i18n-es>Leer más →</span></a>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="tag-strip"></div>
+          <div class="body">
+            <span class="kind" data-i18n-en>Research summary</span><span class="kind" data-i18n-es>Resumen de investigación</span>
+            <h3 data-i18n-en>Early human milk fortification: separating signal from noise</h3>
+            <h3 data-i18n-es>Fortificación temprana de leche materna: separando la señal del ruido</h3>
+            <p class="teaser" data-i18n-en>AI-generated meta-analysis</p>
+            <p class="teaser" data-i18n-es>Meta-análisis generado con IA</p>
+            <a class="read" href="hmf/hmf.html"><span data-i18n-en>Read more →</span><span data-i18n-es>Leer más →</span></a>
+          </div>
+        </article>
+        <article class="content-card">
+          <div class="tag-strip"></div>
+          <div class="body">
+            <span class="kind" data-i18n-en>RCT Tracker</span><span class="kind" data-i18n-es>Rastreador de ECA</span>
+            <h3 data-i18n-en>Randomized Clinical Trials: what the evidence actually shows</h3>
+            <h3 data-i18n-es>Ensayos Clínicos Aleatorizados: qué muestra realmente la evidencia</h3>
+            <p class="teaser" data-i18n-en>List and summaries of RCTs published in 2025</p>
+            <p class="teaser" data-i18n-es>Lista y resúmenes de ECAs publicados en el 2025</p>
+            <a class="read" href="2025_list.html"><span data-i18n-en>Read more →</span><span data-i18n-es>Leer más →</span></a>
+          </div>
+        </article>
+            <article class="content-card">
+          <div class="tag-strip"></div>
+          <div class="body">
+            <span class="kind" data-i18n-en>Scoping review</span><span class="kind" data-i18n-es>Revisión exploratoria</span>
+            <h3 data-i18n-en>Hierarchical, ordinal and ranked composite outcomes in clinical trials</h3>
+            <h3 data-i18n-es>Desenlaces compuestos ordinales y jerárquicos en ensayos clínicos</h3>
+            <p class="teaser" data-i18n-en>The place of family priorities in neonatal outcome selection</p>
+            <p class="teaser" data-i18n-es>El lugar de prioridades familiares en la selección de desenlaces neonatales</p>
+            <a class="read" href="review.html"><span data-i18n-en>Read more →</span><span data-i18n-es>Leer más →</span></a>
+          </div>
+        </article>
+         </div>
+      <p class="ai-disclosure" data-i18n-en>A note about this section: created with the support of AI tools to help us work more efficiently. Content and references are reviewed before publication, but the process isn't perfect and occasional errors may occur. If you spot an inaccuracy or a misclassified reference, please let us know — we'll review it and correct verified errors promptly. Thank you for helping us keep our content accurate and trustworthy.</p>
+    <p class="ai-disclosure" data-i18n-es>Nota sobre esta sección: creada con el apoyo de herramientas de IA para ayudarnos a trabajar de manera más eficiente. El contenido y las referencias se revisan antes de su publicación, pero el proceso no es perfecto y pueden producirse errores ocasionales. Si detecta alguna inexactitud o una referencia clasificada incorrectamente, le rogamos que nos lo comunique: revisaremos la información y corregiremos con prontitud los errores verificados. Gracias por ayudarnos a mantener nuestro contenido preciso y fiable.</p>
+    </div>
+  </section>
+
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
@@ -445,67 +511,6 @@
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- EVIDENCE-BASED CONTENT -->
-  <section id="content">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow" data-i18n-en>Evidence-based content</p>
-        <p class="eyebrow" data-i18n-es>Contenido basado en evidencia</p>
-        <h2 data-i18n-en>Recent thinking on neonatal nutrition</h2><h2 data-i18n-es>Ideas recientes sobre nutrición neonatal</h2>
-        <p data-i18n-en>A running collection of articles and research summaries on preterm and neonatal nutrition. New pieces added regularly.</p>
-        <p data-i18n-es>Una colección en curso de artículos y resúmenes de investigación sobre nutrición neonatal y del prematuro. Se agregan piezas nuevas regularmente.</p>
-      </div>
-      <div class="content-grid">
-        <article class="content-card">
-          <div class="tag-strip"></div>
-          <div class="body">
-            <span class="kind" data-i18n-en>RCT Tracker</span><span class="kind" data-i18n-es>Rastreador de ECA</span>
-            <h3 data-i18n-en>Randomized Clinical Trials: what the evidence actually shows</h3>
-            <h3 data-i18n-es>Ensayos Clínicos Aleatorizados: qué muestra realmente la evidencia</h3>
-            <p class="teaser" data-i18n-en>List and summaries of RCTs published in 2026</p>
-            <p class="teaser" data-i18n-es>Lista y resúmenes de ECAs publicados en el 2026</p>
-            <a class="read" href="2026_list.html"><span data-i18n-en>Read more →</span><span data-i18n-es>Leer más →</span></a>
-          </div>
-        </article>
-        <article class="content-card">
-          <div class="tag-strip"></div>
-          <div class="body">
-            <span class="kind" data-i18n-en>Research summary</span><span class="kind" data-i18n-es>Resumen de investigación</span>
-            <h3 data-i18n-en>Early human milk fortification: separating signal from noise</h3>
-            <h3 data-i18n-es>Fortificación temprana de leche materna: separando la señal del ruido</h3>
-            <p class="teaser" data-i18n-en>AI-generated meta-analysis</p>
-            <p class="teaser" data-i18n-es>Meta-análisis generado con IA</p>
-            <a class="read" href="hmf/hmf.html"><span data-i18n-en>Read more →</span><span data-i18n-es>Leer más →</span></a>
-          </div>
-        </article>
-        <article class="content-card">
-          <div class="tag-strip"></div>
-          <div class="body">
-            <span class="kind" data-i18n-en>RCT Tracker</span><span class="kind" data-i18n-es>Rastreador de ECA</span>
-            <h3 data-i18n-en>Randomized Clinical Trials: what the evidence actually shows</h3>
-            <h3 data-i18n-es>Ensayos Clínicos Aleatorizados: qué muestra realmente la evidencia</h3>
-            <p class="teaser" data-i18n-en>List and summaries of RCTs published in 2025</p>
-            <p class="teaser" data-i18n-es>Lista y resúmenes de ECAs publicados en el 2025</p>
-            <a class="read" href="2025_list.html"><span data-i18n-en>Read more →</span><span data-i18n-es>Leer más →</span></a>
-          </div>
-        </article>
-            <article class="content-card">
-          <div class="tag-strip"></div>
-          <div class="body">
-            <span class="kind" data-i18n-en>Scoping review</span><span class="kind" data-i18n-es>Revisión exploratoria</span>
-            <h3 data-i18n-en>Hierarchical, ordinal and ranked composite outcomes in clinical trials</h3>
-            <h3 data-i18n-es>Desenlaces compuestos ordinales y jerárquicos en ensayos clínicos</h3>
-            <p class="teaser" data-i18n-en>The place of family priorities in neonatal outcome selection</p>
-            <p class="teaser" data-i18n-es>El lugar de prioridades familiares en la selección de desenlaces neonatales</p>
-            <a class="read" href="review.html"><span data-i18n-en>Read more →</span><span data-i18n-es>Leer más →</span></a>
-          </div>
-        </article>
-         </div>
-      <p data-i18n-en><strong>A note about this section:</strong> This section was created with the support of AI tools to help us work more efficiently. The content and references are reviewed before publication, but this is not a perfect process and occasional errors may occur. If you spot an inaccuracy or incorrectly classified reference, please let us know — we'll review it and correct verified errors promptly. Thank you for helping us keep our content accurate and trustworthy.</p>
-    <p data-i18n-es>Esta sección se ha creado con el apoyo de herramientas de IA para ayudarnos a trabajar de manera más eficiente. El contenido y las referencias se revisan antes de su publicación; sin embargo, el proceso no es perfecto y pueden producirse errores ocasionales. Si detecta alguna inexactitud o una referencia clasificada incorrectamente, le rogamos que nos lo comunique: revisaremos la información y corregiremos con prontitud los errores verificados. Gracias por ayudarnos a mantener nuestro contenido preciso y fiable.</p>
     </div>
   </section>
 
