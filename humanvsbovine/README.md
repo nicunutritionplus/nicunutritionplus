@@ -6,7 +6,7 @@ Standalone HTML version of `review.docx`: a systematic review and meta-analysis 
 
 ```
 index.html           the review (self-contained; no build step)
-assets/css/style.css  stylesheet
+(styles: ../assets/css/research-summary.css, shared with the other research summaries)
 assets/img/           PRISMA flow diagram, risk-of-bias figure, and 9 forest plots
 ```
 
