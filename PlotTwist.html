@@ -1,0 +1,1696 @@
+<title>Plot Twist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap">
+<style>
+/* Layout: one reading column, like a book. Path = table of contents, each level = a chapter with five stages. Thoughts are marigold bubbles. */
+:root{
+  --bg:#F2F3F8; --surface:#FFFFFF; --sunken:#E7E9F2; --ink:#171A2C; --muted:#585D7A; --line:#D6D9E6;
+  --accent:#3044D0; --accent-ink:#FFFFFF; --accent-soft:#E2E6FF;
+  --thought:#FFD36B; --thought-ink:#33260A;
+  --good:#1C7A51; --good-soft:#DCF2E6; --warn:#8F5400; --warn-soft:#FBEACB; --bad:#B0361B; --bad-soft:#FADFD7;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-story:"Literata",Georgia,"Times New Roman",serif;
+  --f-ui:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#10121C; --surface:#191C2B; --sunken:#23273A; --ink:#E8E9F2; --muted:#A3A7C2; --line:#30344C;
+  --accent:#95A2FF; --accent-ink:#10121C; --accent-soft:#272D57;
+  --thought:#EBBB4B; --thought-ink:#231904;
+  --good:#62D3A0; --good-soft:#163428; --warn:#F1B65B; --warn-soft:#3A2C12; --bad:#FF8C6E; --bad-soft:#3D1F17;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10121C; --surface:#191C2B; --sunken:#23273A; --ink:#E8E9F2; --muted:#A3A7C2; --line:#30344C;
+  --accent:#95A2FF; --accent-ink:#10121C; --accent-soft:#272D57;
+  --thought:#EBBB4B; --thought-ink:#231904;
+  --good:#62D3A0; --good-soft:#163428; --warn:#F1B65B; --warn-soft:#3A2C12; --bad:#FF8C6E; --bad-soft:#3D1F17;
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-ui);font-size:16px;line-height:1.55}
+.wrap{max-width:780px;margin:0 auto;padding-inline:16px;padding-block:20px 64px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
+p{margin:0}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.muted{color:var(--muted)}
+.eyebrow{font-family:var(--f-ui);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.stack{display:flex;flex-direction:column;gap:16px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand b{font-family:var(--f-display);font-weight:800;font-size:26px;letter-spacing:-.02em}
+.brand b span{display:inline-block;transform:rotate(-6deg) translateY(-1px);color:var(--accent)}
+.tabs{display:flex;gap:4px;background:var(--sunken);padding:4px;border-radius:999px}
+.tabs button{border:0;background:transparent;padding:6px 14px;border-radius:999px;cursor:pointer;font-weight:700;font-size:14px;color:var(--muted)}
+.tabs button[aria-current="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgb(0 0 0 / .12)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:700;font-size:15px}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary:hover{filter:brightness(1.08)}
+.btn[disabled]{opacity:.45;cursor:not-allowed;filter:none}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--accent);padding-inline:6px}
+.link{border:0;background:none;color:var(--accent);cursor:pointer;font-weight:700;padding:0}
+
+/* hero */
+.hero{display:grid;gap:12px;margin-bottom:32px}
+.hero h1{font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:-.025em}
+.hero p{font-size:18px;color:var(--muted);max-width:58ch}
+
+/* chapters (path) */
+.chapters{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line)}
+.chapter{display:grid;grid-template-columns:56px 1fr auto;gap:16px;align-items:center;padding:18px 4px;border-bottom:1px solid var(--line)}
+.chapter .num{font-family:var(--f-display);font-weight:800;font-size:34px;color:var(--muted);line-height:1;text-align:center}
+.chapter.active .num{color:var(--accent)}
+.chapter.locked{opacity:.55}
+.chapter h3{font-size:20px;font-weight:600}
+.chapter .info{min-width:0;display:grid;gap:6px}
+@media (max-width:560px){.chapter{grid-template-columns:40px 1fr}.chapter .go{grid-column:2}.chapter .num{font-size:26px}}
+
+/* chips & gate */
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;background:var(--sunken);color:var(--muted);white-space:nowrap}
+.chip.good{background:var(--good-soft);color:var(--good)}
+.chip.warn{background:var(--warn-soft);color:var(--warn)}
+.chip.bad{background:var(--bad-soft);color:var(--bad)}
+.chip.accent{background:var(--accent-soft);color:var(--accent)}
+.gate{display:flex;gap:6px;flex-wrap:wrap}
+.gate .g{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;padding:3px 9px 3px 4px;border-radius:999px;border:1px solid var(--line);color:var(--muted);font-variant-numeric:tabular-nums}
+.gate .g i{width:16px;height:16px;border-radius:50%;border:2px solid var(--line);display:inline-block}
+.gate .g.ok{color:var(--good);border-color:color-mix(in srgb,var(--good) 40%,transparent)}
+.gate .g.ok i{background:var(--good);border-color:var(--good)}
+.gate .g.part i{background:conic-gradient(var(--warn) calc(var(--p)*1%),transparent 0);border-color:var(--warn)}
+
+/* level header + stepper */
+.back{margin-bottom:14px}
+.lvlhead{display:grid;gap:10px;margin-bottom:20px}
+.lvlhead h1{font-size:clamp(26px,5vw,36px);font-weight:800;letter-spacing:-.02em}
+.stepper{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:24px;scrollbar-width:thin}
+.stepper button{flex:0 0 auto;display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:8px 12px;cursor:pointer;font-weight:700;font-size:14px}
+.stepper button .n{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:var(--sunken);color:var(--muted)}
+.stepper button.done .n{background:var(--good);color:var(--surface)}
+.stepper button[aria-current="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.stepper button[disabled]{opacity:.45;cursor:not-allowed}
+
+/* panels */
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px}
+@media (max-width:480px){.panel{padding:18px 16px}}
+.banner{display:grid;gap:8px;padding:16px 18px;border-radius:12px}
+.banner.good{background:var(--good-soft)}
+.banner.good h3{color:var(--good)}
+.banner.warn{background:var(--warn-soft)}
+.banner.warn h3{color:var(--warn)}
+.banner h3{font-size:18px}
+
+/* story */
+.scene{display:grid;gap:18px}
+.scene .when{font-family:var(--f-display);font-weight:600;font-size:15px;color:var(--accent);letter-spacing:.01em}
+.prose{font-family:var(--f-story);font-size:18.5px;line-height:1.7;display:grid;gap:14px;max-width:62ch}
+.prose em{font-style:italic}
+.prose .text{font-family:var(--f-ui);font-size:15px;background:var(--sunken);padding:8px 12px;border-radius:14px 14px 14px 4px;display:inline-block;max-width:100%}
+.thoughts{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding-left:4px}
+.thought{position:relative;border:0;background:var(--thought);color:var(--thought-ink);font-family:var(--f-display);font-weight:600;font-size:18px;line-height:1.3;padding:12px 18px;border-radius:22px 22px 22px 6px;text-align:left;max-width:100%;box-shadow:0 2px 0 color-mix(in srgb,var(--thought-ink) 25%,transparent)}
+button.thought{cursor:pointer;transform:rotate(-1deg);animation:bob 2.4s ease-in-out infinite}
+button.thought:nth-child(2){transform:rotate(1deg);animation-delay:.6s}
+.thought.caught{animation:none;transform:none;outline:2px dashed var(--thought-ink);outline-offset:3px}
+.thought .tag{display:block;font-family:var(--f-ui);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:2px}
+@keyframes bob{50%{translate:0 -3px}}
+@media (prefers-reduced-motion:reduce){button.thought{animation:none}}
+.hint{font-size:14px;color:var(--muted)}
+.choices{display:grid;gap:10px}
+.choice{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px 16px;cursor:pointer;font-family:var(--f-story);font-size:17px}
+.choice:hover{border-color:var(--accent)}
+.choice small{display:block;font-family:var(--f-ui);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+.say{font-family:var(--f-story)}
+.abc{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:8px;align-items:stretch}
+.abc div{background:var(--sunken);border-radius:12px;padding:12px;display:grid;gap:4px;align-content:start;min-width:0}
+.abc b{font-family:var(--f-display);font-size:22px;color:var(--accent)}
+.abc span{font-size:14px}
+.abc .arr{background:none;padding:0;display:grid;place-items:center;color:var(--muted);font-size:20px}
+@media (max-width:560px){.abc{grid-template-columns:1fr}.abc .arr{transform:rotate(90deg)}}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.legend div{border:1px solid var(--line);border-radius:12px;padding:12px;display:grid;gap:4px;min-width:0}
+.legend b{font-family:var(--f-display);font-size:16px}
+.legend span{font-size:14px;color:var(--muted)}
+@media (max-width:600px){.legend{grid-template-columns:1fr}}
+.sortrow{display:grid;gap:10px;padding:14px 0;border-top:1px solid var(--line)}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;cursor:pointer;font-weight:700;font-size:14px}
+.opt:hover{border-color:var(--accent)}
+.opt.sel{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.opt.right{background:var(--good);border-color:var(--good);color:var(--surface)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.fb{font-size:15px;padding:10px 12px;border-radius:10px}
+.fb.good{background:var(--good-soft);color:var(--ink)}
+.fb.bad{background:var(--bad-soft);color:var(--ink)}
+.fb b{font-weight:700}
+.fb.good b{color:var(--good)} .fb.bad b{color:var(--bad)}
+.notecard{background:var(--sunken);border-radius:12px;padding:16px;display:grid;gap:8px;font-size:15px}
+.notecard dt{font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.notecard dd{margin:0 0 6px}
+
+.ladder{list-style:none;margin:0;padding:0;display:flex;flex-direction:column-reverse;gap:6px}
+.ladder li{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;background:var(--accent-soft);border-radius:10px;padding:10px 12px;font-size:15px}
+.ladder li b{font-family:var(--f-display);font-size:18px;color:var(--accent);text-align:center}
+.ladder.empty{border:2px dashed var(--line);border-radius:12px;padding:18px;color:var(--muted);font-size:14px;text-align:center;display:block}
+.ms{border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:18px;display:grid;gap:12px}
+.ms.locked{opacity:.55}
+.ms .mshead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.ms h3{font-size:18px;font-weight:600}
+.ms dl{margin:0;display:grid;gap:4px;font-size:14px}
+.ms dt{font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ms dd{margin:0 0 6px}
+details summary{cursor:pointer;font-weight:700;color:var(--accent);font-size:14px}
+/* real story */
+.clip{border:1px solid var(--line);background:var(--surface);border-radius:4px;padding:26px 24px;display:grid;gap:16px;position:relative;box-shadow:6px 6px 0 var(--sunken)}
+@media (max-width:480px){.clip{padding:20px 16px}}
+.clip h2{font-size:clamp(24px,4.5vw,32px);font-weight:800;letter-spacing:-.02em}
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.versus>div{display:grid;gap:8px;align-content:start;min-width:0}
+@media (max-width:560px){.versus{grid-template-columns:1fr}}
+.source{font-size:13px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.prose ul{margin:0;padding-left:20px;display:grid;gap:6px}
+
+/* quiz */
+.q{display:grid;gap:10px;padding:16px 0;border-top:1px solid var(--line)}
+.q:first-child{border-top:0;padding-top:0}
+.q .qt{font-weight:700;font-size:17px}
+.q .ans{display:grid;gap:8px}
+.ans button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;cursor:pointer;font-size:15px;display:flex;gap:10px;align-items:flex-start}
+.ans button:hover:not([disabled]){border-color:var(--accent)}
+.ans button .dot{flex:0 0 18px;height:18px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
+.ans button.sel{border-color:var(--accent);background:var(--accent-soft)}
+.ans button.sel .dot{border-color:var(--accent);background:radial-gradient(var(--accent) 45%,transparent 50%)}
+.ans button.right{border-color:var(--good);background:var(--good-soft)}
+.ans button.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.ans button[disabled]{cursor:default}
+.score{font-family:var(--f-display);font-weight:800;font-size:40px;line-height:1;font-variant-numeric:tabular-nums}
+
+/* apply */
+.progress{height:6px;border-radius:999px;background:var(--sunken);overflow:hidden}
+.progress i{display:block;height:100%;background:var(--accent);border-radius:999px;transition:width .3s}
+.stmt{display:grid;gap:8px}
+.stmt button{text-align:left;border:1px solid var(--line);background:var(--surface);border-radius:10px;padding:10px 14px;cursor:pointer;font-size:15px;display:flex;gap:10px;align-items:flex-start;justify-content:space-between}
+.stmt button .box{flex:0 0 18px;height:18px;border-radius:5px;border:2px solid var(--line);margin-top:2px}
+.stmt button.sel{border-color:var(--accent);background:var(--accent-soft)}
+.stmt button.sel .box{background:var(--accent);border-color:var(--accent)}
+.stmt button .lbl{display:flex;gap:10px;align-items:flex-start;min-width:0}
+.stmt button[disabled]{cursor:default}
+
+/* forms */
+form{display:grid;gap:14px}
+label{display:grid;gap:6px;font-weight:700;font-size:14px}
+label .sub{font-weight:400;color:var(--muted);font-size:13px}
+input[type=text],textarea,select{font:inherit;font-weight:400;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;width:100%}
+textarea{min-height:76px;resize:vertical}
+.entries{display:grid;gap:10px}
+.entry{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;gap:6px;font-size:15px}
+.entry .meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.entry q{font-family:var(--f-display);font-weight:600;quotes:"\201C" "\201D"}
+
+/* mentor */
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+tr:last-child td{border-bottom:0}
+td.num{font-variant-numeric:tabular-nums}
+tr.you td{background:var(--accent-soft)}
+.dots{display:inline-flex;gap:4px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--line)}
+.dots i.on{background:var(--good)}
+
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* footer */
+.foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);display:grid;gap:12px;font-size:14px;color:var(--muted)}
+.foot label{display:flex;gap:8px;align-items:center;font-weight:400;font-size:14px}
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+/* ---------------- content ---------------- */
+const TRAPS = {
+  permanent:{name:'Permanent', line:'“It will always be this way.”', cue:'always, never, forever, all year',
+    tip:'Listen for time words: always, never, forever, all year. Ask yourself: will this really last?'},
+  pervasive:{name:'Pervasive', line:'“It ruins everything.”', cue:'one bad thing spreads to your whole life',
+    tip:'Watch for one event spreading: everything, whole, my life. Ask: what part of my life does this actually touch?'},
+  personal:{name:'Personal', line:'“It’s because of who I am.”', cue:'labels like stupid, lazy, boring',
+    tip:'Notice labels about who you are (stupid, lazy, boring). Compare them with something you did, which can change.'},
+  none:{name:'No trap', line:'Balanced', cue:'specific, temporary, with a plan',
+    tip:'Some thoughts are already balanced: specific, temporary, with a next step. Not every thought is a trap.'}
+};
+
+const LEVELS = [
+  {n:1, title:'Noticing control', skill:'See where your actions change what happens.'},
+  {n:2, title:'Catching thoughts', skill:'Notice the thoughts that turn one event into a whole story.'},
+  {n:3, title:'Talking back', skill:'Check your thoughts against the evidence.'},
+  {n:4, title:'Building wins', skill:'Set step-by-step goals and give yourself credit.'},
+  {n:5, title:'Future me', skill:'Picture who you could become and plan around obstacles.'},
+  {n:6, title:'Make something change', skill:'Lead a real project that changes something at school.'}
+];
+
+const STAGES = [['story','Story'],['real','Real story'],['know','Know'],['apply','Apply'],['live','Live']];
+
+const C = {
+2:{
+  story:{start:'s1', scenes:{
+    s1:{when:'Week 3 · Biology, 2:47 p.m.', paras:[
+      'Ms. Reyes walks the rows, laying tests face-down on each desk. Nia Okafor waits until she’s gone before she flips hers over.',
+      '<b>58.</b> Circled in red. Under it, in small letters: <em>See me if you want to talk.</em>',
+      'Around her, chairs scrape. Someone behind her says “easy” to nobody in particular. Nia slides the paper into her binder fast, like the number might leak out.',
+      'A thought shows up before she’s even zipped her bag.'],
+      thoughts:['t1'], hint:'Tap the thought to catch it. Thoughts like this arrive fast and sound like facts. Most people never notice them.', next:'s2'},
+    s2:{when:'Lunch, the next day', paras:[
+      'Nia’s phone buzzes. It’s the group chat Amara made in the first week of school. Fourteen new messages.',
+      'She scrolls. Amara and Jess are planning a movie on Saturday. Theo is in. Priya is in. There’s a poll for showtimes. Nobody has tagged her.',
+      '<span class="text">Amara: ok 7:15 wins. who’s driving??</span>',
+      'She reads it twice, then puts the phone face-down, the same way the test was.'],
+      thoughts:['t2','t3'], hint:'Two thoughts this time. Catch both.', next:'s3'},
+    s3:{when:'That night, 9:30 p.m.', paras:[
+      'Her biology notes are open on the bed. The chapter 4 test is next week. She stares at the first diagram for a while, then closes the notebook.',
+      'She doesn’t decide to stop studying. It just sort of happens.'],
+      thoughts:['t4'], hint:'One more.', next:'s4'},
+    s4:{when:'Your turn', interactive:'sort', next:'s5'},
+    s5:{when:'What actually happened', paras:[
+      'Look at the timeline again. A test came back with a 58. A group chat made plans. Those were two events, on two days.',
+      'Nia’s thoughts turned them into a story: she’s not a science person, she’s boring, it will always be like this, she’s bad at everything. Then that story decided what she did on Monday night.'],
+      abc:['A · Adversity','A 58 on the first biology test','B · Belief','“I’m just not a science person.”','C · Consequence','She closes the notebook and stops studying'],
+      after:['The 58 didn’t stop Nia from studying. The thought did.','That’s why catching thoughts comes first. You can’t argue with a thought you haven’t noticed.'],
+      end:true}
+  }},
+  thoughts:{
+    t1:{text:'I’m just not a science person.', accept:['permanent','personal'],
+      why:'“Just not a science person” describes something fixed about who Nia is. It turns one test into a permanent trait.'},
+    t2:{text:'It’s because I’m boring. Of course they didn’t invite me.', accept:['personal'],
+      why:'Nia blames who she is (“I’m boring”) without checking for any other reason.'},
+    t3:{text:'It’s always going to be like this here.', accept:['permanent'],
+      why:'“Always” stretches one week into forever.'},
+    t4:{text:'I’m bad at everything at this school anyway. What’s the point?', accept:['pervasive'],
+      why:'One test and one group chat spread to “everything at this school.”'}
+  },
+  real:{
+    where:'Real story · Wilmington, North Carolina, 1978', title:'The list without his name',
+    paras:[
+      'Michael Jordan was a 15-year-old sophomore at Laney High School when the varsity basketball roster went up. He looked for his name and didn’t find it. He was placed on the junior varsity team, and the last varsity spot went to a taller classmate.',
+      'Jordan has said he went home, shut himself in his room and cried.',
+      'The same event could have produced two very different thoughts:'],
+    versus:[['The trap','I’m not good enough, and I never will be.'],['What he did instead','I’m not on varsity this year. I’ll work so they can’t leave me off next time.']],
+    after:[
+      'He spent that season on JV and practiced hard. He made varsity the next year, and he also grew several inches, which helped.',
+      'Getting cut still hurt. What changed things was the story he told himself about it.'],
+    source:'Based on Jordan’s own accounts in interviews over the years; details simplified for teaching.',
+    q:'The thought “I’m not good enough, and I never will be” falls mostly into which trap?',
+    opts:[['Permanent','“Never will be” turns one season into forever. Jordan’s version kept it to “this year.”',true],
+          ['Pervasive','Not quite. The thought stays about basketball. The loudest part is “never will be,” which makes it permanent.',false],
+          ['Personal','It does have a personal side (“I’m not good enough”), but the loudest words are “never will be.” That’s the permanent trap.',true]]
+  },
+  know:[
+    {q:'Nia thinks: “I’ll never be good at science.” Which word gives away the Permanent trap?',
+     o:['never','good','science','I’ll'], a:0, why:'“Never” makes a temporary problem sound like it will last forever.'},
+    {q:'Which thought shows the Pervasive trap?',
+     o:['I bombed this quiz.','I bombed this quiz, so this whole year is ruined.','I bombed this quiz because I studied the wrong pages.','I’ll ask about the quiz tomorrow.'], a:1,
+     why:'Pervasive thoughts let one event spread to everything, like “this whole year.”'},
+    {q:'Which of these is a Personal trap (blaming who you are)?',
+     o:['We lost because I’m a loser.','We lost because I missed two free throws.','We lost because the other team is undefeated.','We lost this one.'], a:0,
+     why:'“I’m a loser” labels who you are. Missing free throws is something you did, and that can change with practice.'},
+    {q:'In the ABC model, what most directly shapes how you feel and act after something bad happens?',
+     o:['The event itself','What you believe about the event','How other people react','Luck'], a:1,
+     why:'A (the event) leads to B (your belief about it), and B drives C (how you feel and act).'},
+    {q:'Which is the most accurate rewrite of “I’m not a math person”?',
+     o:['I’m a genius at math.','Math doesn’t matter anyway.','I haven’t figured out this unit yet, and I can get help with it.','Nobody is a math person.'], a:2,
+     why:'The goal is an accurate thought, not just a happy one: specific (“this unit”), temporary (“yet”) and with a next step.'}
+  ],
+  recap:{title:'Nia’s cheat sheet: the three traps', items:[
+    ['Permanent','“It’s always going to be like this.” Listen for always, never, forever.'],
+    ['Pervasive','“I’m bad at everything.” One event spreads to your whole life.'],
+    ['Personal','“It’s because I’m boring.” A label about who you are instead of what happened.']]},
+  apply:{type:'trap', pass:6, items:[
+    {ctx:'After a confusing first lab', t:'Chemistry is going to be impossible for me all year.', a:['permanent'],
+     why:'“All year” takes one confusing lab and makes it last the whole year.'},
+    {ctx:'After the winter band concert', t:'I messed up one note, so the whole night was a disaster and I’m bad at everything.', a:['pervasive'],
+     why:'One note spreads to “the whole night” and then to “everything.”'},
+    {ctx:'After a team debate round', t:'We lost the debate and it’s 100% my fault. I’m the reason we lose.', a:['personal'],
+     why:'This takes all the blame for a team result and makes it about who you are (“I’m the reason”).'},
+    {ctx:'After a history test', t:'I bombed the first test. I studied the wrong chapters, so I’ll check the study guide next time.', a:['none'],
+     why:'This one is balanced: a specific reason that can change, plus a plan.'},
+    {ctx:'After an unanswered text', t:'My friend didn’t text back. She’s going to ignore me forever now.', a:['permanent'],
+     why:'“Forever” turns a few hours of silence into something permanent.'},
+    {ctx:'After a Spanish quiz', t:'I got a bad grade in Spanish, so I’m a failure as a person.', a:['pervasive','personal'],
+     why:'A grade in one class spreads to your whole self. That’s pervasive, with a personal edge too.'},
+    {ctx:'After a group project grade', t:'The group project failed because I’m lazy and useless.', a:['personal'],
+     why:'“Lazy and useless” labels who you are instead of naming something you did that could change.'},
+    {ctx:'After the fall play cast list', t:'I didn’t get a part. The director picked mostly seniors this year, and I’ll audition again in spring.', a:['none'],
+     why:'Balanced: a reason tied to the situation (“this year”) and a next step.'}
+  ]},
+  live:{type:'catch', intro:'Over the next few days, catch real thoughts from your own life. Write them down the way they sounded in your head.'}
+},
+3:{
+  story:{start:'s1', scenes:{
+    s1:{when:'Saturday, 10:15 a.m.', paras:[
+      'Nia’s cousin Dev is a junior. He’s come over to borrow her dad’s ladder, and he finds her on the couch in pajamas, not watching the show that’s on.',
+      '<span class="say">“You look like someone deleted your save file,” he says.</span>',
+      'She tells him about the 58. She doesn’t mention the group chat.',
+      'Dev drops onto the other end of the couch. <span class="say">“Okay. Detective time. Your theory is <em>I’m not a science person.</em> What’s the evidence?”</span>'],
+      choices:[['What Nia says','“I got a 58. That’s the evidence.”','s1a'],['What Nia says','“I mean… I got a B+ in science last year.”','s1b']]},
+    s1a:{when:'Saturday, 10:17 a.m.', paras:[
+      '<span class="say">“That’s one clue,” Dev says. “A detective doesn’t close the case on one clue. What else is in the file?”</span>',
+      'Nia thinks about it. Last year she got a B+ in science. She studied for this test for one night. And she studied chapters 1 and 2, but half the test was on chapter 3.',
+      '<span class="say">“So the file says: B+ last year, one night of studying, wrong chapter,” Dev says. “Does that sound like someone who can’t do science?”</span>'], next:'s2'},
+    s1b:{when:'Saturday, 10:17 a.m.', paras:[
+      '<span class="say">“Interesting,” Dev says. “That doesn’t fit your theory at all. What else is in the file?”</span>',
+      'She studied for one night. And she studied chapters 1 and 2, but half the test was on chapter 3.',
+      '<span class="say">“So the file says: B+ last year, one night of studying, wrong chapter,” Dev says. “Does that sound like someone who can’t do science?”</span>'], next:'s2'},
+    s2:{when:'Other explanations', interactive:'alts', next:'s3'},
+    s3:{when:'Saturday, 11:02 a.m.', paras:[
+      'Then Nia tells him about the group chat. The movie. The poll. Nobody tagging her. <span class="say">“They obviously don’t want me there.”</span>',
+      'Dev shrugs. <span class="say">“Maybe. That’s a theory too. How would you test it?”</span>',
+      'Nia’s phone is in her hand. What does she do?'],
+      choices:[['Choice','Leave the group chat. If they don’t want her there, fine.','s3a'],
+               ['Choice','Message Amara directly and ask about Saturday.','s3b'],
+               ['Choice','Do nothing. She already knows the answer.','s3c']]},
+    s3a:{when:'Plot twist', paras:[
+      'Nia taps <em>Leave group</em>. It feels good for about four seconds.',
+      '<span class="text">Amara: wait why did you leave?? are you ok</span>',
+      'Now there’s an awkward conversation to have, and Nia still doesn’t know why she wasn’t tagged. She acted on the theory before she checked it.',
+      '<span class="say">“You treated a guess like a fact,” Dev says. “Want to rewind?”</span>'],
+      choices:[['Rewrite the scene','Rewind and try a different move','s3']]},
+    s3c:{when:'Plot twist', paras:[
+      'Nia puts the phone down. Saturday night she scrolls through Priya’s story: popcorn, the theater lobby, everyone laughing.',
+      'It feels like proof. But nothing was tested. The theory just sat there, getting heavier.',
+      '<span class="say">“A theory you never test always feels true,” Dev says. “Rewind?”</span>'],
+      choices:[['Rewrite the scene','Rewind and try a different move','s3']]},
+    s3b:{when:'Saturday, 11:06 a.m.', paras:[
+      'Nia types, deletes, types again.',
+      '<span class="text">Nia: hey are you guys doing the movie sat? I’d be down if there’s room</span>',
+      '<span class="text">Amara: OMG yes!! we thought you had your brother’s game?? you said that last week. come!!</span>',
+      'Nia scrolls back. She did say that. Last Tuesday.',
+      '<span class="say">“So the evidence says they thought you were busy,” Dev says, picking up the ladder. “Case closed.”</span>'], next:'s4'},
+    s4:{when:'Monday, 7:52 a.m.', paras:[
+      'Before first period, Nia opens the notes app on her phone and writes it down the way Dev showed her.'],
+      note:[['The thought','“I’m just not a science person.”'],['Evidence','B+ last year. Studied for one night. Half the test was on a chapter I skipped.'],['Another explanation','New teacher, new kind of test, wrong chapter.'],['Next step','Ask Ms. Reyes what the chapter 4 test will cover.']],
+      after:['At lunch, she knocks on Ms. Reyes’s door.','Disputing a thought isn’t telling yourself you’re amazing. It’s checking whether the thought is telling you the truth, then acting on what’s true.'],
+      end:true}
+  }},
+  alts:{prompt:'Dev grabs a pen and an old receipt. “Now give me other explanations for the 58. Pick every one that actually fits the evidence.”',
+    opts:[
+      ['She studied the wrong chapters.',true,'Fits: half the test was on chapter 3.'],
+      ['It was her first test with a new teacher, and she didn’t know what Ms. Reyes’s tests look like yet.',true,'Fits: it was week 3 at a new school.'],
+      ['One night of studying wasn’t enough for this test.',true,'Fits: she only studied the night before.'],
+      ['She just isn’t smart.',false,'Doesn’t fit: a B+ last year says otherwise.'],
+      ['Ms. Reyes doesn’t like her.',false,'No evidence for this. Ms. Reyes actually offered to talk.']],
+    miss:'Check each option against the evidence: B+ last year, one night of studying, the wrong chapter. Change your picks and check again.',
+    after:'“Three explanations that fit,” Dev says, “and every one is something you can change.”'},
+  real:{
+    where:'Real story · Edinburgh, 1995', title:'Twelve rejections',
+    paras:[
+      'J.K. Rowling was a single mother living on welfare benefits in Edinburgh when she finished the manuscript of <em>Harry Potter and the Philosopher’s Stone</em>. Her literary agent sent it to publishers.',
+      'About a dozen of them turned it down. In 1996, Bloomsbury, a London publisher, finally said yes and printed a small first run of 500 copies.',
+      'Imagine being in her position after rejection number eight. The easiest thought to have is: <em>My writing isn’t good enough. I’ve wasted years.</em>',
+      'Now look at what the evidence actually showed:'],
+    list:[
+      'Each rejection was one editor’s opinion of one book, not a verdict on her as a writer.',
+      'Many publishers at the time thought long children’s books wouldn’t sell. That’s a reason about the market, not about her.',
+      'Her agent had read the whole manuscript and chose to represent it.'],
+    after:['She has since talked often about rejection and failure as part of her story.'],
+    source:'Based on widely reported accounts; details simplified for teaching.',
+    q:'Which response is the strongest dispute of “My writing isn’t good enough”?',
+    opts:[['My writing is the best in the world.','That’s positive, but there’s no evidence in it. Disputing is about accuracy.',false],
+          ['Each rejection is one editor’s opinion of one book, and my agent believes in it. I’ll keep submitting.','Evidence, another explanation and a next step. That’s a full dispute.',true],
+          ['Publishers are all idiots.','That swaps one unchecked theory for another. Blame isn’t evidence.',false],
+          ['They’re right. I should stop.','This agrees with the trap instead of checking it.',false]]
+  },
+  know:[
+    {q:'What’s the first question to ask when you dispute a thought?',
+     o:['How do I make this feeling go away?','What’s the evidence that this thought is true?','Who can I blame?','How do I stop thinking about it?'], a:1,
+     why:'Disputing starts by treating the thought as a theory and checking the evidence.'},
+    {q:'Nia’s thought is “Ms. Reyes thinks I’m stupid.” Which of these is evidence, not a feeling?',
+     o:['I feel like she’s annoyed with me.','She wrote “See me if you want to talk” on my test.','Teachers always like the smart kids more.','I just know it.'], a:1,
+     why:'Evidence is something you could show someone else. Feelings and hunches aren’t evidence.'},
+    {q:'Your friend walks past you in the hallway without saying hi. Which is an alternative explanation?',
+     o:['She hates me now.','She might not have seen me. She looked like she was rushing to class.','Everyone is turning against me.','I’m unlikeable.'], a:1,
+     why:'An alternative explanation is another reason that fits the facts, often about the situation rather than about you.'},
+    {q:'What’s the difference between disputing and “positive thinking”?',
+     o:['There’s no difference.','Disputing aims for accurate thoughts, not just happy ones.','Disputing means ignoring bad events.','Positive thinking uses more evidence.'], a:1,
+     why:'Disputing can land on “yes, part of this is true, and here’s what I’ll do.” Accuracy is the goal.'},
+    {q:'In the group chat story, what was Nia’s strongest move?',
+     o:['Leave the chat to protect herself','Test the theory by asking Amara directly','Wait and see if anyone noticed','Complain to Dev about her friends'], a:1,
+     why:'Asking directly turned a guess into evidence.'}
+  ],
+  recap:{title:'Dev’s three detective questions', items:[
+    ['Evidence','What are the facts for and against this thought? Things you could show someone.'],
+    ['Other explanations','What else could explain what happened? Pick the ones that fit the facts.'],
+    ['Next step','Given what’s true, what will I do now?']]},
+  apply:{type:'dispute', pass:3, items:[
+    {who:'Marcus, 9th grade', t:'I got a C on my essay. I’m a terrible writer.', s:[
+      ['I got a B on my last two essays.','evidence'],
+      ['This was a new kind of essay (an argument essay) that I hadn’t practiced.','alternative'],
+      ['I’ll go to the writing center before the next one.','action'],
+      ['Grades don’t matter anyway.','weak'],
+      ['I’m the best writer in the class, no question.','weak'],
+      ['Yeah, I’ll probably fail English.','weak']]},
+    {who:'Lena, 9th grade', t:'I wasn’t picked as robotics team lead. Nobody respects me.', s:[
+      ['Two people asked me for help with the code last week.','evidence'],
+      ['The captain picked a senior, and seniors usually lead.','alternative'],
+      ['I’ll ask the captain what skills a lead needs.','action'],
+      ['Robotics is dumb anyway.','weak'],
+      ['Everyone thinks I’m a genius.','weak'],
+      ['They probably all laugh at me.','weak']]},
+    {who:'Sam, 9th grade', t:'My mom yelled at me this morning. I ruin everything at home.', s:[
+      ['Last night we watched a show together and laughed.','evidence'],
+      ['She has a big deadline at work this week and has been stressed.','alternative'],
+      ['Tonight I’ll ask her if something’s wrong and help with dinner.','action'],
+      ['Whatever, I don’t care what she thinks.','weak'],
+      ['I’m the perfect kid, so it’s all her fault.','weak'],
+      ['I always make everyone miserable.','weak']]},
+    {who:'Jaylen, 9th grade', t:'I froze during my presentation. Everyone thinks I’m a joke now.', s:[
+      ['Only one person laughed, and that was when the slide didn’t load.','evidence'],
+      ['I didn’t rehearse out loud, so I wasn’t ready for the nerves.','alternative'],
+      ['Next time I’ll practice twice in front of my brother.','action'],
+      ['Presentations are pointless.','weak'],
+      ['I was actually amazing and nobody noticed.','weak'],
+      ['I’ll never be able to talk in front of people.','weak']]}
+  ]},
+  live:{type:'dispute', intro:'When a trap thought shows up in your own life, talk back to it. Use Dev’s three questions.'}
+},
+4:{
+  story:{start:'s1', scenes:{
+    s1:{when:'Week 7 · Ms. Reyes’s room, lunch', paras:[
+      'Nia got a 72 on the chapter 4 test. Not great, but fourteen points higher than the 58. Ms. Reyes circled it and wrote: <em>Big jump. What changed?</em>',
+      'Now it’s lunch and Nia is back in Ms. Reyes’s room. The chapter 5 unit test is in three weeks.',
+      '<span class="say">“So what’s your goal?” Ms. Reyes asks.</span>',
+      '<span class="say">“Get an A in biology,” Nia says.</span>',
+      '<span class="say">“That’s a destination,” Ms. Reyes says. “I want the ladder. What’s the first rung, something you could do tonight? And then the next one?”</span>'],
+      interactive:'ladder', next:'s2'},
+    s2:{when:'Week 8 · School library, 3:20 p.m.', paras:[
+      'Rung three is harder than it looked. Section 5.2 is cellular respiration, and Nia has read the same page four times.',
+      'Priya drops into the chair next to her. She’s in tenth grade and tutors in the library on Tuesdays.',
+      '<span class="say">“Respiration?” Priya says. “I failed my first bio test last year. Like, a 49.”</span>',
+      'Nia looks up. Priya <em>tutors biology</em>.',
+      '<span class="say">“I started drawing everything as a flow chart. Glucose in, energy out. Want me to show you?”</span>'],
+      ask:{q:'Why does Priya’s story help Nia more than a pep talk would?', opts:[
+        ['Because Priya is a genius at biology.',false,'Priya got a 49 last year. She isn’t a genius, and she still figured it out. That’s why her story helps.'],
+        ['Because Priya was in the same spot and found a method that worked.',true,'Yes. Seeing someone like you succeed is one of the strongest ways to believe you can too. Psychologists call it vicarious experience.'],
+        ['Because Priya said biology is easy.',false,'She didn’t say that. She said she failed first, then found a method.']]},
+      next:'s3'},
+    s3:{when:'Week 9 · Test day, 8:01 a.m.', paras:[
+      'Ms. Reyes hands out the unit test. Nia’s heart is pounding. Her hands are damp. Her stomach feels like an elevator dropping.',
+      'She has about three seconds to decide what this feeling means.'],
+      choices:[['What Nia tells herself','“I’m panicking. I’m going to blank.”','s3a'],
+               ['What Nia tells herself','“My body is getting ready. This is energy.”','s3b'],
+               ['What Nia tells herself','“Ignore it. Just don’t feel anything.”','s3c']]},
+    s3a:{when:'Plot twist', paras:[
+      'The word <em>panicking</em> makes her heart beat even faster. She reads question 1 three times and the words slide off the page.',
+      'Ten minutes in, she has answered two questions.',
+      '<span class="say">Later Priya tells her, “Your body was doing the same thing either way. What changed was the name you gave it.”</span>'],
+      choices:[['Rewrite the scene','Rewind and try a different thought','s3']]},
+    s3c:{when:'Plot twist', paras:[
+      'She tries not to notice her heart. That only makes her notice it more. Every time she starts a question, she checks whether she still feels nervous.',
+      'She does.',
+      '<span class="say">Later Priya tells her, “Fighting the feeling uses up energy. Using it gives you energy.”</span>'],
+      choices:[['Rewrite the scene','Rewind and try a different thought','s3']]},
+    s3b:{when:'Week 9 · Test day, 8:02 a.m.', paras:[
+      'A pounding heart, damp hands, a dropping stomach: runners feel the same things at the starting line. It’s the body getting ready to perform.',
+      'Nia breathes out slowly and turns to question 1. <em>Glucose in, energy out.</em> She can picture Priya’s flow chart.'], next:'s4'},
+    s4:{when:'Week 10 · Friday', paras:[
+      'The tests come back face-down, like always. This time Nia flips hers over right away.',
+      '<b>81.</b> Next to it: <em>You earned this.</em>',
+      'Dev texts while she’s on the bus.',
+      '<span class="text">Dev: so?? how’d it go</span>',
+      'What does Nia tell him?'],
+      choices:[['Nia’s reply','“81!! the test was easy this time lol”','s4a'],
+               ['Nia’s reply','“81. I think I just got lucky”','s4b'],
+               ['Nia’s reply','“81!! the flashcards and the practice test actually worked”','s4c']]},
+    s4a:{when:'Plot twist', paras:[
+      '<span class="text">Dev: was it easy, or were you ready?</span>',
+      'Nia thinks about it. Two people who didn’t study got in the 60s. The test wasn’t easy. She was ready.',
+      '<span class="say">“If the test gets the credit,” Dev tells her later, “you have to hope the next one is easy too.”</span>'],
+      choices:[['Rewrite the scene','Rewind and send a different reply','s4']]},
+    s4b:{when:'Plot twist', paras:[
+      '<span class="text">Dev: luck doesn’t make flashcards for 3 weeks</span>',
+      'Nia looks at the stack in her bag. There are 94 of them.',
+      '<span class="say">“If luck gets the credit,” Dev says, “you can’t use it next time. If <em>you</em> get the credit, you can.”</span>'],
+      choices:[['Rewrite the scene','Rewind and send a different reply','s4']]},
+    s4c:{when:'Week 10 · Friday, 3:41 p.m.', paras:[
+      '<span class="text">Dev: LET’S GO. so you CAN do science</span>',
+      '<span class="text">Nia: …i guess i can</span>',
+      'That night she writes a new note under the one from week 3.'],
+      note:[['What happened','81 on the chapter 5 test.'],['What I did','Made 94 flashcards over three weeks. Did the practice test. Asked Ms. Reyes about what I got wrong. Used Priya’s flow chart.'],['Will it work again?','Yes, if I do the same things.'],['Where else could it work?','Spanish vocab. I’ll try flashcards there next week.']],
+      after:['With bad events, the skill is keeping them temporary and specific. With good events it’s the reverse: give yourself the credit, expect it to happen again, and let it spread to other parts of your life.','That’s how one 81 becomes evidence about who you are.'],
+      end:true}
+  }},
+  ladder:{prompt:'Help Nia build her ladder. Tap the steps in order, starting with the bottom rung (tonight) and ending at the top (test day).',
+    steps:['Make 10 flashcards for section 5.1 tonight.','Quiz herself on the flashcards for 10 minutes every day.','Add flashcards for 5.2 and 5.3 as the class covers them.','Do the practice test at the end of the chapter and mark what she missed.','Ask Ms. Reyes about the questions she got wrong.','Take the unit test.'],
+    after:'“Every rung is small enough to do,” Ms. Reyes says, “and each one is a little higher than the last. That’s the whole trick.”'},
+  real:{
+    where:'Real story · Oxford, England, 1954', title:'Forty-six days',
+    paras:[
+      'For years the best runners in the world had chased the four-minute mile and kept falling just short. Some people wondered whether it could be done at all.',
+      'Roger Bannister was a medical student. He couldn’t train all day, so he trained in short, hard sessions fitted around his hospital work: repeated laps at a set pace, getting a little faster over the weeks.',
+      'On May 6, 1954, on a windy evening at an Oxford track, he ran the mile in 3 minutes 59.4 seconds.',
+      'Forty-six days later, the Australian runner John Landy ran it even faster, in 3:58.0. Within a few years, several more runners had broken four minutes.',
+      'Two kinds of confidence-building are in this story:'],
+    list:['<b>Small steps.</b> Bannister built up with short sessions that got slightly harder over time.','<b>Seeing it done.</b> Once one person broke the barrier, other runners knew it was possible.'],
+    after:['Nobody handed them confidence. Bannister built it by doing, step by step. The runners who followed built it by watching.'],
+    source:'Based on widely reported historical accounts; details simplified for teaching.',
+    q:'Why do you think other runners broke four minutes so soon after Bannister?',
+    opts:[['They all suddenly got stronger.','Bodies don’t change that fast. Something else changed.',false],
+          ['Seeing someone do it showed them it was possible.','Yes. Watching someone succeed is one of the four main sources of self-belief.',true],
+          ['The races got easier.','Still a mile, still the same tracks. What changed was belief.',false]]
+  },
+  know:[
+    {q:'According to psychologist Albert Bandura, what builds belief in yourself most strongly?',
+     o:['Being told you’re great','Succeeding at something yourself, step by step','Reading about successful people','Wishing hard enough'], a:1,
+     why:'Mastery experiences, meaning your own successes, are the strongest source. Each one is evidence you can do it.'},
+    {q:'Your goal is to get better at guitar. Which is the best first step?',
+     o:['Become a great guitarist','Practice switching from G to C for 10 minutes today','Watch a lot of concerts','Buy a better guitar'], a:1,
+     why:'A good first step is small, specific and something you can do today.'},
+    {q:'Whose example will most likely boost your confidence?',
+     o:['A pro athlete who was always talented','A classmate like you who improved with practice','A celebrity','A character in a movie'], a:1,
+     why:'Seeing someone similar to you succeed is the kind of example that convinces you that you can do it too.'},
+    {q:'Before a big game your heart is pounding. Which thought helps most?',
+     o:['I’m panicking.','My body is getting ready to perform.','I have to make this feeling go away first.','Something is wrong with me.'], a:1,
+     why:'Reading nerves as energy instead of danger can help people perform better.'},
+    {q:'You got a B+ after studying hard. Which explanation builds agency?',
+     o:['I got lucky.','The test was easy.','My studying worked, and I can do it again.','The teacher likes me.'], a:2,
+     why:'Crediting your own actions means you can repeat them on purpose.'}
+  ],
+  recap:{title:'Four ways to build belief, plus one', items:[
+    ['Do it','Take small steps that get a little harder. Each success is evidence.'],
+    ['See it','Watch someone like you do it.'],
+    ['Hear it','Get specific feedback about what worked.'],
+    ['Feel it','Read nerves as energy, not danger.'],
+    ['Then take the credit','Explain wins by what you did, so you can do it again.']]},
+  apply:{type:'mc', pass:6, items:[
+    {ctx:'Ana · Goal: run a 5K in March', cat:'step', t:'Which is the best first step this week?',
+     o:['Run 5K every day starting tomorrow.','Walk-run for 15 minutes, three times this week.','Think about running more.','Buy new running shoes.'], a:[1],
+     why:'A first step should be small enough to do this week and just hard enough to stretch you. Walk-running three times does both.'},
+    {ctx:'Theo · Goal: speak up more in class', cat:'step', t:'Which is the best first step?',
+     o:['Lead the next class debate.','Ask one question in one class this week.','Stop being shy.','Wait until he feels confident.'], a:[1],
+     why:'Confidence usually comes after the action, not before. One question is a step he can actually take.'},
+    {ctx:'Mia · After scoring twice in a soccer game', cat:'credit', t:'Which explanation builds agency?',
+     o:['The other team’s goalie was bad.','I got lucky today.','I practiced my shooting all week, and it paid off.','Coach put me in at the right time.'], a:[2],
+     why:'When she credits her practice, she knows what to do again next week.'},
+    {ctx:'Jun · Before a piano recital', cat:'nerves', t:'His hands are shaking. Which thought helps most?',
+     o:['I’m going to mess up.','My body is getting ready to perform.','I have to calm down completely first.','Everyone can see I’m nervous.'], a:[1],
+     why:'Reading nerves as energy instead of danger can help people perform better.'},
+    {ctx:'Leo · Wants to learn to code', cat:'model', t:'Whose story would help Leo most?',
+     o:['A tech billionaire who started coding at age 8.','A senior at his school who started coding in 10th grade and now builds apps.','A movie about hackers.','A poster that says “Anyone can code!”'], a:[1],
+     why:'Someone close to Leo’s age and starting point is the kind of example that makes success feel possible.'},
+    {ctx:'Aisha · After a good Spanish quiz', cat:'feedback', t:'Which feedback to herself is most useful?',
+     o:['I’m awesome.','Not bad, I guess.','Practicing vocab out loud every night helped me remember the words.','Spanish is easy anyway.'], a:[2],
+     why:'Specific feedback names exactly what worked, so she can do it again.'},
+    {ctx:'Omar · Goal: raise math from a C to a B', cat:'step', t:'He’s done 10 practice problems a night for two weeks, and it’s getting easy. What next?',
+     o:['Keep doing exactly the same thing.','Jump to studying three hours a night.','Add a few harder problems each week.','Stop, since it’s working.'], a:[2],
+     why:'Once a rung feels easy, move up a little. Too big a jump and he’ll quit.'},
+    {ctx:'Rosa · Just got a part in the school play', cat:'credit', t:'Which thought spreads the win in a useful way?',
+     o:['That was a fluke.','I prepared hard for the audition, and I can use the same approach for my debate tryout.','I’m better than everyone.','I’d better not get my hopes up.'], a:[1],
+     why:'With good events, let them be permanent and pervasive: this win is evidence about what you can do elsewhere.'}
+  ]},
+  live:{type:'wins', intro:'Pick a goal of your own and climb it one rung at a time. Each time you take a step, log the win and give yourself the credit.'}
+},
+5:{
+  story:{start:'s1', scenes:{
+    s1:{when:'Week 14 · Advisory, 9:10 a.m.', paras:[
+      'Ms. Alvarez hands out a sheet with two boxes on it. One says <em>Me at 18</em>. The other says <em>Me at 25</em>.',
+      '<span class="say">“Don’t write what you think I want to read,” she says. “Write who you’d actually like to be. Then, on the back, one person you’re afraid of turning into.”</span>',
+      'For ten minutes Nia writes nothing. Then she remembers the hospital.',
+      'When her little brother Tobi was born ten weeks early, he spent six weeks in the NICU, the hospital unit for newborns who need intensive care. Nia was eleven. Most of the adults were too worried to talk to her. One nurse, Grace, wasn’t. She showed Nia how the feeding tube worked and let her hold Tobi’s hand through the porthole of the incubator.',
+      'Nia picks up her pencil.'],
+      ask:{q:'Which version of Nia’s “Me at 25” is most likely to change what she does this year?', opts:[
+        ['“Successful and happy.”',false,'Everyone wants that. It’s too vague to tell her what to do on Monday.'],
+        ['“A NICU nurse, like Grace. To get there: biology, chemistry, and finding out what nurses actually do.”',true,'Yes. A possible self works best when it’s specific and linked to steps you can take now.'],
+        ['“Famous.”',false,'That’s a wish about other people’s attention. It doesn’t point to any steps.']]},
+      next:'s2'},
+    s2:{when:'Week 15 · Nia’s room, 10:40 p.m.', paras:[
+      'On the back of the sheet, under <em>Afraid of becoming</em>, she wrote: <em>someone who quits when things get hard.</em>',
+      'All week Nia keeps picturing it: navy scrubs, a quiet unit at night, a tiny baby finally going home. The daydream feels great. She replays it on the bus, in the shower, in bed.',
+      'She doesn’t open her chemistry-prep packet once.',
+      '<span class="say">On Monday she tells Ms. Alvarez. “I can see it so clearly. So why am I not doing anything?”</span>',
+      '<span class="say">“Because your brain feels like you’re already there,” Ms. Alvarez says. “A psychologist named Gabriele Oettingen found that just daydreaming about a goal can make people put in <em>less</em> effort. The fix is to picture the goal, then picture what’s in the way. It’s called WOOP.”</span>'],
+      interactive:'woop', next:'s3'},
+    s3:{when:'Week 18 · Course selection, 1:15 p.m.', paras:[
+      'The course selection form for tenth grade arrives. Nia flips straight to science.',
+      '<b>Honors Biology II</b>: <em>requires a B+ average in Biology I.</em>',
+      'Nia has a B−. Her 81 helped, but not enough.',
+      'She looks at the <em>Me at 25</em> sheet, folded in the front of her binder.'],
+      choices:[['What Nia thinks','“That’s it. I’m not nurse material.”','s3a'],
+               ['What Nia thinks','“This road is closed. What other roads go there?”','s3b']]},
+    s3a:{when:'Plot twist', paras:[
+      'Nia crumples the sheet and drops it in the recycling bin.',
+      'For a moment it feels like relief. Then she remembers what she wrote on the back: <em>someone who quits when things get hard.</em>',
+      '<span class="say">“One closed door isn’t a closed building,” Ms. Alvarez says when she hears. “Want to look for another way in?”</span>'],
+      choices:[['Rewrite the scene','Rewind and think again','s3']]},
+    s3b:{when:'Week 18 · Ms. Alvarez’s room, 3:05 p.m.', paras:[
+      '<span class="say">Ms. Alvarez pulls a chair over. “Okay. Pathways. The goal stays the same. Let’s list the routes.”</span>'],
+      interactive:'alts', next:'s4'},
+    s4:{when:'Week 19 · Saturday', paras:[
+      'Nia’s mom still has Grace’s number. Nia writes the message four times before sending it.',
+      '<span class="text">Nia: hi, this is Nia Okafor, Tobi’s sister. you were his nurse in the NICU 4 years ago. I want to be a NICU nurse. can I ask how you did it?</span>',
+      'Grace calls that evening. They talk for forty minutes.',
+      'Grace failed chemistry the first time and retook it in summer school. She went to community college for two years, then transferred into a nursing program. She has worked in the NICU for twelve years.',
+      '<span class="say">“Nobody’s path is a straight line,” Grace says. “Mine had a detour in it. Detours still get you there.”</span>'],
+      note:[['Me at 25','A NICU nurse who explains things to scared families, the way Grace did.'],['Afraid of becoming','Someone who quits when things get hard.'],['This month’s WOOP','Finish the chemistry packet. If it’s after dinner and I think “tomorrow,” I put my phone in the kitchen and do one page.'],['Routes','Regular Bio II, and ask about honors at midyear. HOSA club. Summer chemistry if I need it.']],
+      after:['The future isn’t a place you wait to arrive at. You picture it, name what’s in the way, and build more than one road to it.'],
+      end:true}
+  }},
+  woop:{prompt:'Help Nia write her first WOOP for this month. Pick the best card for each step. The next step opens when you get one right.', slots:[
+    {k:'Wish', hint:'Something you want that’s hard but possible in the next few weeks.', o:[
+      ['Become a nurse.',false,'That’s the long-term goal. A WOOP works best for something in the next few weeks.'],
+      ['Finish the chemistry-prep packet before winter break.',true,'Yes: hard, possible, and close enough to act on now.'],
+      ['Never feel stressed again.',false,'She can’t control that. Pick a wish she can act on.']]},
+    {k:'Outcome', hint:'The best result. Imagine it for a moment.', o:[
+      ['Getting it over with.',false,'That’s relief, not a result she wants. What would be great about finishing?'],
+      ['Starting tenth-grade chemistry already knowing the basics, and feeling ready instead of behind.',true,'That’s vivid and personal. Picture it for a few seconds.'],
+      ['Making Ms. Alvarez happy.',false,'Pick the outcome Nia wants for herself.']]},
+    {k:'Obstacle', hint:'What inside you gets in the way?', o:[
+      ['The packet is long.',false,'True, but it’s outside her. The most useful obstacle is something Nia does, thinks or feels.'],
+      ['Chemistry is boring.',false,'Closer, but vague. When exactly does she get stuck, and what does she do then?'],
+      ['When I’m tired after dinner, I tell myself I’ll do it tomorrow, and then I scroll my phone.',true,'Yes. That’s an obstacle inside her, at a specific moment, so she can plan around it.']]},
+    {k:'Plan', hint:'If [the obstacle shows up], then I will [one action].', o:[
+      ['I’ll try harder.',false,'That isn’t a plan. What will she do, and when?'],
+      ['If it’s after dinner and I think “tomorrow,” then I’ll put my phone in the kitchen and do one page.',true,'Yes. An if-then plan links the exact moment of the obstacle to one specific action.'],
+      ['If I fail, then I’ll feel bad.',false,'That predicts a feeling, not an action. The “then” should be something she does.']]}],
+    after:'“Wish, Outcome, Obstacle, Plan,” Ms. Alvarez says. “Dream first, then get real.”'},
+  alts:{prompt:'Pick every route that could still get Nia to nursing.',
+    opts:[
+      ['Take regular Biology II and ask about moving into honors at midyear.',true,'Many schools allow a midyear move with a teacher’s recommendation.'],
+      ['Join the school’s HOSA club for students interested in health careers.',true,'Real experience, and a way to meet people working in health care.'],
+      ['Ask Grace how she became a nurse.',true,'Someone who has done it knows the real routes.'],
+      ['Drop science, since honors is out.',false,'That closes more doors. Nursing programs need science.'],
+      ['Wait and hope the honors rule changes.',false,'Waiting isn’t a route. Pick things Nia can do.']],
+    miss:'Look for routes Nia can act on herself that keep science in the picture. Change your picks and check again.',
+    after:'“Three roads,” Ms. Alvarez says. “If one closes, you take another. That’s what hope really is: a goal, plus more than one way to reach it.”'},
+  real:{
+    where:'Real research · Detroit, early 2000s', title:'The eighth graders who drew a map',
+    paras:[
+      'Psychologist Daphna Oyserman worked with eighth graders at middle schools in low-income Detroit neighborhoods. Many of the students had big hopes for adulthood, but no clear sense of how today connected to them.',
+      'Her program, called School-to-Jobs, met in small groups for about a dozen sessions. Students described the adults they hoped to become and the ones they were afraid of becoming. Then came the important part: they drew timelines from now to adulthood, named the obstacles they expected, and planned ways past them.',
+      'Researchers compared these students with similar students who didn’t take the program. Over the next two years, the School-to-Jobs students had better grades and test scores, missed less school, and got in trouble less.',
+      'Three things made it work:'],
+    list:['<b>Hoped-for and feared selves together.</b> Students had something to move toward and something to avoid.','<b>Linked to now.</b> The future self was connected to steps in eighth grade, not left as a dream.','<b>Obstacles expected.</b> Students knew difficulty was normal, so a setback didn’t mean the dream was wrong.'],
+    after:['Picturing the future helped only when it came with a map.'],
+    source:'Oyserman, Bybee &amp; Terry, “Possible selves and academic outcomes,” <em>Journal of Personality and Social Psychology</em>, 2006. Summarized for teaching.',
+    q:'What made picturing the future actually change what these students did?',
+    opts:[['Dreaming as big as possible.','Big dreams alone weren’t what made the difference.',false],
+          ['Connecting the future self to steps now, and planning for obstacles.','Yes. The map from today to the future is what made the difference.',true],
+          ['Being told they would be successful.','Nobody told them that. They built the route themselves.',false]]
+  },
+  know:[
+    {q:'What did psychologist Gabriele Oettingen find about only daydreaming about a goal?',
+     o:['It makes you work harder.','It can feel so good that you put in less effort.','It has no effect.','It guarantees success.'], a:1,
+     why:'Positive daydreams alone can trick your brain into feeling you’ve already arrived.'},
+    {q:'What does WOOP stand for?',
+     o:['Work, Organize, Overcome, Push','Wish, Outcome, Obstacle, Plan','Want, Outline, Optimize, Perform','Win, Own, Open, Proceed'], a:1,
+     why:'Wish, Outcome, Obstacle, Plan: dream first, then get real.'},
+    {q:'Which is the most useful obstacle to name in a WOOP?',
+     o:['The test will be hard.','When I’m tired after practice, I tell myself I’ll study later, and then I don’t.','My teacher is strict.','Life is unfair.'], a:1,
+     why:'The most useful obstacle is inside you, at a specific moment, so you can plan for it.'},
+    {q:'Which of these is a real if-then plan?',
+     o:['I’ll study more.','If it’s 7 p.m. on a school night, then I’ll put my phone in the kitchen and open my notes.','I hope I’ll do better.','If I fail, then I’ll be sad.'], a:1,
+     why:'The “if” names the moment; the “then” names one specific action.'},
+    {q:'Your planned route to a goal is blocked. What helps most, according to hope research?',
+     o:['Pick a completely new goal.','Find other routes to the same goal.','Wait for luck.','Keep pushing on the blocked route only.'], a:1,
+     why:'Hopeful people keep the goal and generate more than one pathway to it.'}
+  ],
+  recap:{title:'Ms. Alvarez’s future toolkit', items:[
+    ['Possible selves','A hoped-for self and a feared self, both linked to steps you can take now.'],
+    ['WOOP','Wish, Outcome, Obstacle, Plan. Dream first, then get real.'],
+    ['If-then plans','If [the moment the obstacle shows up], then I will [one specific action].'],
+    ['Pathways','If one route closes, keep the goal and find another route.']]},
+  apply:{type:'mc', pass:6, items:[
+    {ctx:'Kenji · Wants to be an architect', cat:'self', t:'Which possible self is most useful?',
+     o:['Rich and famous someday.','An architect who designs schools. This year: take geometry seriously and join the art club.','Someone who is never bored.','Whatever happens, happens.'], a:[1],
+     why:'It’s specific, and it links the future self to steps he can take this year.'},
+    {ctx:'Dani · Wish: pass the driving test', cat:'obstacle', t:'Which is the best obstacle to name?',
+     o:['The DMV is always crowded.','I freeze up when someone is watching me drive.','Cars are expensive.','The test is hard.'], a:[1],
+     why:'Freezing up is inside her and happens at a specific moment, so she can plan for it.'},
+    {ctx:'Marcus · Wish: finish homework before gaming', cat:'plan', t:'Which if-then plan is strongest?',
+     o:['I’ll try to be better about it.','If I get home from school, then I’ll do homework first and only then turn on the console.','If I fail, then I’ll feel bad.','I’ll do it when I feel like it.'], a:[1],
+     why:'It names the moment (getting home) and one clear action.'},
+    {ctx:'Lucía · Wants to be a vet', cat:'pathways', t:'The animal shelter only takes volunteers aged 16 and up. She’s 14. What’s her best next move?',
+     o:['Give up on being a vet.','Ask a local vet clinic about shadowing, and join an animal-care club until she’s 16.','Wait two years and do nothing.','Complain about the rule online.'], a:[1],
+     why:'Same goal, new routes. Pathways thinking means finding another way when one is blocked.'},
+    {ctx:'Ravi · Science fair', cat:'fantasy', t:'Ravi spends an hour every night picturing himself winning the state science fair. He hasn’t started his project. What would help most?',
+     o:['Picture the win in even more detail.','Picture the win, then the obstacle in the way, and make an if-then plan.','Stop thinking about the future.','Tell everyone he’s going to win.'], a:[1],
+     why:'Daydreaming alone can drain motivation. Pairing it with the obstacle and a plan turns it into action.'},
+    {ctx:'Imani · Feared self', cat:'self', t:'Which feared self is most useful?',
+     o:['I’m afraid I’ll fail at everything.','I don’t want to be someone who quits soccer when it gets hard, so I’ll go to every practice this month.','I’m not afraid of anything.','The future scares me.'], a:[1],
+     why:'A useful feared self is specific and comes with a strategy to avoid it.'},
+    {ctx:'Theo · Wish: speak up in class', cat:'plan', t:'His obstacle: “My mind goes blank when everyone looks at me.” Which plan matches it?',
+     o:['If class starts, then I’ll be brave.','If my mind goes blank, then I’ll look at the note I wrote before class and read my first sentence.','I’ll stop being nervous.','If it’s Monday, then I’ll eat breakfast.'], a:[1],
+     why:'The “if” is the exact obstacle, and the “then” is a concrete action that gets past it.'},
+    {ctx:'Sara · Wants to go to college', cat:'pathways', t:'Her family can’t afford a four-year college. Which shows pathways thinking?',
+     o:['College isn’t for people like me.','List three routes (community college then transfer, scholarships, work-study) and ask the counselor about each.','Hope to win the lottery.','Decide later.'], a:[1],
+     why:'She keeps the goal and maps several routes to it.'}
+  ]},
+  live:{type:'woop', intro:'Write a WOOP for something you want in the next few weeks. Then come back and mark whether you followed your plan.'}
+},
+6:{
+  story:{start:'s1', scenes:{
+    s1:{when:'Week 24 · HOSA meeting, 3:10 p.m.', paras:[
+      'Half the chairs in Room 114 are empty. Since January, when the district cut the late bus, anyone without a ride home can’t stay after school.',
+      'Theo walks forty minutes to get home after meetings. Jess stopped coming. Amara’s mom leaves work early twice a week to pick her up.',
+      '<span class="say">Ms. Alvarez looks at the empty chairs. “Capstone projects start this week,” she says. “Pick a real problem. Change something.”</span>',
+      'Nia looks at Theo. Theo looks at Nia. <span class="say">“Late bus,” they say at the same time.</span>',
+      'Their first job, Ms. Alvarez says, is a control map: what the team controls, what it can influence, and what it can’t touch.'],
+      interactive:'buckets', next:'s2'},
+    s2:{when:'Week 26 · Principal’s office, 7:45 a.m.', paras:[
+      'In two weeks the team sends a survey to 300 students. 112 answer. 41 say they would join a club or stay for extra help if there were a late bus.',
+      'Nia, Theo, Amara and Jess bring a one-page proposal to Mr. Haddad, the principal. He reads every line. Then he slides it back across the desk.',
+      '<span class="say">“This is good work,” he says. “But the answer is no. There’s no money for a late bus this year.”</span>',
+      'In the hallway, the thoughts come fast.'],
+      thoughts:['t1','t2'], hint:'Catch both. You’ve been practicing this since Level 2.', next:'s3'},
+    s3:{when:'Week 26 · Hallway, 7:58 a.m.', paras:[
+      '<span class="say">Nia stops walking. “Wait. Detective time,” she says. Theo groans. He’s heard about Dev.</span>'],
+      ask:{q:'What’s the strongest way to talk back to “Adults never listen to kids”?', opts:[
+        ['“He read the whole proposal and called it good work. He said no to the money, not to the idea.”',true,'Yes. That’s evidence against the thought, and it points to the real obstacle: money.'],
+        ['“Adults are the worst anyway.”',false,'That agrees with the trap and makes it bigger.'],
+        ['“Whatever, it doesn’t matter.”',false,'That brushes it off instead of checking the facts.']]},
+      after:['So the goal stays the same. The route has to change.'],
+      next:'s4'},
+    s4:{when:'Week 27 · Principal’s office, 7:45 a.m.', paras:[
+      '<span class="say">The team goes back to Mr. Haddad with one question: “What would make it possible?”</span>',
+      '<span class="say">He thinks about it. “If the money didn’t come from the school budget, and the bus company had a driver free, I’d sign off on a trial.”</span>',
+      'Back in Room 114, Ms. Alvarez hands them a marker.'],
+      interactive:'alts', next:'s5'},
+    s5:{when:'Week 33 · Friday, 4:15 p.m.', paras:[
+      'The city says no to free bus passes. The other two routes work.',
+      'The PTA votes to fund a late bus on Tuesdays and Thursdays for the rest of the year, as a trial. The carpool sheet fills up with 23 families.',
+      'It isn’t five days a week. But on the first Tuesday, the late bus pulls out with 31 students on it. Theo is one of them.',
+      '<span class="text">Dev: wait YOU got a bus??</span>',
+      'What does Nia say?'],
+      choices:[['Nia’s reply','“we got lucky the PTA had money lol”','s5a'],
+               ['Nia’s reply','“we got data, made a plan, and when the first route closed we found two more”','s5b']]},
+    s5a:{when:'Plot twist', paras:[
+      '<span class="text">Dev: lucky?? you surveyed 300 people</span>',
+      'Nia thinks about the proposal, the 7:45 a.m. meeting, the hallway, and the PTA presentation she practiced six times.',
+      'If luck gets the credit, you can’t use it next time.'],
+      choices:[['Rewrite the scene','Rewind and send a different reply','s5']]},
+    s5b:{when:'Week 34 · Spring showcase', paras:[
+      '<span class="text">Dev: ok that’s actually huge</span>',
+      'At the spring showcase the team presents to families and to next year’s ninth graders. Nia finishes with one slide. It isn’t about the bus.'],
+      note:[['Level 1','Notice where your actions change things.'],['Level 2','Catch the thoughts that turn one event into a whole story.'],['Level 3','Check those thoughts against the evidence.'],['Level 4','Climb in small steps, and take the credit.'],['Level 5','Picture the future, name what’s in the way, and build more than one road.'],['Level 6','Do it with other people, on something real.']],
+      after:['In September, Nia got a 58 and closed her notebook. In May, she helped put a bus on the road.','Agency isn’t a feeling you wait for. It’s something you build, one action at a time.'],
+      end:true}
+  }},
+  thoughts:{
+    t1:{text:'Adults never listen to kids.'},
+    t2:{text:'We wasted two weeks. This whole project is pointless.'}
+  },
+  buckets:{prompt:'Help the team build its control map. Put each item where it belongs.', cats:['We control','We can influence','We can’t control'], items:[
+    ['Surveying students about who needs a late bus',0,'The team can do this themselves, starting tomorrow.'],
+    ['Writing a proposal for the principal',0,'Fully in their hands.'],
+    ['What the principal decides',1,'They can’t make the decision, but good data and a clear plan can affect it.'],
+    ['Whether families sign up to carpool',1,'Families decide, but the team can make it easy and ask.'],
+    ['The district’s transportation budget for this year',2,'It was set months ago. Spending energy here would drain the team.'],
+    ['Gas prices',2,'Nobody at the school controls this.']]},
+  alts:{prompt:'Pick every route the team could try now.',
+    opts:[
+      ['Ask the PTA to fund a late bus two days a week as a trial.',true,'The PTA raises its own money, so it’s outside the school budget.'],
+      ['Organize a carpool sign-up sheet for families.',true,'This needs no money at all.'],
+      ['Ask the city about free youth passes for the public bus.',true,'A different route to the same goal: getting students home.'],
+      ['Start a petition to replace the principal.',false,'He said yes to the idea. Attacking him closes a door that’s open.'],
+      ['Wait for next year’s budget.',false,'Waiting isn’t a route. Pick things the team can do now.']],
+    miss:'Look for routes that get students home without the school budget and keep Mr. Haddad on your side. Change your picks and check again.',
+    after:'“Three routes,” Theo says. “If one closes, we still have two.”'},
+  real:{
+    where:'Real story · Bali, Indonesia, 2013–2019', title:'Two sisters and a bag ban',
+    paras:[
+      'In 2013, Melati and Isabel Wijsen were 12 and 10 years old and living in Bali. After a school lesson about people who had changed the world, they asked what they could change at home. Plastic bags were everywhere: on beaches, in rivers, in rice fields.',
+      'With friends from school they started a campaign called Bye Bye Plastic Bags. They collected petition signatures, organized beach cleanups, gave talks at schools, and kept asking government officials for meetings.',
+      'Change was slow. Meetings led to promises, and promises took years. They kept the goal and kept finding new routes.',
+      'In December 2018, Bali’s government announced a ban on single-use plastic bags, plastic straws and styrofoam, which took effect in 2019.',
+      'You can see the program’s skills in their story:'],
+    list:['<b>Control.</b> They started with things they could do themselves: cleanups, talks, signatures.','<b>Influence.</b> They couldn’t make the law, but they could keep showing the people who could.','<b>Pathways.</b> When one route stalled, they tried another.'],
+    after:['Their campaign later spread to young volunteer teams in many other countries.'],
+    source:'Based on widely reported accounts; details simplified for teaching.',
+    q:'The ban came about five years after they started. What kept the project going that long?',
+    opts:[['A lucky change in government.','Luck can’t be planned. Look at what the sisters did.',false],
+          ['They kept finding new routes: petitions, cleanups, school talks, meetings with officials.','Yes. Pathways thinking, kept up for years.',true],
+          ['Nobody disagreed with them.','Plenty of people did. That’s partly why it took five years.',false]]
+  },
+  know:[
+    {q:'Your team wants to fix a problem at school. What’s the first thing to map?',
+     o:['Who to blame','What’s in our control, what we can influence, and what we can’t touch','How famous the project could get','What the perfect result would look like'], a:1,
+     why:'A control map shows where your energy will actually make a difference.'},
+    {q:'The principal says no to your proposal. Which response shows talking back to a trap thought?',
+     o:['“Adults never listen.”','“He said no to this plan, not to the goal. Let’s ask what would make it possible.”','“We should give up.”','“Let’s complain online.”'], a:1,
+     why:'It checks the evidence: one “no” to one plan isn’t a “no” to everything.'},
+    {q:'Goal: start a recycling program at school. Which is the best first rung?',
+     o:['Convince the whole district to recycle.','Count how many recyclable items the cafeteria throws away in one lunch period.','Buy 50 recycling bins.','Wait for the school to start one.'], a:1,
+     why:'Small, doable this week, and it gives you evidence for the next step.'},
+    {q:'Your team’s obstacle: “We stop meeting when we get busy.” Which is the best if-then plan?',
+     o:['We’ll try to be more committed.','If someone misses Tuesday’s meeting, then we’ll each post a three-line update in the group chat that night.','If we get busy, then we’ll quit.','We’ll meet when we feel like it.'], a:1,
+     why:'It names the moment the obstacle shows up and one clear action.'},
+    {q:'Your project partly works: a late bus two days a week, not five. Which explanation builds agency?',
+     o:['We failed.','We got lucky.','We changed something real, we know which actions worked, and we can push for more.','The adults did it for us.'], a:2,
+     why:'Credit your actions and let the win spread. Partial success is still evidence.'}
+  ],
+  recap:{title:'The whole toolkit, in one place', items:[
+    ['Control map','What we control, what we can influence, what we can’t touch.'],
+    ['Catch and talk back','Notice trap thoughts, then check them against the evidence.'],
+    ['Small rungs','Start with a step you can do this week.'],
+    ['WOOP and if-then','Name the obstacle inside the team and plan for the moment it shows up.'],
+    ['Pathways and credit','Keep the goal, find new routes, and credit what you did.']]},
+  apply:{type:'mc', pass:6, items:[
+    {ctx:'Team Green · Cafeteria food waste', cat:'control', t:'Which of these is in the team’s control?',
+     o:['The district’s food contract.','Measuring how much food gets thrown away for one week.','What every student chooses to eat.','The cafeteria’s budget.'], a:[1],
+     why:'They can do the measuring themselves. The rest belongs to other people.'},
+    {ctx:'Team Safe Walk · A crosswalk near school', cat:'control', t:'Which can they influence but not control?',
+     o:['The city council’s decision about a crosswalk.','Writing a letter to the council.','The weather.','Counting cars at 8 a.m.'], a:[0],
+     why:'The council decides, but the team’s data and letters can affect the decision. Writing and counting are fully in their control.'},
+    {ctx:'Team Library · Longer library hours', cat:'dispute', t:'The librarian says, “That’s never going to happen.” Which thought helps the team most?',
+     o:['She’s right. Forget it.','She hates students.','That’s one person’s prediction. Let’s ask her what’s blocking it.','Let’s go around her without telling her.'], a:[2],
+     why:'Treat “never” as a theory, then find the real obstacle.'},
+    {ctx:'Team Mind · A student-run mental health week', cat:'step', t:'Which is the best first rung?',
+     o:['Get every school in the district to join.','Survey one advisory class about what they’d want.','Book a famous speaker.','Wait until the counselors suggest it.'], a:[1],
+     why:'Small, doable this week, and it tells them what students actually want.'},
+    {ctx:'Team Mural · Painting a hallway mural', cat:'plan', t:'Obstacle: “We argue about designs and never decide.” Which plan fits?',
+     o:['We’ll try to get along.','If we argue for more than 10 minutes, then we’ll vote and go with the majority.','If we argue, then we’ll quit.','If it’s Friday, then we’ll paint.'], a:[1],
+     why:'The “if” is the exact obstacle, and the “then” is a clear action that gets past it.'},
+    {ctx:'Team Water · Water refill stations', cat:'pathways', t:'The school says there’s no money for refill stations. What’s the best next move?',
+     o:['Give up.','Apply for a local business grant and ask the PTA.','Wait a few years.','Install them without permission.'], a:[1],
+     why:'Same goal, new routes that don’t need the school’s money.'},
+    {ctx:'Team Tutor · Peer tutoring program', cat:'credit', t:'Thirty students signed up. How should the team explain it?',
+     o:['We got lucky that people were bored.','We made posters, asked teachers to announce it, and made sign-up easy, and that worked.','Tutoring is popular anyway.','Our advisor did it for us.'], a:[1],
+     why:'Naming what they did means they can do it again.'},
+    {ctx:'Team Bike · More bike racks', cat:'credit', t:'They asked for four racks and got one. Which reaction is most useful?',
+     o:['We failed.','We got one rack because our survey showed real demand. Next we’ll show it’s always full and ask for more.','The school doesn’t care.','Whatever, it’s something.'], a:[1],
+     why:'It credits their actions and turns a partial win into the next step.'}
+  ]},
+  live:{type:'project', intro:'Your capstone: five milestones, each reviewed by a parent or mentor. The next milestone opens when the last one is approved.'}
+}};
+
+const MILESTONES = [
+  {id:'m1', title:'Find the problem', skill:'Level 1', intro:'Pick a real problem in your community, your co-op, your club or your neighborhood that you care about. Show that it’s real.', fields:[
+    ['team','text','Project name, and who’s working on it','Friends, siblings, a club, a co-op group, or just you.',3],
+    ['problem','area','The problem','One or two sentences.',6],
+    ['who','text','Who does it affect?','',3],
+    ['evidence','area','How do you know it’s real?','Numbers, a survey, or something you observed. Something you could show someone.',8]]},
+  {id:'m2', title:'Map control', skill:'Levels 1 and 3', intro:'Sort your problem into what you control, what you can influence, and what you can’t touch. Put your energy into the first two.', fields:[
+    ['control','area','We control','Things our team can do directly.',5],
+    ['influence','area','We can influence','Decisions other people make that we can affect.',5],
+    ['cant','area','We can’t control','We won’t spend energy here.',3]]},
+  {id:'m3', title:'Make the plan', skill:'Levels 4 and 5', intro:'Turn the goal into a ladder, name the obstacle inside your team, and have a backup route ready.', fields:[
+    ['goal','text','Goal (your Wish)','What will be different if you succeed?',4],
+    ['rungs','area','First three rungs','Small steps, each a little harder than the last.',10],
+    ['obstacle','area','Biggest obstacle inside you or your team','Something you do, think or feel. Use “I,” “we” or “our.”',5,'inside'],
+    ['plan','area','If-then plan','If [the obstacle shows up], then I/we will [one action].',6,'ifthen'],
+    ['backup','area','Backup route','If your main route closes, what’s another way to the same goal?',6]]},
+  {id:'m4', title:'Take action', skill:'Levels 2 and 3', intro:'Do the work, then report back honestly, including what went wrong.', fields:[
+    ['did','area','What we did','',8],
+    ['happened','area','What happened','',5],
+    ['setback','area','A setback, and the thought it triggered','Write the thought word for word.',5],
+    ['dispute','area','How we talked back to it','Evidence, another explanation, and a next step.',10]]},
+  {id:'m5', title:'Showcase', skill:'Level 4', intro:'Show what changed, and take the credit you earned.', fields:[
+    ['result','area','What changed','Big or small. Be specific.',6],
+    ['credit','area','What we did that made it work','Name the actions, not luck.',8,'noluck'],
+    ['next','area','What we’d do next','',5],
+    ['spread','text','Where else could this approach work?','',4]]}
+];
+
+const CAT_TIPS = {
+  step:['Right-size steps','A good step is small enough to do this week and just hard enough to stretch you.'],
+  credit:['Taking the credit','Explain wins by what you did. Luck and easy tests can’t be repeated on purpose.'],
+  nerves:['Reading nerves','A pounding heart is your body getting ready. Read it as energy, not danger.'],
+  model:['Choosing examples','The most useful example is someone like you who started where you are.'],
+  feedback:['Specific feedback','Useful feedback names exactly what worked, so you can do it again.'],
+  self:['Useful possible selves','Make it specific and link it to a step you can take now. Pair a hoped-for self with a feared one.'],
+  obstacle:['Naming obstacles','The most useful obstacle is inside you: something you do, think or feel at a specific moment.'],
+  plan:['If-then plans','The “if” is the moment the obstacle shows up. The “then” is one specific action.'],
+  pathways:['Pathways thinking','Keep the goal and look for more than one route to it.'],
+  fantasy:['Daydreams vs. plans','Daydreaming alone can drain motivation. Picture the goal, then the obstacle, then make a plan.'],
+  control:['Mapping control','Control means things your team does directly. Influence means decisions other people make that you can affect. Budgets, weather and the past are out of your control.'],
+  dispute:['Talking back','Treat a “no” or a “never” as one data point. Ask what’s behind it before deciding it’s final.']
+};
+
+const STYPE = {evidence:['Evidence','good'], alternative:['Other explanation','good'], action:['Next step','good'], weak:['Weak','bad']};
+const WEAKWHY = 'Weak statements either agree with the trap, dismiss the problem, or swap in praise with no evidence.';
+
+
+/* ---------------- state ---------------- */
+const KEY = 'plot-twist-v1';
+function lvl(){return {story:false, real:false, know:{best:0,attempts:0,passed:false}, apply:{best:0,attempts:0,passed:false,misses:{}}, live:[], cleared:false}}
+function fresh(){return {demo:false, preview:false, view:{name:'path'}, levels:{2:lvl(),3:lvl(),4:lvl(),5:lvl(),6:lvl()}}}
+function load(){try{const r=localStorage.getItem(KEY); if(!r) return null; const s=JSON.parse(r); if(!(s&&s.levels&&s.levels[2])) return null; for(const k of [4,5,6]) if(!s.levels[k]) s.levels[k]=lvl(); return s}catch(e){return null}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+let S = load() || fresh();
+S.demo=false; S.preview=false;
+if(!S.l1 && Object.values(S.levels).some(L=>L.story||L.cleared)) S.l1=true;
+const T = {story:{}, real:{}, know:{}, apply:{}, banner:null, confirmReset:false, coach:null, liveMsg:null};
+
+const esc = s => String(s).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const shuffle = a => {a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]} return a};
+const today = () => {const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const words = s => (s.trim().match(/\S+/g)||[]).length;
+
+function proj(){const L=S.levels[6]; if(!L.project) L.project={ms:{}}; return L.project}
+function gate(n){
+  const L=S.levels[n];
+  if(C[n].live.type==='project'){
+    const ms=proj().ms; const done=MILESTONES.filter(m=>ms[m.id]&&ms[m.id].status==='approved').length;
+    return {know:L.know.passed, apply:L.apply.passed, live:done>=MILESTONES.length, liveCount:done, need:MILESTONES.length, label:'Project', all:L.know.passed&&L.apply.passed&&done>=MILESTONES.length};
+  }
+  const days=new Set(L.live.map(e=>e.day)).size;
+  const liveCount = S.demo ? L.live.length : days;
+  const live = liveCount>=3;
+  return {know:L.know.passed, apply:L.apply.passed, live, liveCount:Math.min(liveCount,3), need:3, label:'Live', all:L.know.passed&&L.apply.passed&&live};
+}
+function status(n){
+  if(n===1) return S.l1 ? 'done' : 'open';
+  if(n===2) return S.levels[2].cleared ? 'done' : (S.l1 ? 'open' : 'locked');
+  if(n===3) return S.levels[3].cleared ? 'done' : (S.levels[2].cleared||S.preview ? 'open' : 'locked');
+  if(n>=4&&n<=6) return S.levels[n].cleared ? 'done' : (S.levels[n-1].cleared||S.preview ? 'open' : 'locked');
+  return 'locked';
+}
+function stageDone(n,st){
+  const L=S.levels[n];
+  return st==='story'?L.story : st==='real'?L.real : st==='know'?L.know.passed : st==='apply'?L.apply.passed : gate(n).live;
+}
+function stageOpen(n,i){
+  if(S.preview) return true;
+  for(let k=0;k<i;k++) if(!stageDone(n,STAGES[k][0])) return false;
+  return true;
+}
+function firstStage(n){
+  for(let i=0;i<STAGES.length;i++) if(!stageDone(n,STAGES[i][0])) return STAGES[i][0];
+  return 'live';
+}
+function checkCleared(n){
+  const L=S.levels[n];
+  if(!L.cleared && gate(n).all){L.cleared=true; T.banner=n}
+}
+
+/* ---------------- shared bits ---------------- */
+function gateHTML(n){
+  const g=gate(n);
+  const live = g.live ? 'ok' : (g.liveCount>0?'part':'');
+  return `<div class="gate" aria-label="Gate progress">
+    <span class="g ${g.know?'ok':''}"><i></i>Know</span>
+    <span class="g ${g.apply?'ok':''}"><i></i>Apply</span>
+    <span class="g ${live}" style="--p:${Math.round(g.liveCount/g.need*100)}"><i></i>${g.label} ${g.liveCount}/${g.need}</span>
+  </div>`;
+}
+function statusChip(st){
+  return st==='done'?'<span class="chip good">Complete</span>' : st==='open'?'<span class="chip accent">In progress</span>' : '<span class="chip">Not yet unlocked</span>';
+}
+
+/* ---------------- views ---------------- */
+function render(){
+  const v=S.view;
+  let body='';
+  if(v.name==='mentor') body=viewMentor();
+  else if(v.name==='level') body=viewLevel(v.level);
+  else body=viewPath();
+  document.getElementById('app').innerHTML = `
+    <header class="top">
+      <div class="brand"><b>Plot T<span>w</span>ist</b><span class="muted">Learning agency</span></div>
+      <nav class="tabs" aria-label="Views">
+        <button data-action="nav" data-to="path" aria-current="${v.name!=='mentor'}">Your path</button>
+        <button data-action="nav" data-to="mentor" aria-current="${v.name==='mentor'}">Mentor view</button>
+      </nav>
+    </header>
+    ${body}
+    ${footer()}`;
+}
+
+function viewPath(){
+  const rows = LEVELS.map(l=>{
+    const st=status(l.n);
+    const active = st==='open';
+    const meters = (l.n>=2) && st!=='locked' ? gateHTML(l.n) : '';
+    const btn = st==='locked' && l.n>5 ? '<span class="chip">Coming next</span>'
+      : `<button class="btn ${active?'primary':''}" data-action="open" data-level="${l.n}" ${st==='locked'?'disabled':''}>${st==='done'?'Review':st==='open'?'Continue':'Locked'}</button>`;
+    return `<div class="chapter ${active?'active':''} ${st==='locked'?'locked':''}">
+      <div class="num">${l.n}</div>
+      <div class="info"><div class="row"><h3>${l.title}</h3>${statusChip(st)}</div><p class="muted">${l.skill}</p>${meters}</div>
+      <div class="go">${btn}</div></div>`;
+  }).join('');
+  return `<section class="hero">
+      <span class="eyebrow">Ages 14 and up · Learn at home or anywhere</span>
+      <h1>Your thoughts tell stories. Learn to edit them.</h1>
+      <p>Each level is a chapter. You move on when you’ve shown the skill three ways: you <b>know</b> it, you can <b>apply</b> it to new situations, and you’ve used it in your own <b>life</b>. New here? Start with Level 1.</p>
+    </section>
+    <section class="chapters" aria-label="Levels">${rows}</section>`;
+}
+
+function viewLevel(n){
+  const meta=LEVELS[n-1];
+  const back = `<div class="back"><button class="link" data-action="nav" data-to="path">← Your path</button></div>`;
+  if(n===1) return back+viewLevel1();
+  const L=S.levels[n]; const stage=S.view.stage||firstStage(n);
+  const steps = STAGES.map(([k,label],i)=>{
+    const open=stageOpen(n,i), done=stageDone(n,k);
+    return `<button data-action="stage" data-stage="${k}" class="${done?'done':''}" aria-current="${stage===k}" ${open?'':'disabled'}><span class="n">${done?'✓':i+1}</span>${k==='live'&&C[n].live.type==='project'?'Project':label}</button>`;
+  }).join('');
+  let banner='';
+  if(T.banner===n){
+    banner = n===6 ? `<div class="banner good" role="status"><h3>Program complete</h3><p>You’ve finished all six levels. You noticed control, caught and checked your thoughts, built wins, planned your future, and changed something real. Come back in a few months and replay any chapter as a refresher.</p></div>`
+    : `<div class="banner good" role="status"><h3>Level ${n} cleared</h3><p>You showed the skill in all three ways. Level ${n+1}, <b>${LEVELS[n].title}</b>, is now open.</p>
+      ${n<6?`<div><button class="btn primary" data-action="open" data-level="${n+1}">Start Level ${n+1}</button></div>`:''}</div>`;
+  }
+  let content='';
+  if(stage==='story') content=viewStory(n);
+  else if(stage==='real') content=viewReal(n);
+  else if(stage==='know') content=viewKnow(n);
+  else if(stage==='apply') content=viewApply(n);
+  else content = C[n].live.type==='project' ? viewProject(n) : viewLive(n);
+  return back+`<section class="lvlhead"><span class="eyebrow">Level ${n} of 6</span><h1>${meta.title}</h1><p class="muted">${meta.skill}</p>${gateHTML(n)}</section>
+    ${banner}
+    <nav class="stepper" aria-label="Stages">${steps}</nav>
+    <section id="stage">${content}</section>`;
+}
+
+function viewLevel1(){
+  const log=S.l1log||[];
+  const msg=T.l1Msg?`<div class="fb ${T.l1Msg.ok?'good':'bad'}"><b>${T.l1Msg.ok?'Logged.':'Almost.'}</b> ${T.l1Msg.text}</div>`:'';
+  return `<section class="lvlhead"><span class="eyebrow">Level 1 of 6 · Start here</span><h1>Noticing control</h1><p class="muted">${LEVELS[0].skill}</p></section>
+    <div class="stack">
+    <article class="clip">
+      <span class="eyebrow">Real research · University of Pennsylvania, 1967 and 2016</span>
+      <h2>The scientists who got it backwards</h2>
+      <div class="prose">
+        <p>In the 1960s, psychologists Martin Seligman and Steven Maier found that animals with no control over unpleasant events eventually stopped trying to escape, even after escape became possible. They called it <em>learned helplessness</em>.</p>
+        <p>Fifty years later they looked again, this time with brain science, and found they had it the wrong way round. Giving up is the brain’s default setting. What gets learned is <em>control</em>: the discovery that your actions make a difference.</p>
+        <p>That’s why this program starts with noticing control. Every time you see your action change something, your brain gets better at expecting it.</p>
+      </div>
+      <p class="source">Maier &amp; Seligman, “Learned helplessness at fifty,” <em>Psychological Review</em>, 2016.</p>
+    </article>
+    <div class="panel stack"><span class="eyebrow">How Plot Twist works</span>
+      <div class="prose" style="font-size:17px">
+        <p>Each level is a chapter in the story of Nia, a ninth grader in her first year of high school. Some scenes let you choose what she does. If a choice goes badly, you can rewind and rewrite the scene.</p>
+        <p>To finish a level you pass three gates. <b>Know</b>: a short quiz. <b>Apply</b>: new people, new situations. <b>Live</b>: use the skill in your own life, on at least three different days. If you don’t pass a gate yet, you get tips and can try again whenever you’re ready.</p>
+        <p>It works best with a parent or mentor who checks in with you now and then. They review your final project in <b>Mentor view</b>.</p>
+      </div></div>
+    ${supportNote()}
+    <div class="panel stack"><span class="eyebrow">Try it this week · Action → effect</span>
+      <p class="muted">Once a day, notice one thing you did that changed something, however small. This one is just for practice. It isn’t a gate.</p>
+      <form id="l1Form" novalidate>
+        <label for="l1_did">What I did<input type="text" id="l1_did" name="did" placeholder="e.g. Asked a question in algebra"></label>
+        <label for="l1_eff">What changed<input type="text" id="l1_eff" name="eff" placeholder="e.g. The teacher explained it again, and two others said they were confused too"></label>
+        <div><button class="btn" type="submit">Log it</button></div></form>${msg}
+      ${log.length?`<div class="entries">${log.slice().reverse().map(e=>`<div class="entry"><div class="meta"><span>${e.day}</span></div><p>${esc(e.did)} → ${esc(e.eff)}</p></div>`).join('')}</div>`:''}
+    </div>
+    <div class="row">${S.l1?'<span class="chip good">Complete</span><button class="btn primary" data-action="open" data-level="2">Go to Level 2</button>':'<button class="btn primary" data-action="l1Done">I’ve read this. Start Level 2</button>'}</div>
+    </div>`;
+}
+function supportNote(){
+  return `<div class="notecard" role="note"><span class="eyebrow">If something feels too heavy</span>
+    <p>This program is for everyday setbacks, like a bad grade or feeling left out. If a thought keeps coming back, or things feel too hard to handle alone, talk to a parent or another adult you trust.</p>
+    <p>If you’re thinking about hurting yourself, reach out right now. In the US, call or text <b>988</b>. Elsewhere, find a free helpline at <a href="https://findahelpline.com" target="_blank" rel="noopener">findahelpline.com</a>. In an emergency, call your local emergency number.</p></div>`;
+}
+function privacyNote(){
+  return `<p class="hint">Your entries are saved only in this browser on this device. If other people use this browser, they can see them too.</p>`;
+}
+
+/* ---- story ---- */
+function storyState(n){
+  if(!T.story[n]) T.story[n]={scene:C[n].story.start, caught:[], sorted:{}, alts:[], altsChecked:false, path:[], ladder:[], ladderChecked:false, ask:{}, woop:{}, buckets:{}};
+  return T.story[n];
+}
+function viewStory(n){
+  const st=storyState(n); const sc=C[n].story.scenes[st.scene]; const L=S.levels[n];
+  let h=`<article class="panel scene" id="scene"><span class="when">${sc.when}</span>`;
+  if(sc.paras) h+=`<div class="prose">${sc.paras.map(p=>`<p>${p}</p>`).join('')}</div>`;
+  if(sc.thoughts){
+    h+=`<div class="thoughts">${sc.thoughts.map(id=>{
+      const t=C[n].thoughts[id]; const c=st.caught.includes(id);
+      return c?`<div class="thought caught"><span class="tag">Caught</span>${t.text}</div>`
+              :`<button class="thought" data-action="catch" data-id="${id}" aria-label="Catch the thought: ${esc(t.text)}">${t.text}</button>`;
+    }).join('')}</div><p class="hint">${sc.hint}</p>`;
+  }
+  if(sc.interactive==='sort') h+=sortHTML(n,st);
+  if(sc.interactive==='alts') h+=altsHTML(n,st);
+  if(sc.interactive==='ladder') h+=ladderHTML(n,st);
+  if(sc.interactive==='woop') h+=woopHTML(n,st);
+  if(sc.interactive==='buckets') h+=bucketsHTML(n,st);
+  if(sc.ask) h+=askHTML(st,sc);
+  if(sc.abc){const a=sc.abc; h+=`<div class="abc"><div><b>${a[0]}</b><span>${a[1]}</span></div><div class="arr">→</div><div><b>${a[2]}</b><span>${a[3]}</span></div><div class="arr">→</div><div><b>${a[4]}</b><span>${a[5]}</span></div></div>`}
+  if(sc.note) h+=`<dl class="notecard">${sc.note.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>`;
+  if(sc.after) h+=`<div class="prose">${sc.after.map(p=>`<p>${p}</p>`).join('')}</div>`;
+  if(sc.choices) h+=`<div class="choices">${sc.choices.map(([lab,txt,to])=>`<button class="choice" data-action="go" data-to="${to}"><small>${lab}</small>${txt}</button>`).join('')}</div>`;
+  if(sc.next){
+    let ready=true;
+    if(sc.thoughts) ready=sc.thoughts.every(id=>st.caught.includes(id));
+    if(sc.interactive==='sort') ready=Object.keys(C[n].thoughts).every(id=>st.sorted[id]&&st.sorted[id].ok);
+    if(sc.interactive==='alts') ready=st.altsChecked && altsCorrect(n,st);
+    if(sc.interactive==='ladder') ready=st.ladderChecked && ladderCorrect(n,st);
+    if(sc.interactive==='woop') ready=woopCorrect(n,st);
+    if(sc.interactive==='buckets') ready=C[n].buckets.items.every((it,i)=>st.buckets[i]===it[1]);
+    if(sc.ask) ready=st.ask[st.scene]!=null && sc.ask.opts[st.ask[st.scene]][1];
+    h+=`<div><button class="btn primary" data-action="go" data-to="${sc.next}" ${ready?'':'disabled'}>Continue</button></div>`;
+  }
+  if(sc.end) h+=`<div class="row"><button class="btn primary" data-action="finishStory">${L.story?'Back to Real story':'Finish chapter'}</button><button class="btn ghost" data-action="replayStory">Replay from the start</button></div>`;
+  return h+'</article>';
+}
+function sortHTML(n,st){
+  const legend=`<div class="legend">${['permanent','pervasive','personal'].map(k=>`<div><b>${TRAPS[k].name}</b><span>${TRAPS[k].line}<br>${TRAPS[k].cue}</span></div>`).join('')}</div>`;
+  const rows=Object.entries(C[n].thoughts).map(([id,t])=>{
+    const r=st.sorted[id];
+    const opts=['permanent','pervasive','personal'].map(k=>{
+      let cls=''; if(r&&r.pick===k) cls=r.ok?'right':'wrong';
+      return `<button class="opt ${cls}" data-action="sort" data-id="${id}" data-trap="${k}" ${r&&r.ok?'disabled':''}>${TRAPS[k].name}</button>`;
+    }).join('');
+    const fb = r ? (r.ok?`<div class="fb good"><b>Yes.</b> ${t.why}</div>`:`<div class="fb bad"><b>Not quite.</b> ${TRAPS[t.accept[0]].tip}</div>`) : '';
+    return `<div class="sortrow"><div class="thought">${t.text}</div><div class="opts" role="group" aria-label="Choose a trap">${opts}</div>${fb}</div>`;
+  }).join('');
+  return `<div class="prose"><p>You caught four of Nia’s thoughts. Each one falls into a thinking trap. Pick the trap that’s loudest in each.</p></div>${legend}<div>${rows}</div>`;
+}
+function altsCorrect(n,st){return C[n].alts.opts.every((o,i)=>o[1]===st.alts.includes(i))}
+function altsHTML(n,st){
+  const A=C[n].alts;
+  const items=A.opts.map((o,i)=>{
+    const sel=st.alts.includes(i);
+    let tag='';
+    if(st.altsChecked){
+      const okPick = o[1]===sel;
+      if(sel||o[1]) tag=`<span class="chip ${okPick?'good':'bad'}">${o[1]?'Fits':'Doesn’t fit'}</span>`;
+    }
+    return `<button class="${sel?'sel':''}" data-action="alt" data-i="${i}"><span class="lbl"><span class="box"></span><span>${o[0]}${st.altsChecked&&(sel||o[1])?`<br><span class="muted" style="font-size:13px">${o[2]}</span>`:''}</span></span>${tag}</button>`;
+  }).join('');
+  let fb='';
+  if(st.altsChecked) fb = altsCorrect(n,st) ? `<div class="fb good"><b>Exactly.</b> ${A.after}</div>` : `<div class="fb bad"><b>Not yet.</b> ${A.miss}</div>`;
+  return `<div class="prose"><p>${A.prompt}</p></div><div class="stmt">${items}</div>
+    <div><button class="btn" data-action="altCheck" ${st.alts.length?'':'disabled'}>Check my picks</button></div>${fb}`;
+}
+
+function ladderCorrect(n,st){const L=C[n].ladder.steps; return st.ladder.length===L.length && st.ladder.every((v,i)=>v===i)}
+function ladderHTML(n,st){
+  const D=C[n].ladder;
+  if(!st.ladderOrder) st.ladderOrder=shuffle(D.steps.map((_,i)=>i));
+  const left=st.ladderOrder.filter(i=>!st.ladder.includes(i));
+  const built = st.ladder.length ? `<ol class="ladder" aria-label="Nia’s ladder, bottom rung first">${st.ladder.map((si,k)=>`<li><b>${k+1}</b><span>${D.steps[si]}</span></li>`).join('')}</ol>` : `<div class="ladder empty">The ladder is empty. Tap the first step below.</div>`;
+  const pool = left.length ? `<div class="stmt">${left.map(i=>`<button data-action="ladderAdd" data-i="${i}"><span class="lbl"><span class="box"></span><span>${D.steps[i]}</span></span></button>`).join('')}</div>` : '';
+  let fb='';
+  if(st.ladderChecked){
+    if(ladderCorrect(n,st)) fb=`<div class="fb good"><b>That’s the ladder.</b> ${D.after}</div>`;
+    else { const k=st.ladder.findIndex((v,i)=>v!==i); fb=`<div class="fb bad"><b>Not yet.</b> Rungs 1 to ${k} are right. Rung ${k+1} doesn’t fit there yet. Ask yourself what Nia has to do <em>before</em> it. Undo back to that rung and try again.</div>`; }
+  }
+  return `<div class="prose"><p>${D.prompt}</p></div><span class="eyebrow">Top of the ladder ↑</span>${built}${pool}
+    <div class="row"><button class="btn" data-action="ladderCheck" ${left.length?'disabled':''}>Check the ladder</button><button class="btn ghost" data-action="ladderUndo" ${st.ladder.length?'':'disabled'}>Undo last rung</button></div>${fb}`;
+}
+function woopCorrect(n,st){return C[n].woop.slots.every((sl,i)=>st.woop[i]!=null && sl.o[st.woop[i]][1])}
+function woopHTML(n,st){
+  const W=C[n].woop; let h=`<div class="prose"><p>${W.prompt}</p></div>`;
+  for(let si=0; si<W.slots.length; si++){
+    const sl=W.slots[si]; const pick=st.woop[si];
+    h+=`<div class="notecard"><span class="eyebrow">${sl.k}</span><p class="hint">${sl.hint}</p>
+      <div class="ans">${sl.o.map((o,oi)=>{let cls=''; if(pick===oi) cls=o[1]?'right':'wrong'; return `<button class="${cls}" data-action="woopPick" data-s="${si}" data-o="${oi}"><span class="dot"></span><span>${o[0]}</span></button>`}).join('')}</div>
+      ${pick!=null?`<div class="fb ${sl.o[pick][1]?'good':'bad'}"><b>${sl.o[pick][1]?'Yes.':'Not this one.'}</b> ${sl.o[pick][2]}</div>`:''}</div>`;
+    if(!(pick!=null && sl.o[pick][1])) return h;
+  }
+  return h+`<div class="fb good"><b>WOOP done.</b> ${W.after}</div>`;
+}
+function bucketsHTML(n,st){
+  const B=C[n].buckets;
+  const rows=B.items.map((it,i)=>{
+    const pick=st.buckets[i];
+    const opts=B.cats.map((c,ci)=>{let cls=''; if(pick===ci) cls=ci===it[1]?'right':'wrong'; return `<button class="opt ${cls}" data-action="bucket" data-i="${i}" data-c="${ci}" ${pick===it[1]?'disabled':''}>${c}</button>`}).join('');
+    const fb = pick!=null ? (pick===it[1]?`<div class="fb good"><b>Yes.</b> ${it[2]}</div>`:`<div class="fb bad"><b>Not quite.</b> Ask: can the team do this itself, can it affect someone else’s decision, or is it out of reach?</div>`) : '';
+    return `<div class="sortrow"><p style="font-weight:700">${it[0]}</p><div class="opts" role="group" aria-label="Where does this belong?">${opts}</div>${fb}</div>`;
+  }).join('');
+  return `<div class="prose"><p>${B.prompt}</p></div><div>${rows}</div>`;
+}
+function askHTML(st,sc){
+  const pick=st.ask[st.scene]; const Q=sc.ask;
+  return `<div class="notecard"><span class="eyebrow">Think about it</span><p style="font-weight:700">${Q.q}</p>
+    <div class="ans">${Q.opts.map((o,i)=>{let cls=''; if(pick===i) cls=o[1]?'right':'wrong'; return `<button class="${cls}" data-action="ask" data-i="${i}"><span class="dot"></span><span>${o[0]}</span></button>`}).join('')}</div>
+    ${pick!=null?`<div class="fb ${Q.opts[pick][1]?'good':'bad'}"><b>${Q.opts[pick][1]?'Exactly.':'Look again.'}</b> ${Q.opts[pick][2]}</div>`:''}</div>`;
+}
+
+/* ---- real story ---- */
+function viewReal(n){
+  const R=C[n].real; const pick=T.real[n];
+  let h=`<article class="clip"><span class="eyebrow">${R.where}</span><h2>${R.title}</h2><div class="prose">${R.paras.map(p=>`<p>${p}</p>`).join('')}`;
+  if(R.list) h+=`<ul>${R.list.map(x=>`<li>${x}</li>`).join('')}</ul>`;
+  h+='</div>';
+  if(R.versus) h+=`<div class="versus">${R.versus.map(([k,v])=>`<div><span class="eyebrow">${k}</span><div class="thought">${v}</div></div>`).join('')}</div>`;
+  h+=`<div class="prose">${R.after.map(p=>`<p>${p}</p>`).join('')}</div><p class="source">${R.source}</p></article>`;
+  h+=`<div class="panel stack" style="margin-top:20px"><span class="eyebrow">Think about it</span><p class="qt" style="font-weight:700;font-size:17px">${R.q}</p>
+    <div class="ans">${R.opts.map((o,i)=>{
+      let cls=''; if(pick===i) cls=o[2]?'right':'wrong';
+      return `<button class="${cls}" data-action="realAns" data-i="${i}"><span class="dot"></span><span>${o[0]}</span></button>`;}).join('')}</div>
+    ${pick!=null?`<div class="fb ${R.opts[pick][2]?'good':'bad'}"><b>${R.opts[pick][2]?'Good thinking.':'Look again.'}</b> ${R.opts[pick][1]}</div>`:''}
+    <div><button class="btn primary" data-action="finishReal" ${pick!=null&&R.opts[pick][2]?'':'disabled'}>${S.levels[n].real?'Go to Know':'Continue to Know'}</button></div></div>`;
+  return h;
+}
+
+/* ---- know ---- */
+function knowState(n,reset){
+  if(!T.know[n]||reset) T.know[n]={answers:{}, submitted:false, orders:C[n].know.map(q=>shuffle(q.o.map((_,i)=>i))), recap:false};
+  return T.know[n];
+}
+function viewKnow(n){
+  const L=S.levels[n]; const K=C[n].know; const st=knowState(n);
+  if(L.know.passed && !st.submitted && !st.retake){
+    return `<div class="panel stack"><div class="banner good"><h3>Know: cleared</h3><p>Best score ${L.know.best}/5 after ${L.know.attempts} attempt${L.know.attempts>1?'s':''}.</p></div>
+      <div class="row"><button class="btn primary" data-action="stage" data-stage="apply">Go to Apply</button><button class="btn" data-action="knowRetake">Practice again</button></div></div>`;
+  }
+  const qs=K.map((q,qi)=>{
+    const ans=st.answers[qi];
+    const opts=st.orders[qi].map(oi=>{
+      let cls=''; if(ans===oi) cls='sel';
+      if(st.submitted){ if(oi===q.a) cls='right'; else if(ans===oi) cls='wrong'; }
+      return `<button class="${cls}" data-action="knowAns" data-q="${qi}" data-o="${oi}" ${st.submitted?'disabled':''}><span class="dot"></span><span>${q.o[oi]}</span></button>`;
+    }).join('');
+    const fb = st.submitted ? `<div class="fb ${ans===q.a?'good':'bad'}"><b>${ans===q.a?'Correct.':'Not this time.'}</b> ${q.why}</div>` : '';
+    return `<div class="q"><p class="qt">${qi+1}. ${q.q}</p><div class="ans">${opts}</div>${fb}</div>`;
+  }).join('');
+  const all=K.every((_,i)=>st.answers[i]!=null);
+  let foot;
+  if(!st.submitted){
+    foot=`<div class="row"><button class="btn primary" data-action="knowSubmit" ${all?'':'disabled'}>Check my answers</button><span class="hint">You need 4 of 5 to clear this gate.</span></div>`;
+  } else {
+    const score=K.filter((q,i)=>st.answers[i]===q.a).length;
+    if(score>=4){
+      foot=`<div class="banner good"><div class="row"><span class="score">${score}/5</span><h3>Know: cleared</h3></div><p>You understand the ideas. Next, use them on situations you haven’t seen before.</p><div><button class="btn primary" data-action="stage" data-stage="apply">Go to Apply</button></div></div>`;
+    } else {
+      const R=C[n].recap;
+      foot=`<div class="banner warn"><div class="row"><span class="score">${score}/5</span><h3>Not yet</h3></div><p>That’s fine. Read the cheat sheet below, then try again whenever you’re ready. The questions come back in a different order.</p></div>
+        <div class="notecard"><span class="eyebrow">${R.title}</span><dl style="margin:0">${R.items.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl></div>
+        <div class="row"><button class="btn primary" data-action="knowRetry">Try again</button><button class="btn" data-action="stage" data-stage="story">Replay the story</button></div>`;
+    }
+  }
+  return `<div class="panel stack"><div><span class="eyebrow">Gate 1 of 3 · Know</span><p class="muted">Show you understand the ideas behind the story.</p></div><div>${qs}</div>${foot}</div>`;
+}
+
+/* ---- apply ---- */
+function applyState(n,reset){
+  if(!T.apply[n]||reset){
+    const items=shuffle(C[n].apply.items.map((_,i)=>i));
+    T.apply[n]={order:items, i:0, results:[], pick:null, sel:[], checked:false, done:false, retake:!!reset};
+  }
+  return T.apply[n];
+}
+function viewApply(n){
+  const L=S.levels[n]; const A=C[n].apply; const st=applyState(n);
+  if(L.apply.passed && !st.retake && st.i===0 && !st.done && st.pick==null && !st.checked){
+    return `<div class="panel stack"><div class="banner good"><h3>Apply: cleared</h3><p>Best score ${L.apply.best}/${A.items.length}.</p></div>
+      ${n===3?coachHTML():''}
+      <div class="row"><button class="btn primary" data-action="stage" data-stage="live">Go to Live</button><button class="btn" data-action="applyRetry">Practice again</button></div></div>`;
+  }
+  const total=A.items.length;
+  const head=`<div><span class="eyebrow">Gate 2 of 3 · Apply</span><p class="muted">${A.type==='trap'?'New people, new situations. Which trap is loudest in each thought? Some thoughts are already balanced.':A.type==='mc'?'New people with their own goals. Pick the choice that builds belief the most.':'Build a strong dispute. Pick every statement that belongs in it, and leave out the weak ones.'}</p></div>`;
+  if(st.done){
+    const score=st.results.filter(Boolean).length;
+    const pass=score>=A.pass;
+    let diag='';
+    if(!pass){
+      if(A.type==='trap'){
+        const m=L.apply.misses; const top=Object.keys(m).sort((a,b)=>m[b]-m[a])[0];
+        diag = top ? `<div class="notecard"><span class="eyebrow">What tripped you up most: ${TRAPS[top].name}</span><p>${TRAPS[top].tip}</p></div>` : '';
+      } else if(A.type==='mc'){
+        const m=L.apply.misses; const top=Object.keys(m).sort((a,b)=>m[b]-m[a])[0];
+        diag = top&&CAT_TIPS[top] ? `<div class="notecard"><span class="eyebrow">What tripped you up most: ${CAT_TIPS[top][0]}</span><p>${CAT_TIPS[top][1]}</p></div>` : '';
+      } else {
+        diag = `<div class="notecard"><span class="eyebrow">Tip</span><p>A strong dispute needs at least one piece of <b>evidence</b> and one <b>other explanation</b>, and no weak statements. ${WEAKWHY}</p></div>`;
+      }
+    }
+    return `<div class="panel stack">${head}
+      <div class="banner ${pass?'good':'warn'}"><div class="row"><span class="score">${score}/${total}</span><h3>${pass?'Apply: cleared':'Not yet'}</h3></div>
+      <p>${pass?'You can use the skill on situations you haven’t seen before. The last gate is using it in your own life.':`You need ${A.pass} of ${total}. Try again when you’re ready. You’ll get the same people in a new order.`}</p></div>
+      ${diag}
+      ${pass&&n===3?coachHTML():''}
+      <div class="row">${pass?'<button class="btn primary" data-action="stage" data-stage="live">Go to Live</button>':'<button class="btn primary" data-action="applyRetry">Try again</button>'}</div></div>`;
+  }
+  const idx=st.order[st.i]; const it=A.items[idx];
+  const bar=`<div class="progress" aria-hidden="true"><i style="width:${st.i/total*100}%"></i></div><p class="hint">${st.i+1} of ${total}</p>`;
+  let body='';
+  if(A.type==='trap'){
+    const keys=['permanent','pervasive','personal','none'];
+    const opts=keys.map(k=>{
+      let cls=''; if(st.pick!=null){ if(it.a.includes(k)&&st.pick===k) cls='right'; else if(st.pick===k) cls='wrong'; else if(it.a[0]===k) cls='right'; }
+      return `<button class="opt ${cls}" data-action="trapPick" data-k="${k}" ${st.pick!=null?'disabled':''}>${TRAPS[k].name}</button>`;
+    }).join('');
+    const ok = st.pick!=null && it.a.includes(st.pick);
+    body=`<span class="eyebrow">${it.ctx}</span><div class="thought">${it.t}</div><div class="opts">${opts}</div>
+      ${st.pick!=null?`<div class="fb ${ok?'good':'bad'}"><b>${ok?'Yes.':'Not this time.'}</b> ${it.why}</div><div><button class="btn primary" data-action="applyNext">${st.i+1<total?'Next':'See result'}</button></div>`:''}`;
+  } else if(A.type==='mc'){
+    if(!st.oOrder||st.oFor!==idx){st.oOrder=shuffle(it.o.map((_,i)=>i)); st.oFor=idx}
+    const ok = st.pick!=null && it.a.includes(+st.pick);
+    const opts=st.oOrder.map(oi=>{
+      let cls=''; if(st.pick!=null){ if(it.a.includes(oi)) cls='right'; else if(+st.pick===oi) cls='wrong'; }
+      return `<button class="${cls}" data-action="mcPick" data-o="${oi}" ${st.pick!=null?'disabled':''}><span class="dot"></span><span>${it.o[oi]}</span></button>`;
+    }).join('');
+    body=`<span class="eyebrow">${it.ctx}</span><p style="font-weight:700;font-size:17px">${it.t}</p><div class="ans">${opts}</div>
+      ${st.pick!=null?`<div class="fb ${ok?'good':'bad'}"><b>${ok?'Yes.':'Not this time.'}</b> ${it.why}</div><div><button class="btn primary" data-action="applyNext">${st.i+1<total?'Next':'See result'}</button></div>`:''}`;
+  } else {
+    if(!st.stOrder||st.stFor!==idx){st.stOrder=shuffle(it.s.map((_,i)=>i)); st.stFor=idx}
+    const items=st.stOrder.map(si=>{
+      const [txt,type]=it.s[si]; const sel=st.sel.includes(si);
+      const tag = st.checked && (sel||type!=='weak') ? `<span class="chip ${STYPE[type][1]}">${STYPE[type][0]}</span>` : '';
+      return `<button class="${sel?'sel':''}" data-action="dispToggle" data-s="${si}" ${st.checked?'disabled':''}><span class="lbl"><span class="box"></span><span>${txt}</span></span>${tag}</button>`;
+    }).join('');
+    let fb='';
+    if(st.checked){
+      const r=evalDispute(it,st.sel);
+      fb=`<div class="fb ${r.ok?'good':'bad'}"><b>${r.ok?'Strong dispute.':'Not quite.'}</b> ${r.msg}</div><div><button class="btn primary" data-action="applyNext">${st.i+1<total?'Next':'See result'}</button></div>`;
+    }
+    body=`<span class="eyebrow">${it.who}</span><div class="thought">${it.t}</div><div class="stmt">${items}</div>
+      ${st.checked?'':`<div><button class="btn primary" data-action="dispCheck" ${st.sel.length?'':'disabled'}>Check my dispute</button></div>`}${fb}`;
+  }
+  return `<div class="panel stack">${head}${bar}${body}</div>`;
+}
+function evalDispute(it,sel){
+  const types=sel.map(i=>it.s[i][1]);
+  const ev=types.includes('evidence'), alt=types.includes('alternative'), act=types.includes('action'), weak=types.filter(t=>t==='weak').length;
+  if(weak) return {ok:false, msg:`You included ${weak} weak statement${weak>1?'s':''}. ${WEAKWHY}`};
+  if(!ev) return {ok:false, msg:'It’s missing evidence: a fact you could show someone.'};
+  if(!alt) return {ok:false, msg:'It’s missing another explanation for what happened.'};
+  return {ok:true, msg: act?'Evidence, another explanation and a next step.':'Evidence and another explanation. Adding a next step would make it even stronger.'};
+}
+function coachHTML(){
+  const c=T.coach;
+  let res='';
+  if(c){
+    res=`<div class="row">${c.tags.map(t=>`<span class="chip ${t[1]}">${t[0]}</span>`).join('')}</div><p class="hint">${c.msg}</p>`;
+  }
+  return `<div class="notecard"><span class="eyebrow">Bonus · Write your own dispute</span>
+    <p>Pick a thought from the scenarios, or one of your own, and write a dispute in your own words. The coach looks for evidence, another explanation and a next step.</p>
+    <label for="coachText" class="sr">Your dispute</label>
+    <textarea id="coachText" placeholder="e.g. I got a B on my last two essays. This one was a new format. I'll go to the writing center before the next one.">${c?esc(c.text):''}</textarea>
+    <div><button class="btn" data-action="coach">Check with the coach</button></div>${res}</div>`;
+}
+function coachCheck(text){
+  const t=' '+text.toLowerCase()+' ';
+  const has=(arr)=>arr.some(w=>t.includes(w));
+  const ev=has([' because',' last time',' last year',' last week',' actually',' got a',' scored',' fact',' evidence',' did ',' was ',' were ']) || /\d/.test(t);
+  const alt=has([' maybe',' might',' could be',' could have',' another reason',' or ',' probably because',' instead']);
+  const act=has([' next time',' i\'ll',' i’ll',' i will',' going to',' plan',' ask ',' try ',' practice']);
+  const weak=has([' i\'m the best',' i’m the best',' amazing',' doesn\'t matter',' doesn’t matter',' whatever',' who cares',' dumb anyway',' never ',' always ',' everyone hates',' i\'m stupid',' i’m stupid']);
+  const tags=[[ev?'Evidence ✓':'Evidence missing',ev?'good':'warn'],[alt?'Other explanation ✓':'Other explanation missing',alt?'good':'warn'],[act?'Next step ✓':'Next step missing',act?'good':'warn']];
+  if(weak) tags.push(['Watch for trap words','bad']);
+  let msg;
+  if(words(text)<8) msg='Write a little more. A dispute usually takes two or three sentences.';
+  else if(ev&&alt&&act&&!weak) msg='That has everything a strong dispute needs.';
+  else if(weak) msg='Some words sound like a trap (always, never) or like brushing it off. Swap them for facts.';
+  else msg='Good start. Add what’s missing above.';
+  return {text, tags, msg};
+}
+
+/* ---- live ---- */
+function viewLive(n){
+  const L=S.levels[n]; const g=gate(n); const type=C[n].live.type;
+  const days=new Set(L.live.map(e=>e.day)).size;
+  const lastGoal = L.live.length ? L.live[L.live.length-1].goal||'' : '';
+  const form = type==='woop' ? `
+    <label for="f_wish">Wish<span class="sub">Something you want in the next few weeks. Hard, but possible.</span><input type="text" id="f_wish" name="wish" placeholder="e.g. Run the full mile in gym without walking"></label>
+    <label for="f_out">Outcome<span class="sub">The best result. Picture it for a moment, then write it down.</span><input type="text" id="f_out" name="out" placeholder="e.g. Crossing the line and feeling strong, not wrecked"></label>
+    <label for="f_obs">Obstacle<span class="sub">What inside you gets in the way? Use “I” or “my.”</span><textarea id="f_obs" name="obs" placeholder="e.g. When I get a side stitch, I stop and walk"></textarea></label>
+    <label for="f_plan">Plan<span class="sub">If [the obstacle shows up], then I will [one action].</span><textarea id="f_plan" name="plan" placeholder="e.g. If I get a side stitch, then I’ll slow down and breathe out hard for ten steps"></textarea></label>`
+  : type==='wins' ? `
+    <label for="f_goal">Your goal<span class="sub">The top of your ladder.</span><input type="text" id="f_goal" name="goal" value="${esc(lastGoal)}" placeholder="e.g. Make the JV soccer team in spring"></label>
+    <label for="f_step">The step you took<span class="sub">One rung. Small enough to do this week.</span><input type="text" id="f_step" name="step" placeholder="e.g. Juggled the ball for 10 minutes every day"></label>
+    <label for="f_res">What happened?<input type="text" id="f_res" name="res" placeholder="e.g. Went from 8 to 15 juggles in a row"></label>
+    <label for="f_credit">What did you do that made it work?<span class="sub">Give yourself the credit. Name your actions, not luck.</span><textarea id="f_credit" name="credit"></textarea></label>
+    <label for="f_spread">Where else could this work?<input type="text" id="f_spread" name="spread" placeholder="e.g. Practicing free throws the same way"></label>`
+  : type==='catch' ? `
+    <label for="f_sit">What happened?<span class="sub">One or two sentences.</span><input type="text" id="f_sit" name="sit" placeholder="e.g. Coach moved me to the B team"></label>
+    <label for="f_th">What did you think?<span class="sub">Write it word for word, the way it sounded in your head.</span><input type="text" id="f_th" name="th" placeholder="e.g. I'm never going to be good enough for A team"></label>
+    <label for="f_trap">Which trap was it?<select id="f_trap" name="trap"><option value="">Choose one</option><option value="permanent">Permanent</option><option value="pervasive">Pervasive</option><option value="personal">Personal</option><option value="none">No trap. It was balanced.</option></select></label>
+    <label for="f_c">What did you feel or do next?<input type="text" id="f_c" name="c" placeholder="e.g. Skipped practice on Thursday"></label>`
+  : `
+    <label for="f_sit">What happened?<input type="text" id="f_sit" name="sit" placeholder="e.g. My friend sat with someone else at lunch"></label>
+    <label for="f_th">The trap thought<input type="text" id="f_th" name="th" placeholder="e.g. She doesn't want to be friends anymore"></label>
+    <label for="f_ev">Evidence<span class="sub">Facts for and against the thought. Things you could show someone.</span><textarea id="f_ev" name="ev"></textarea></label>
+    <label for="f_alt">Another explanation<textarea id="f_alt" name="alt"></textarea></label>
+    <label for="f_next">Your next step<input type="text" id="f_next" name="next"></label>`;
+  const msg=T.liveMsg&&T.liveMsg.n===n?`<div class="fb ${T.liveMsg.ok?'good':'bad'}"><b>${T.liveMsg.ok?'Saved.':'Almost.'}</b> ${T.liveMsg.text}</div>`:'';
+  const list = L.live.length ? L.live.slice().reverse().map(e=> e.wish!=null ? `<div class="entry"><div class="meta"><span>${e.day} · WOOP</span><button class="link" data-action="delEntry" data-id="${e.id}">Remove</button></div>
+      <p><span class="muted">Wish:</span> ${esc(e.wish)}</p><p><span class="muted">Outcome:</span> ${esc(e.out)}</p>
+      <p><span class="muted">Obstacle:</span> ${esc(e.obs)}</p><p><span class="muted">Plan:</span> <q>${esc(e.plan)}</q></p>
+      <div class="row"><span class="hint">Did you follow your plan?</span>
+        <button class="opt ${e.follow==='yes'?'right':''}" data-action="follow" data-id="${e.id}" data-v="yes">Yes</button>
+        <button class="opt ${e.follow==='no'?'sel':''}" data-action="follow" data-id="${e.id}" data-v="no">Not yet</button></div></div>`
+    : e.goal!=null ? `<div class="entry"><div class="meta"><span>${e.day} · Goal: ${esc(e.goal)}</span><button class="link" data-action="delEntry" data-id="${e.id}">Remove</button></div>
+      <p><span class="muted">Step:</span> ${esc(e.step)}</p><p><span class="muted">Result:</span> ${esc(e.res)}</p>
+      <p><span class="muted">My credit:</span> <q>${esc(e.credit)}</q></p><p><span class="muted">Could also work for:</span> ${esc(e.spread)}</p></div>` : `<div class="entry"><div class="meta"><span>${e.day}</span><button class="link" data-action="delEntry" data-id="${e.id}">Remove</button></div>
+      <p><span class="muted">What happened:</span> ${esc(e.sit)}</p><p><q>${esc(e.th)}</q> ${e.trap?`<span class="chip warn">${TRAPS[e.trap].name}</span>`:''}</p>
+      ${e.c?`<p><span class="muted">Then:</span> ${esc(e.c)}</p>`:''}${e.ev?`<p><span class="muted">Evidence:</span> ${esc(e.ev)}</p><p><span class="muted">Other explanation:</span> ${esc(e.alt)}</p><p><span class="muted">Next step:</span> ${esc(e.next)}</p>`:''}</div>`).join('')
+    : `<p class="hint">No entries yet. Your first one will appear here.</p>`;
+  const rule = `Entries must come from 3 different days. You have ${days} so far.`;
+  return `<div class="panel stack"><div><span class="eyebrow">Gate 3 of 3 · Live</span><p class="muted">${C[n].live.intro}</p></div>
+    <div class="row">${g.live?'<span class="chip good">Live: cleared</span>':`<span class="chip warn">${g.liveCount} of 3</span>`}<span class="hint">${rule}</span></div>
+    <form id="liveForm" data-level="${n}" novalidate>${form}<div><button class="btn primary" type="submit">Save entry</button></div></form>${msg}${privacyNote()}</div>
+    <div style="margin-top:16px">${supportNote()}</div>
+    <div class="stack" style="margin-top:20px"><span class="eyebrow">Your entries</span><div class="entries">${list}</div></div>`;
+}
+function validateLive(n,f){
+  const v=k=>(f.get(k)||'').toString().trim();
+  if(C[n].live.type==='woop'){
+    const w={id:Date.now(), day:today(), wish:v('wish'), out:v('out'), obs:v('obs'), plan:v('plan'), follow:null};
+    if(words(w.wish)<3) return {err:'Write your wish in a few words.'};
+    if(words(w.out)<4) return {err:'Describe the best outcome. Picture it, then write what you see.'};
+    if(words(w.obs)<4) return {err:'Describe the obstacle in a full sentence.'};
+    if(!/\b(i|i'm|i’m|my|me|myself)\b/i.test(w.obs)) return {err:'Name an obstacle inside you, something you do, think or feel. Use “I” or “my.”'};
+    if(!/\b(if|when)\b/i.test(w.plan) || !/\b(then|i'll|i’ll|i will)\b/i.test(w.plan)) return {err:'Write the plan as “If ___, then I will ___.”'};
+    if(words(w.plan)<6) return {err:'Make the “then” part a specific action you can take.'};
+    return {entry:w};
+  }
+  if(C[n].live.type==='wins'){
+    const w={id:Date.now(), day:today(), goal:v('goal'), step:v('step'), res:v('res'), credit:v('credit'), spread:v('spread')};
+    if(words(w.goal)<3) return {err:'Write your goal in a few words.'};
+    if(words(w.step)<3) return {err:'Describe the step you took. Keep it to one rung.'};
+    if(words(w.res)<2) return {err:'Add what happened when you took the step.'};
+    if(/\b(luck|lucky|easy|fluke|chance)\b/i.test(w.credit)) return {err:'Your credit mentions luck or an easy task. Name something <em>you</em> did.'};
+    if(words(w.credit)<5) return {err:'Say more about what you did that made it work.'};
+    if(words(w.spread)<3) return {err:'Name one other place this could work for you.'};
+    return {entry:w};
+  }
+  const e={id:Date.now(), day:today(), sit:v('sit'), th:v('th')};
+  if(words(e.sit)<3) return {err:'Add a few words about what happened.'};
+  if(words(e.th)<4) return {err:'Write the thought as a full sentence, the way it sounded in your head.'};
+  if(C[n].live.type==='catch'){
+    e.trap=v('trap'); e.c=v('c');
+    if(!e.trap) return {err:'Pick which trap it was. “No trap” is a fine answer if the thought was balanced.'};
+    if(words(e.c)<2) return {err:'Add what you felt or did next. That’s the C in ABC.'};
+  } else {
+    e.ev=v('ev'); e.alt=v('alt'); e.next=v('next');
+    if(words(e.ev)<5) return {err:'Add more evidence: at least one fact for or against the thought.'};
+    if(words(e.alt)<5) return {err:'Add another explanation that fits the facts.'};
+    if(words(e.next)<3) return {err:'Add a next step you could actually take.'};
+  }
+  return {entry:e};
+}
+
+/* ---- project (level 6) ---- */
+function viewProject(n){
+  const P=proj(); const msg=T.msMsg;
+  let openFound=false;
+  const cards=MILESTONES.map((m,mi)=>{
+    const rec=P.ms[m.id]; const st=rec?rec.status:'draft';
+    const prevOk = mi===0 || (P.ms[MILESTONES[mi-1].id]&&P.ms[MILESTONES[mi-1].id].status==='approved');
+    const chip = st==='approved'?'<span class="chip good">Approved</span>' : st==='pending'?'<span class="chip accent">Waiting for review</span>' : st==='changes'?'<span class="chip warn">Changes requested</span>' : prevOk?'<span class="chip accent">Open</span>':'<span class="chip">Locked</span>';
+    const head=`<div class="mshead"><div><span class="eyebrow">Milestone ${mi+1} · ${m.skill}</span><h3>${m.title}</h3></div>${chip}</div>`;
+    const summary = rec&&rec.data ? `<dl>${m.fields.map(f=>`<dt>${f[2]}</dt><dd>${esc(rec.data[f[0]]||'')}</dd>`).join('')}</dl>` : '';
+    const fbk = rec&&rec.feedback ? `<div class="fb ${st==='approved'?'good':'bad'}"><b>Your mentor:</b> ${esc(rec.feedback)}</div>` : '';
+    if(st==='approved') return `<div class="ms">${head}${fbk}<details><summary>Show what you submitted</summary>${summary}</details></div>`;
+    if(!prevOk) return `<div class="ms locked">${head}<p class="hint">Opens when milestone ${mi} is approved.</p></div>`;
+    if(st==='pending') return `<div class="ms">${head}<p>Sent for review on ${rec.submitted}. Ask your parent or mentor to open Mentor view on this device. They’ll approve it or ask for changes.</p>
+      <div><button class="btn" data-action="nav" data-to="mentor">Open Mentor view</button></div>
+      <details><summary>Show what you submitted</summary>${summary}</details></div>`;
+    openFound=true;
+    const val=k=> rec&&rec.data ? esc(rec.data[k]||'') : '';
+    const fields=m.fields.map(([k,type,label,sub])=>{
+      const id=`${m.id}_${k}`;
+      const input = type==='area' ? `<textarea id="${id}" name="${k}">${val(k)}</textarea>` : `<input type="text" id="${id}" name="${k}" value="${val(k)}">`;
+      return `<label for="${id}">${label}${sub?`<span class="sub">${sub}</span>`:''}${input}</label>`;
+    }).join('');
+    const err = msg&&msg.id===m.id ? `<div class="fb bad"><b>Almost.</b> ${msg.text}</div>` : '';
+    return `<div class="ms">${head}${fbk}<p class="muted">${m.intro}</p>
+      <form id="msForm" data-m="${m.id}" novalidate>${fields}<div><button class="btn primary" type="submit">${st==='changes'?'Resubmit for review':'Submit for review'}</button></div></form>${err}</div>`;
+  }).join('');
+  const g=gate(n);
+  return `<div class="panel stack"><div><span class="eyebrow">Gate 3 of 3 · Project</span><p class="muted">${C[n].live.intro}</p></div>
+    <div class="row">${g.live?'<span class="chip good">Project: complete</span>':`<span class="chip warn">${g.liveCount} of ${g.need} approved</span>`}<span class="hint">Work with friends, siblings, a club or a co-op group, or on your own. Ask a parent or mentor to review each milestone in Mentor view.</span></div></div>
+    <div class="stack" style="margin-top:16px">${cards}</div>`;
+}
+function validateMs(m,f){
+  const data={};
+  for(const [k,,label,,min,rule] of m.fields){
+    const v=(f.get(k)||'').toString().trim(); data[k]=v;
+    if(words(v)<min) return {err:`Add more to “${label}”. A few more words will do it.`};
+    if(rule==='ifthen' && (!/\b(if|when)\b/i.test(v) || !/\b(then|we'll|we’ll|we will|i'll|i’ll|i will)\b/i.test(v))) return {err:'Write the plan as “If ___, then we will ___.”'};
+    if(rule==='noluck' && /\b(luck|lucky|easy|fluke|chance)\b/i.test(v)) return {err:'Your credit mentions luck or an easy task. Name what your team did.'};
+    if(rule==='inside' && !/\b(we|our|us|i|my|me)\b/i.test(v)) return {err:'Name an obstacle inside your team, something you do, think or feel. Use “we” or “our.”'};
+  }
+  return {data};
+}
+function reviewsHTML(){
+  const P=proj(); const pending=MILESTONES.filter(m=>P.ms[m.id]&&P.ms[m.id].status==='pending');
+  const team = P.ms.m1&&P.ms.m1.data ? esc(P.ms.m1.data.team) : 'Capstone';
+  const items = pending.length ? pending.map(m=>{
+    const rec=P.ms[m.id];
+    const err = T.reviewMsg&&T.reviewMsg.id===m.id ? `<div class="fb bad"><b>Almost.</b> ${T.reviewMsg.text}</div>` : '';
+    return `<div class="ms"><div class="mshead"><div><span class="eyebrow">${team} · Milestone ${MILESTONES.indexOf(m)+1}</span><h3>${m.title}</h3></div><span class="chip accent">Submitted ${rec.submitted}</span></div>
+      <dl>${m.fields.map(f=>`<dt>${f[2]}</dt><dd>${esc(rec.data[f[0]]||'')}</dd>`).join('')}</dl>
+      <label for="fb_${m.id}">Feedback for the team<span class="sub">Required when you ask for changes. Start with something they did well.</span><textarea id="fb_${m.id}"></textarea></label>
+      <div class="row"><button class="btn primary" data-action="review" data-id="${m.id}" data-v="approve">Approve</button><button class="btn" data-action="review" data-id="${m.id}" data-v="changes">Ask for changes</button></div>${err}</div>`;
+  }).join('') : `<p class="hint">No milestones are waiting for review. When a team submits one, it appears here.</p>`;
+  return `<section class="stack" style="margin-top:28px"><div><span class="eyebrow">Capstone reviews</span><h2 style="font-size:22px;margin-top:4px">Waiting for your sign-off</h2></div>${items}</section>`;
+}
+
+/* ---- mentor ---- */
+function viewMentor(){
+  if(!T.mentorOk){
+    const err=T.pinMsg?`<div class="fb bad"><b>Almost.</b> ${T.pinMsg}</div>`:'';
+    const setting=!S.pin;
+    return `<section class="lvlhead"><span class="eyebrow">For parents and mentors</span><h1>Mentor view</h1>
+      <p class="muted">See progress at each level and review the final project. ${setting?'Set a 4-digit PIN so only you can approve project milestones.':'Enter your mentor PIN.'}</p></section>
+      <div class="panel stack"><form id="pinForm" novalidate>
+        <label for="pinInput">${setting?'Choose a 4-digit PIN':'Mentor PIN'}<input type="password" inputmode="numeric" autocomplete="off" maxlength="4" id="pinInput" name="pin"></label>
+        <div><button class="btn primary" type="submit">${setting?'Set PIN and continue':'Unlock'}</button></div></form>${err}
+        ${setting?'':'<p class="hint">Forgot the PIN? “Reset progress” at the bottom of the page clears it, along with all progress.</p>'}</div>`;
+  }
+  const rows=LEVELS.map(l=>{
+    if(l.n===1) return `<tr><td>1 · ${l.title}</td><td colspan="3">${S.l1?'Read':'Not started'}</td><td class="num">${(S.l1log||[]).length}</td><td>${statusChip(status(1))}</td></tr>`;
+    const g=gate(l.n); const L=S.levels[l.n];
+    const mark=(ok,best,tot,att)=> ok?`<span class="chip good">Passed${best!=null?` ${best}/${tot}`:''}</span>`: att?`<span class="chip warn">Not yet · ${att} tr${att>1?'ies':'y'}</span>`:'<span class="muted">–</span>';
+    const live = g.live?'<span class="chip good">Done</span>':`${g.liveCount}/${g.need}`;
+    const entries = l.n===6 ? `${g.liveCount} approved` : L.live.length;
+    return `<tr><td>${l.n} · ${l.title}</td><td>${mark(L.know.passed,L.know.best,C[l.n].know.length,L.know.attempts)}</td><td>${mark(L.apply.passed,L.apply.best,C[l.n].apply.items.length,L.apply.attempts)}</td><td class="num">${live}</td><td class="num">${entries}</td><td>${statusChip(status(l.n))}</td></tr>`;
+  }).join('');
+  return `<section class="lvlhead"><span class="eyebrow">For parents and mentors</span><h1>Mentor view</h1>
+    <p class="muted">Progress on this device, level by level.</p></section>
+    <div class="stack">
+    <div class="tablewrap"><table><thead><tr><th>Level</th><th>Know</th><th>Apply</th><th>Live</th><th>Entries</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table></div>
+    <div class="notecard"><span class="eyebrow">Tips for check-ins</span>
+      <p>Start with what they <em>have</em> done. If they’re stuck on <b>Know</b>, replay the story together. If it’s <b>Apply</b>, talk through one of the examples. If it’s <b>Live</b>, ask what’s getting in the way of writing entries. Journal entries are personal, so ask before reading them.</p>
+      <p>If anything they write worries you, talk with them about it, and reach out to a counselor or doctor if you need to.</p></div>
+    <div><button class="btn ghost" data-action="lockMentor">Lock Mentor view</button></div>
+    </div>${reviewsHTML()}`;
+}
+
+function footer(){
+  return `<footer class="foot">
+    <div class="row">${T.confirmReset?'<span>Erase all progress on this device?</span><button class="btn" data-action="resetYes">Erase progress</button><button class="btn ghost" data-action="resetNo">Cancel</button>':'<button class="link" data-action="resetAsk">Reset progress</button>'}</div>
+    <p>Progress and journal entries are saved only in this browser on this device. Nothing is sent anywhere. If other people use this browser, they can see your entries.</p>
+    <p>Plot Twist draws on research by Martin Seligman, Albert Bandura, Gabriele Oettingen, Daphna Oyserman and others. It’s a learning tool, not therapy.</p>
+  </footer>`;
+}
+
+/* ---------------- actions ---------------- */
+const toTop = () => window.scrollTo({top:0,behavior:'instant'});
+const A = {
+  nav(d){S.view={name:d.to}; save(); render(); toTop()},
+  open(d){const n=+d.level; if(T.banner!==n) T.banner=null; S.view={name:'level', level:n, stage:n>1?firstStage(n):null}; save(); render(); toTop()},
+  stage(d){S.view.stage=d.stage; T.banner=null; save(); render(); toTop()},
+  catch(d){const st=storyState(S.view.level); if(!st.caught.includes(d.id)) st.caught.push(d.id); render()},
+  go(d){const st=storyState(S.view.level); st.scene=d.to; st.path.push(d.to); render(); document.getElementById('scene')?.scrollIntoView({block:'start'})},
+  sort(d){const n=S.view.level; const st=storyState(n); const t=C[n].thoughts[d.id]; st.sorted[d.id]={pick:d.trap, ok:t.accept.includes(d.trap)}; render()},
+  alt(d){const st=storyState(S.view.level); const i=+d.i; st.altsChecked=false; st.alts = st.alts.includes(i)?st.alts.filter(x=>x!==i):[...st.alts,i]; render()},
+  ladderAdd(d){const st=storyState(S.view.level); st.ladderChecked=false; st.ladder.push(+d.i); render()},
+  ladderUndo(){const st=storyState(S.view.level); st.ladderChecked=false; st.ladder.pop(); render()},
+  ladderCheck(){storyState(S.view.level).ladderChecked=true; render()},
+  woopPick(d){const st=storyState(S.view.level); st.woop[+d.s]=+d.o; render()},
+  follow(d){const L=S.levels[S.view.level]; const e=L.live.find(x=>String(x.id)===d.id); if(e){e.follow=d.v; save(); render()}},
+  l1Done(){S.l1=true; save(); A.open({level:'2'})},
+  lockMentor(){T.mentorOk=false; S.view={name:'path'}; render(); toTop()},
+  bucket(d){const st=storyState(S.view.level); st.buckets[+d.i]=+d.c; render()},
+  review(d){
+    const P=proj(); const rec=P.ms[d.id]; if(!rec) return;
+    const el=document.getElementById('fb_'+d.id); const text=el?el.value.trim():'';
+    if(d.v==='changes' && words(text)<3){T.reviewMsg={id:d.id,text:'Add a short note so the team knows what to change.'}; render(); return}
+    rec.status = d.v==='approve'?'approved':'changes'; rec.feedback=text; rec.reviewed=today(); T.reviewMsg=null;
+    checkCleared(6); save(); render();
+  },
+  ask(d){const st=storyState(S.view.level); st.ask[st.scene]=+d.i; render()},
+  mcPick(d){
+    const n=S.view.level; const st=applyState(n); const it=C[n].apply.items[st.order[st.i]];
+    st.pick=+d.o; const ok=it.a.includes(+d.o); st.results[st.i]=ok;
+    if(!ok){const m=S.levels[n].apply.misses; m[it.cat]=(m[it.cat]||0)+1; save()}
+    render();
+  },
+  altCheck(){storyState(S.view.level).altsChecked=true; render()},
+  finishStory(){const n=S.view.level; S.levels[n].story=true; S.view.stage='real'; save(); render(); toTop()},
+  replayStory(){delete T.story[S.view.level]; render(); toTop()},
+  realAns(d){T.real[S.view.level]=+d.i; render()},
+  finishReal(){const n=S.view.level; S.levels[n].real=true; S.view.stage='know'; save(); render(); toTop()},
+  knowAns(d){knowState(S.view.level).answers[+d.q]=+d.o; render()},
+  knowSubmit(){
+    const n=S.view.level; const st=knowState(n); const L=S.levels[n];
+    const score=C[n].know.filter((q,i)=>st.answers[i]===q.a).length;
+    st.submitted=true; L.know.attempts++; L.know.best=Math.max(L.know.best,score);
+    if(score>=4) L.know.passed=true;
+    checkCleared(n); save(); render();
+  },
+  knowRetry(){knowState(S.view.level,true); render(); toTop()},
+  knowRetake(){const st=knowState(S.view.level,true); st.retake=true; render()},
+  trapPick(d){
+    const n=S.view.level; const st=applyState(n); const it=C[n].apply.items[st.order[st.i]];
+    st.pick=d.k; const ok=it.a.includes(d.k); st.results[st.i]=ok;
+    if(!ok){const m=S.levels[n].apply.misses; m[it.a[0]]=(m[it.a[0]]||0)+1; save()}
+    render();
+  },
+  dispToggle(d){const st=applyState(S.view.level); const s=+d.s; st.sel=st.sel.includes(s)?st.sel.filter(x=>x!==s):[...st.sel,s]; render()},
+  dispCheck(){const n=S.view.level; const st=applyState(n); const it=C[n].apply.items[st.order[st.i]]; st.checked=true; st.results[st.i]=evalDispute(it,st.sel).ok; render()},
+  applyNext(){
+    const n=S.view.level; const st=applyState(n); const A_=C[n].apply; const L=S.levels[n];
+    st.pick=null; st.sel=[]; st.checked=false;
+    if(st.i+1<A_.items.length){st.i++}
+    else{
+      st.done=true; const score=st.results.filter(Boolean).length;
+      L.apply.attempts++; L.apply.best=Math.max(L.apply.best,score);
+      if(score>=A_.pass) L.apply.passed=true;
+      checkCleared(n); save();
+    }
+    render(); toTop();
+  },
+  applyRetry(){const n=S.view.level; S.levels[n].apply.misses={}; applyState(n,true); save(); render(); toTop()},
+  coach(){const el=document.getElementById('coachText'); T.coach=coachCheck(el?el.value:''); render(); document.getElementById('coachText')?.scrollIntoView({block:'center'})},
+  delEntry(d){const n=S.view.level; const L=S.levels[n]; L.live=L.live.filter(e=>String(e.id)!==d.id); T.liveMsg=null; save(); render()},
+  resetAsk(){T.confirmReset=true; render()},
+  resetNo(){T.confirmReset=false; render()},
+  resetYes(){S=fresh(); for(const k of ['story','real','know','apply']) T[k]={}; T.confirmReset=false; T.banner=null; T.coach=null; T.liveMsg=null; T.msMsg=null; T.reviewMsg=null; T.mentorOk=false; T.pinMsg=null; T.l1Msg=null; save(); render(); toTop()}
+};
+document.addEventListener('click',e=>{
+  const b=e.target.closest('[data-action]'); if(!b||b.disabled) return;
+  const f=A[b.dataset.action]; if(f){e.preventDefault(); f(b.dataset)}
+});
+document.addEventListener('submit',e=>{
+  if(e.target.id==='pinForm'){
+    e.preventDefault();
+    const v=(new FormData(e.target).get('pin')||'').toString().trim();
+    if(!/^\d{4}$/.test(v)){T.pinMsg='The PIN needs exactly 4 digits.'; render(); return}
+    if(!S.pin){S.pin=v; save()}
+    else if(v!==S.pin){T.pinMsg='That PIN doesn’t match. Try again.'; render(); return}
+    T.mentorOk=true; T.pinMsg=null; render(); return;
+  }
+  if(e.target.id==='l1Form'){
+    e.preventDefault();
+    const fd=new FormData(e.target); const did=(fd.get('did')||'').toString().trim(), eff=(fd.get('eff')||'').toString().trim();
+    if(words(did)<2||words(eff)<2){T.l1Msg={ok:false,text:'Write a few words in both boxes.'}; render(); const a=document.getElementById('l1_did'), b=document.getElementById('l1_eff'); if(a) a.value=did; if(b) b.value=eff; return}
+    S.l1log=S.l1log||[]; S.l1log.push({day:today(), did, eff}); T.l1Msg={ok:true,text:'Your action changed something. Notice that.'}; save(); render(); return;
+  }
+  if(e.target.id==='msForm'){
+    e.preventDefault();
+    const m=MILESTONES.find(x=>x.id===e.target.dataset.m); const fd=new FormData(e.target); const r=validateMs(m,fd);
+    if(r.err){
+      const vals=Object.fromEntries(fd); T.msMsg={id:m.id,text:r.err}; render();
+      for(const [k,v] of Object.entries(vals)){const el=document.getElementById(`${m.id}_${k}`); if(el) el.value=v}
+      return;
+    }
+    const P=proj(); const prev=P.ms[m.id]||{};
+    P.ms[m.id]={data:r.data, status:'pending', submitted:today(), feedback:prev.feedback||''}; T.msMsg=null; save(); render(); return;
+  }
+  if(e.target.id!=='liveForm') return;
+  e.preventDefault();
+  const n=+e.target.dataset.level; const r=validateLive(n,new FormData(e.target));
+  if(r.err){
+    const vals=Object.fromEntries(new FormData(e.target)); T.liveMsg={n,ok:false,text:r.err}; render();
+    for(const [k,v] of Object.entries(vals)){const el=document.querySelector(`#liveForm [name="${k}"]`); if(el) el.value=v}
+    return;
+  }
+  S.levels[n].live.push(r.entry);
+  const g=gate(n);
+  T.liveMsg={n,ok:true,text: g.live?'That’s the third one. Live gate cleared.':`${g.liveCount} of 3 toward the Live gate.`};
+  checkCleared(n); save(); render();
+});
+document.addEventListener('change',e=>{
+});
+render();
+</script>
