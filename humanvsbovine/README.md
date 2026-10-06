@@ -22,7 +22,7 @@ then visit `http://localhost:8000`.
 
 ## Publishing on GitHub Pages
 
-Push this folder to a repository and enable Pages under **Settings → Pages** (source: the branch containing these files, folder `/`, or `/review` if the repo has other content alongside it).
+Published as part of the nicunutritionplus.com site at `/humanvsbovine/`; the stylesheet is shared with the other research summaries at `/assets/css/research-summary.css`.
 
 ## Notes on the conversion
 
