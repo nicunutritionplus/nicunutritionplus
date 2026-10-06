@@ -1,0 +1,9 @@
+"outcome","type","measure","k_pooled","k_with_data","n_exp","n_ctrl","events_exp","events_ctrl","effect_random","lci_random","uci_random","p_random","effect_fixed","lci_fixed","uci_fixed","p_fixed","tau2","I2_pct","Q","df_Q","p_Q"
+"Necrotising enterocolitis","Dichotomous","Risk ratio (Mantel-Haenszel)",8,12,1584,1576,17,21,0.843,0.415,1.714,0.638,0.801,0.429,1.494,0.4847,0.0166,2,7.11,7,0.4178
+"All-cause mortality before discharge","Dichotomous","Risk ratio (Mantel-Haenszel)",6,7,1355,1346,39,38,1.028,0.684,1.544,0.8958,0.996,0.668,1.487,0.9848,0,0,4.57,5,0.4702
+"Culture-positive late-onset sepsis","Dichotomous","Risk ratio (Mantel-Haenszel)",8,9,1465,1452,66,82,0.632,0.346,1.154,0.1353,0.788,0.584,1.064,0.1197,0.2784,50,14.04,7,0.05054
+"Feed intolerance","Dichotomous","Risk ratio (Mantel-Haenszel)",10,11,553,548,104,144,0.721,0.544,0.955,0.02255,0.711,0.572,0.883,0.00207,0.0528,28,12.45,9,0.189
+"Hypoglycaemia","Dichotomous","Risk ratio (Mantel-Haenszel)",6,6,270,264,30,39,0.799,0.366,1.746,0.5741,0.762,0.498,1.167,0.2117,0.3871,45,9.09,5,0.1054
+"Duration of hospital stay (days)","Continuous","Mean difference (inverse variance)",7,8,1249,1257,NA,NA,-3.945,-6.399,-1.491,0.001626,-1.803,-2.467,-1.138,1.052e-07,8.1608,90,59.42,6,5.892e-11
+"Time to attain full enteral feeds (days)","Continuous","Mean difference (inverse variance)",5,5,1292,1285,NA,NA,-2.304,-3.468,-1.14,0.0001052,-1.365,-1.632,-1.097,1.5e-23,1.4419,90,40.59,4,3.261e-08
+"Time to regain birth weight (days)","Continuous","Mean difference (inverse variance)",5,6,174,173,NA,NA,-2.824,-5.116,-0.532,0.01575,-2.08,-2.569,-1.591,7.869e-17,6.3048,94,64.98,4,2.596e-13

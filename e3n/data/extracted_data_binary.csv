@@ -1,0 +1,45 @@
+data_status,study_id,outcome,exp_events,exp_n,ctrl_events,ctrl_n,source,outcome_pooled,nec_definition
+full text,Sanghvi 2013,Necrotising enterocolitis (stage >=2),0,23,0,23,Full text Table 2: 'NEC Nil Nil',Necrotising enterocolitis,stage >=2 (Bell)
+full text,Sanghvi 2013,Feed intolerance,3,23,5,23,Full text Table 2: 3 (13%) vs 5 (21.7%),Feed intolerance,
+full text,Sanghvi 2013,Culture-positive late-onset sepsis,0,23,0,23,Full text Results: 'No case of blood culture positive sepsis was seen in either group',Culture-positive late-onset sepsis,
+full text,Zecca 2014,Necrotising enterocolitis (stage >=2),0,36,0,36,"Full text Results: 'No cases of ... feeding intolerance, or necrotizing enterocolitis were observed in either group'",Necrotising enterocolitis,stage >=2 (Bell)
+full text,Zecca 2014,Feed intolerance,0,36,0,36,Full text Results: same sentence,Feed intolerance,
+full text,Zecca 2014,Hypoglycaemia,0,36,12,36,Full text Table III: Hypoglycemia 0 (PFR) vs 12 (33.3%) (SFR),Hypoglycaemia,
+full text,Zecca 2014,Required intravenous infusion / central access,1,36,12,36,Full text Table II: Patients requiring IV infusion 1 (2.8%) vs 12 (33.3%),Required intravenous infusion / central access,
+full text,Bora 2017,Necrotising enterocolitis (stage >=2),4,51,1,52,Full text Table 3: NEC 4 (7.8%) CEF vs 1 (1.9%) MEF,Necrotising enterocolitis,stage >=2 (Bell)
+full text,Bora 2017,Feed intolerance,12,51,6,52,Full text Table 3: Feed Intolerance 12 (23.52%) CEF vs 6 (11.53%) MEF,Feed intolerance,
+full text,Nangia 2019,Necrotising enterocolitis (any stage),1,91,5,89,Full text Table 3: NEC (any stage) 1 (1.1) vs 5 (5.8),Necrotising enterocolitis,any stage (Bell I-III)
+full text,Nangia 2019,Feed intolerance,14,91,26,89,Full text Table 3: Infants with feed intolerance 14 (15.9) vs 26 (30.2),Feed intolerance,
+full text,Nangia 2019,Culture-positive late-onset sepsis,3,91,7,89,Full text Table 3: Culture-positive sepsis 3 (3.3) vs 7 (7.8),Culture-positive late-onset sepsis,
+full text,Jajoo 2022,Necrotising enterocolitis (stage >=2),3,31,2,29,Full text Table 2: NEC 3 (9.7%) vs 2 (6.9%),Necrotising enterocolitis,stage >=2 (Bell)
+full text,Jajoo 2022,Feed intolerance,7,31,8,29,Full text Table 2: Feed intolerance 7 (22.6) vs 8 (27.6),Feed intolerance,
+full text,Jajoo 2022,Culture-positive late-onset sepsis,0,31,3,29,Full text Table 2 sepsis triplet 4:6:0 vs 4:6:3 (culture-positive component),Culture-positive late-onset sepsis,
+full text,Jajoo 2022,All-cause mortality before discharge,3,31,2,29,"Full text Results: 5 deaths total, 3 in group I, 2 in group II",All-cause mortality before discharge,
+full text,Raman 2023,Necrotising enterocolitis (stage >=2),0,33,0,33,Full text Table 4: NEC Yes 0 (0%) vs 0 (0%),Necrotising enterocolitis,stage >=2 (Bell)
+full text,Raman 2023,Feed intolerance,2,33,1,33,Full text Table 4: Feeding intolerance Yes 2 (6%) vs 1 (3%),Feed intolerance,
+full text,Raman 2023,Hypoglycaemia,1,33,1,33,Full text Table 4: Hypoglycemia Episode 2: 1 (3%) vs 1 (3%),Hypoglycaemia,
+full text,Raman 2023,Culture-positive late-onset sepsis,0,33,2,33,Full text Table 4: Sepsis Yes 0 (0%) vs 2 (6%),Culture-positive late-onset sepsis,
+full text,Raman 2023,All-cause mortality before discharge,0,33,0,33,Full text Table 5: Mortality 0 (0%) vs 0 (0%),All-cause mortality before discharge,
+full text,Razzaghy 2024,Necrotising enterocolitis (stage >=2) or SIP,1,48,1,49,"Full text Table 2: NEC or SIP, n (%) 1 (2) vs 1 (2); analysed denominators 48/49",Necrotising enterocolitis,stage >=2 or SIP
+full text,Razzaghy 2024,Regained birth weight by postnatal day 14,23,48,20,49,Full text Table 2: Regain birth weight by postnatal day 14 23 (47) vs 20 (40),Regained birth weight by postnatal day 14,
+full text,Sahu 2024,Necrotising enterocolitis (stage >=2),1,29,2,27,Full text Table 3: NEC stage >=2 1 (3.4) vs 2 (7.1),Necrotising enterocolitis,stage >=2 (Bell)
+full text,Sahu 2024,Feed intolerance,7,29,15,27,Full text Table 3: Feed intolerance 7 (24.1) vs 15 (53.6),Feed intolerance,
+full text,Sahu 2024,Culture-positive late-onset sepsis,1,29,9,27,Full text Table 3: Culture positive late onset sepsis 1 (3.4) vs 9 (32.1),Culture-positive late-onset sepsis,
+full text,Sahu 2024,Hypoglycaemia,3,29,5,27,Full text Table 3: Symptomatic hypoglycemia 3 (10.3) vs 5 (17.9),Hypoglycaemia,
+full text,Sahu 2024,All-cause mortality before discharge,0,29,1,27,Full text Table 3: Mortality 0 (0) vs 1 (3.6),All-cause mortality before discharge,
+full text,Alshaikh 2025,Necrotising enterocolitis (stage >=2) or SIP,0,35,0,35,Full text Discussion: 'the absence of NEC or SIP in our study population',Necrotising enterocolitis,stage >=2 or SIP
+full text,Alshaikh 2025,Feed intolerance,3,35,4,35,"Full text Table 2 (col1=Conventional, col2=EEEF): 4 (11.4) conventional vs 3 (8.6) EEEF",Feed intolerance,
+full text,Alshaikh 2025,Hypoglycaemia,4,35,3,35,Full text Table 2: Hypoglycemia 3 (8.6) conventional vs 4 (11.4) EEEF,Hypoglycaemia,
+full text,Alshaikh 2025,Required intravenous infusion / central access,4,35,13,35,Full text Table 2: Need for CVC after randomization 13 (37.1) conventional vs 4 (11.4) EEEF,Required intravenous infusion / central access,
+full text,Ojha 2025 (FEED1),Necrotising enterocolitis (stage >=2),4,1030,6,1027,Full text Table 2: NEC (Bell stage 2 or 3) 4/1030 vs 6/1027,Necrotising enterocolitis,stage >=2 (Bell)
+full text,Ojha 2025 (FEED1),Culture-positive late-onset sepsis,32,1031,25,1026,Full text Table 2: microbiologically confirmed or clinically suspected LOS 32/1031 vs 25/1026,Culture-positive late-onset sepsis,
+full text,Ojha 2025 (FEED1),All-cause mortality before discharge,4,1034,4,1031,Full text Table 2: Survived to discharge 1030/1034 vs 1027/1031 (deaths derived),All-cause mortality before discharge,
+full text,Nangia 2026,Necrotising enterocolitis (stage >=2),0,90,3,93,Full text Table 4: NEC (stage >=2) 0 vs 3 (3.3),Necrotising enterocolitis,stage >=2 (Bell)
+full text,Nangia 2026,Feed intolerance,17,90,35,93,Full text Table 4: Neonates requiring feeding interruption 17 (18.9) vs 35 (37.6),Feed intolerance,
+full text,Nangia 2026,Culture-positive late-onset sepsis,2,90,8,93,Full text Table 4: Culture positive sepsis 2 (2.2) vs 8 (8.6),Culture-positive late-onset sepsis,
+full text,Nangia 2026,All-cause mortality before discharge,4,90,10,93,Full text Table 4: Deaths 4 (4.4) vs 10 (13.1),All-cause mortality before discharge,
+full text,Mishra 2026,Necrotising enterocolitis (stage >=2),3,87,1,83,Full text Table 2: NEC Stage 2/3 3 (3.4) vs 1 (1.2),Necrotising enterocolitis,stage >=2 (Bell)
+full text,Mishra 2026,Feed intolerance,28,87,34,83,Full text Table 2: Feed Intolerance 28 (32.2) vs 34 (41.0),Feed intolerance,
+full text,Mishra 2026,Culture-positive late-onset sepsis,25,87,27,83,Full text Table 2: Culture-positive sepsis 25 (28.7) vs 27 (32.5),Culture-positive late-onset sepsis,
+full text,Mishra 2026,Hypoglycaemia,3,87,4,83,Full text Table 2: Hypoglycemia 3 (3.4) vs 4 (4.8),Hypoglycaemia,
+full text,Mishra 2026,All-cause mortality before discharge,26,87,21,83,Full text Table 2: Mortality before discharge 26 (29.9) vs 21 (25.3),All-cause mortality before discharge,
