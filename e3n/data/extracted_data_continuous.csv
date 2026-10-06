@@ -1,0 +1,21 @@
+data_status,study_id,outcome,exp_mean,exp_sd,exp_n,ctrl_mean,ctrl_sd,ctrl_n,source
+full text,Alshaikh 2025,Duration of hospital stay (days),31.5,12.9,35,39.1,16.4,35,Full text Table 2: EEEF 31.5 (12.9) vs conventional 39.1 (16.4)
+full text,Bora 2017,Duration of hospital stay (days),11.392,2.94,51,12.836,3.593,52,Full text Results/Table 4: 11.392 +/- 2.94 (CEF) vs 12.836 +/- 3.593 (MEF)
+full text,Nangia 2026,Duration of hospital stay (days),25.9,,90,38.1,,93,"Full text Results: 25.9 vs 38.1 days, p=0.001; dispersion not extractable, generic inverse variance from reported MD"
+full text,Ojha 2025 (FEED1),Duration of hospital stay (days),32.4,13.3,1023,32.1,13.5,1029,Full text Results/Table: mean 32.4 (SD 13.3) vs 32.1 (13.5)
+full text,Raman 2023,Duration of hospital stay (days),15.3,2.78,33,18.3,3.17,33,Full text Table 1/Table 4: 15.30 +/- 2.78 vs 18.30 +/- 3.17
+full text,Razzaghy 2024,Duration of hospital stay (days),41.0,,48,48.0,,49,"Full text Table 2: MD -7 days (95% CI -15 to 1); arm medians reported, pooled by generic inverse variance"
+full text,Sanghvi 2013,Duration of hospital stay (days),15.04,5.26,23,28.04,6.76,23,Full text Table 2 / Results: mean 15.04 (SD 5.26) vs 28.04 (SD 6.76)
+full text,Zecca 2014,Duration of hospital stay (days),9.8,3.1,36,11.9,4.7,36,Full text Table III: LOS PFR 9.8 +/- 3.1 vs SFR 11.9 +/- 4.7
+full text,Raman 2023,Rate of weight gain (g/day),35.25,6.07,33,22.89,4.78,33,"Full text Results: 35.25 +/- 6.07 vs 22.89 +/- 4.78 g/day, p<0.001"
+full text,Alshaikh 2025,Time to attain full enteral feeds (days),4.8,1.3,35,6.4,2.0,35,Full text Table 2: EEEF 4.8 (1.3) vs conventional 6.4 (2.0)
+full text,Nangia 2019,Time to attain full enteral feeds (days),6.5,1.5,91,10.1,4.1,89,Full text Table 3: 6.5 +/- 1.5 vs 10.1 +/- 4.1
+full text,Nangia 2026,Time to attain full enteral feeds (days),6.8,1.8,90,9.1,4.3,93,Full text Table 4: 6.8 +/- 1.8 vs 9.1 +/- 4.3
+full text,Ojha 2025 (FEED1),Time to attain full enteral feeds (days),7.0,3.5,1047,7.9,3.9,1041,Full text Table 2: Time to full enteral feeds 7.0 (3.5) vs 7.9 (3.9) days
+full text,Sahu 2024,Time to attain full enteral feeds (days),7.69,3.84,29,11.86,5.42,27,Full text Table 3: 7.69 +/- 3.84 vs 11.86 +/- 5.42
+full text,Alshaikh 2025,Time to regain birth weight (days),13.3,3.9,35,12.7,3.6,35,Full text Table 2: EEEF 13.3 (3.9) vs conventional 12.7 (3.6)
+full text,Bora 2017,Time to regain birth weight (days),10.612,1.643,51,11.809,1.643,52,Full text Results/Table 4: 10.612 +/- 1.643 vs 11.809 +/- 1.643
+full text,Nangia 2026,Time to regain birth weight (days),11.1,,90,14.3,,93,"Full text Results: 11.1 vs 14.3 days, p<0.001; dispersion not extractable"
+full text,Sahu 2024,Time to regain birth weight (days),9.38,3.13,29,13.39,3.48,27,Full text Table 3: 9.38 +/- 3.13 vs 13.39 +/- 3.48
+full text,Sanghvi 2013,Time to regain birth weight (days),5.52,2.94,23,12.7,2.25,23,Full text Table 2: 5.52 +/- 2.94 vs 12.7 +/- 2.25
+full text,Zecca 2014,Time to regain birth weight (days),6.2,2.3,36,8.6,3.2,36,Full text Table III: Day regained BW PFR 6.2 +/- 2.3 vs SFR 8.6 +/- 3.2

@@ -1,0 +1,16 @@
+study_id,outcome,reported_form,exp_value,ctrl_value,reason_not_pooled,source
+Sanghvi 2013,Duration of hospital stay,median (range) [IQR],14.0 (12-20) [7-24],27 (24-32) [16-44],median-only alternative form; mean/SD form used for pooling,Full text Table 2
+Jajoo 2022,Time to attain full enteral nutrition,median (range),see full text Table 2,see full text Table 2,median with range only; not converted,Full text Table 2
+Jajoo 2022,Duration of hospital stay,median (range),see full text Table 2,see full text Table 2,median with range only; not converted,Full text Table 2
+Jajoo 2022,Time to regain birth weight,median (range),see full text Table 2,see full text Table 2,median with range only; not converted,Full text Table 2
+Razzaghy 2024,Full enteral feeding days in first 28 days,median (IQR),primary outcome,primary outcome,reported as median difference; primary outcome not poolable as MD of means,Full text Table 2
+Alshaikh 2025,Maximal weight loss (%),median (IQR),"7 (3, 12)","4.5 (0.7, 11)",median with IQR only,Full text Table 2
+Sahu 2024,Duration of hospital stay,median (IQR),"12 (9, 21.5)","20.5 (15, 25.5)",median with IQR only; primary outcome,Full text Table 3
+Sahu 2024,"Duration of hospital stay, severe SGA subgroup",median (IQR),"10 (9, 22)","22 (16.5, 27.5)","subgroup, median with IQR",Full text Table 3
+Sahu 2024,Growth velocity (g/kg/day),median (IQR),"11.4 (4.9, 13.3)","13.05 (9.62, 15.7)",median with IQR only,Full text Table 3
+Mishra 2026,Time to attain full enteral feeds,median (IQR),"6.5 (5, 10)","6.5 (5, 11)","median with IQR only; primary outcome, median difference 0.0 (-1 to 0)",Full text Table 2
+Mishra 2026,Duration of hospital stay,median (IQR),"24 (12, 30)","26 (15.0, 35)",median with IQR only; median difference -3 (-8 to +1),Full text Table 2
+Mishra 2026,Time to regain birth weight,median (IQR),"16 (11.5, 19)","18.5 (13.8, 26)",median with IQR only; median difference -3 (-6 to -1),Full text Table 2
+Mishra 2026,Duration of intravenous fluid therapy,median (IQR),"3 (0, 6)","6 (4, 9)",median with IQR only,Full text Table 2
+Ojha 2025 (FEED1),Time to regain birth weight,not extractable,appendix p 9,appendix p 9,reported in online appendix only; stated no difference,Full text Results
+Bora 2017,Duration to reach 110 kcal/kg/day,mean (SD),9.571 (1.458),10.833 (1.655),"secondary nutritional outcome, not a core review outcome",Full text Results/Table 4

@@ -1,0 +1,270 @@
+SENSITIVITY ANALYSES
+Early exclusive / total enteral feeding versus gradual enteral feeding with parenteral support in preterm infants
+Generated 2026-09-02 - includes author-supplied additional arm data for Razzaghy 2024 and the
+corrected Razzaghy 2024 length-of-stay row (published mean +/- SD, Table 2)
+================================================================================================================ 
+
+S1. FIXED-EFFECT VERSUS RANDOM-EFFECTS MODEL
+---------------------------------------------------------------------------------------------------------------- 
+Necrotising enterocolitis                fixed RR 0.80 [0.43, 1.49]   random RR 0.84 [0.42, 1.71]   I2=2%
+All-cause mortality before discharge     fixed RR 1.00 [0.67, 1.49]   random RR 1.03 [0.68, 1.54]   I2=0%
+Culture-positive late-onset sepsis       fixed RR 0.79 [0.58, 1.06]   random RR 0.63 [0.35, 1.15]   I2=50%
+Feed intolerance                         fixed RR 0.71 [0.57, 0.88]   random RR 0.72 [0.54, 0.95]   I2=28%
+Hypoglycaemia                            fixed RR 0.76 [0.50, 1.17]   random RR 0.80 [0.37, 1.75]   I2=45%
+Duration of hospital stay (days)         fixed MD  -1.80 [ -2.47,  -1.14]   random MD  -3.94 [ -6.40,  -1.49]   I2=90%
+Time to attain full enteral feeds (days) fixed MD  -1.36 [ -1.63,  -1.10]   random MD  -2.30 [ -3.47,  -1.14]   I2=90%
+Time to regain birth weight (days)       fixed MD  -2.08 [ -2.57,  -1.59]   random MD  -2.82 [ -5.12,  -0.53]   I2=94%
+
+Interpretation: for the five dichotomous outcomes the two models agree closely because between-trial
+ variance is small. For the three continuous outcomes I2 is 90% or above, so the fixed-effect intervals
+ are implausibly narrow; the pre-specified random-effects estimates are reported throughout.
+
+S2. EXCLUDING TRIALS AT HIGH OVERALL RISK OF BIAS
+---------------------------------------------------------------------------------------------------------------- 
+Trials retained ( 6 ): Nangia 2019; Razzaghy 2024; Sahu 2024; Alshaikh 2025; Ojha 2025 (FEED1); Mishra 2026 
+Trials excluded ( 6 ): Sanghvi 2013; Zecca 2014; Bora 2017; Jajoo 2022; Raman 2023; Nangia 2026 
+
+Necrotising enterocolitis                RR 0.67 [0.28, 1.58], p=0.3605, k=5, I2=0%
+     all trials: RR 0.84 [0.42, 1.71], p=0.6380, k=8, I2=2%
+All-cause mortality before discharge     RR 1.17 [0.74, 1.83], p=0.5065, k=4, I2=0%
+     all trials: RR 1.03 [0.68, 1.54], p=0.8958, k=6, I2=0%
+Culture-positive late-onset sepsis       RR 0.82 [0.45, 1.52], p=0.5314, k=5, I2=54%
+     all trials: RR 0.63 [0.35, 1.15], p=0.1353, k=8, I2=50%
+Feed intolerance                         RR 0.69 [0.51, 0.92], p=0.0131, k=5, I2=9%
+     all trials: RR 0.72 [0.54, 0.95], p=0.0225, k=10, I2=28%
+Hypoglycaemia                            RR 1.14 [0.72, 1.81], p=0.5817, k=4, I2=0%
+     all trials: RR 0.80 [0.37, 1.75], p=0.5741, k=6, I2=45%
+Duration of hospital stay (days)         MD -3.90 [-10.05, 2.24], p=0.2133, k=3, I2=75%
+     all trials: MD -3.94 [-6.40, -1.49], p=0.0016, k=7, I2=90%
+Time to attain full enteral feeds (days) MD -2.34 [-3.76, -0.91], p=0.0013, k=4, I2=92%
+     all trials: MD -2.30 [-3.47, -1.14], p=0.0001, k=5, I2=90%
+Time to regain birth weight (days)       MD -1.71 [-6.22, 2.81], p=0.4590, k=2, I2=93%
+     all trials: MD -2.82 [-5.12, -0.53], p=0.0157, k=5, I2=94%
+
+Interpretation: excluding the six trials at high overall risk of bias leaves the direction of the two
+ feeding-progression outcomes and feed intolerance unchanged, and feed intolerance remains statistically
+ significant with heterogeneity falling to 9%. Length of stay and birth-weight regain lose significance,
+ but only three and two trials respectively remain and the intervals widen greatly, so this reflects loss
+ of precision rather than bias-driven effect. Hypoglycaemia reverses direction (RR 1.14) once the
+ high-risk trials are removed; with wide intervals on either side of unity in both analyses this outcome
+ is best read as no demonstrated difference, and the instability is carried into the GRADE judgement.
+
+S3. ALTERNATIVE METHODS FOR RARE DICHOTOMOUS EVENTS
+---------------------------------------------------------------------------------------------------------------- 
+Mantel-Haenszel risk ratios exclude trials with no events in either arm. Peto odds ratios, risk
+differences and inverse-variance risk ratios with a continuity correction retain them.
+
+Necrotising enterocolitis
+   MH RR (primary)      k= 8  RR 0.84 [0.42, 1.71]  p=0.6380
+   Peto OR              k= 8  OR 0.79 [0.42, 1.51]  p=0.4765
+   Risk difference      k=12  RD -0.002 [-0.008, 0.003]  p=0.4274
+   IV RR (incr 0.5)     k=12  RR 0.86 [0.44, 1.66]  p=0.6532
+
+All-cause mortality before discharge
+   MH RR (primary)      k= 6  RR 1.03 [0.68, 1.54]  p=0.8958
+   Peto OR              k= 6  OR 1.00 [0.61, 1.63]  p=0.9889
+   Risk difference      k= 7  RD -0.000 [-0.005, 0.005]  p=0.9844
+   IV RR (incr 0.5)     k= 7  RR 1.03 [0.69, 1.54]  p=0.8964
+
+Culture-positive late-onset sepsis
+   MH RR (primary)      k= 8  RR 0.63 [0.35, 1.15]  p=0.1353
+   Peto OR              k= 8  OR 0.76 [0.54, 1.07]  p=0.1153
+   Risk difference      k= 9  RD -0.036 [-0.076, 0.004]  p=0.0806
+   IV RR (incr 0.5)     k= 9  RR 0.66 [0.38, 1.16]  p=0.1461
+
+Feed intolerance
+   MH RR (primary)      k=10  RR 0.72 [0.54, 0.95]  p=0.0225
+   Peto OR              k=10  OR 0.63 [0.47, 0.84]  p=0.0018
+   Risk difference      k=11  RD -0.050 [-0.110, 0.010]  p=0.1035
+   IV RR (incr 0.5)     k=11  RR 0.72 [0.55, 0.94]  p=0.0144
+
+Hypoglycaemia
+   MH RR (primary)      k= 6  RR 0.80 [0.37, 1.75]  p=0.5741
+   Peto OR              k= 6  OR 0.71 [0.42, 1.20]  p=0.2007
+   Risk difference      k= 6  RD -0.045 [-0.137, 0.047]  p=0.3373
+   IV RR (incr 0.5)     k= 6  RR 0.85 [0.43, 1.68]  p=0.6475
+
+
+Interpretation: for enterocolitis, mortality and hypoglycaemia the four measures agree that no
+ difference is demonstrated. For feed intolerance the relative measures are consistent and statistically
+ significant while the risk difference is not (-5.0 percentage points, 95% CI -11.0 to +1.0), reflecting
+ the wide spread of baseline risk across trials; the pre-specified risk ratio is retained as primary.
+ Sepsis is not significant on any measure, with the risk difference closest to conventional significance.
+
+S4. ALTERNATIVE HETEROGENEITY ESTIMATOR AND SMALL-SAMPLE CONFIDENCE INTERVALS
+---------------------------------------------------------------------------------------------------------------- 
+DL = DerSimonian-Laird (pre-specified). REML = restricted maximum likelihood.
+HK = Hartung-Knapp-Sidik-Jonkman small-sample adjustment.
+
+Duration of hospital stay (days)
+   DL       MD -3.94 [-6.40, -1.49], p=0.0016, k=7, I2=90%
+   REML     MD -4.34 [-7.88, -0.81], p=0.0159
+   REML+HK  MD -4.34 [-8.67, -0.02], p=0.0492
+
+Time to attain full enteral feeds (days)
+   DL       MD -2.30 [-3.47, -1.14], p=0.0001, k=5, I2=90%
+   REML     MD -2.29 [-3.42, -1.17], p=0.0001
+   REML+HK  MD -2.29 [-3.90, -0.69], p=0.0166
+
+Time to regain birth weight (days)
+   DL       MD -2.82 [-5.12, -0.53], p=0.0157, k=5, I2=94%
+   REML     MD -2.83 [-5.39, -0.26], p=0.0306
+   REML+HK  MD -2.83 [-6.48, 0.82], p=0.0979
+
+Necrotising enterocolitis
+   DL       RR 0.84 [0.42, 1.71], p=0.6380, k=8, I2=2%
+   REML     RR 0.84 [0.42, 1.70], p=0.6329
+   REML+HK  RR 0.84 [0.36, 1.98], p=0.6494
+
+All-cause mortality before discharge
+   DL       RR 1.03 [0.68, 1.54], p=0.8958, k=6, I2=0%
+   REML     RR 1.00 [0.62, 1.60], p=0.9921
+   REML+HK  RR 1.00 [0.57, 1.75], p=0.9918
+
+Culture-positive late-onset sepsis
+   DL       RR 0.63 [0.35, 1.15], p=0.1353, k=8, I2=50%
+   REML     RR 0.59 [0.30, 1.17], p=0.1304
+   REML+HK  RR 0.59 [0.26, 1.36], p=0.1814
+
+Feed intolerance
+   DL       RR 0.72 [0.54, 0.95], p=0.0225, k=10, I2=28%
+   REML     RR 0.72 [0.54, 0.97], p=0.0279
+   REML+HK  RR 0.72 [0.52, 1.01], p=0.0531
+
+Hypoglycaemia
+   DL       RR 0.80 [0.37, 1.75], p=0.5741, k=6, I2=45%
+   REML     RR 0.92 [0.51, 1.65], p=0.7798
+   REML+HK  RR 0.92 [0.39, 2.16], p=0.8118
+
+
+Interpretation: REML gives point estimates almost identical to DerSimonian-Laird with somewhat wider
+ intervals for the heterogeneous continuous outcomes. Under the Hartung-Knapp adjustment, which is
+ preferred when between-trial variance is large and the number of trials small, the time-to-full-feeds
+ benefit persists (MD -2.29 days, 95% CI -3.90 to -0.69) and length of stay is only marginally significant
+ (p=0.049), while birth-weight regain (p=0.098) and feed intolerance (p=0.053) both cross unity. This
+ fragility is carried directly into the GRADE imprecision and inconsistency judgements.
+
+S5. LEAVE-ONE-OUT INFLUENCE ANALYSIS (random-effects)
+---------------------------------------------------------------------------------------------------------------- 
+Necrotising enterocolitis
+   omit Omitting Sanghvi 2013    RR 0.84 [0.42, 1.71]  I2=2%
+   omit Omitting Zecca 2014      RR 0.84 [0.42, 1.71]  I2=2%
+   omit Omitting Bora 2017       RR 0.70 [0.33, 1.47]  I2=0%
+   omit Omitting Nangia 2019     RR 1.01 [0.48, 2.12]  I2=0%
+   omit Omitting Jajoo 2022      RR 0.76 [0.33, 1.76]  I2=10%
+   omit Omitting Raman 2023      RR 0.84 [0.42, 1.71]  I2=2%
+   omit Omitting Razzaghy 2024   RR 0.83 [0.37, 1.87]  I2=15%
+   omit Omitting Sahu 2024       RR 0.90 [0.40, 2.02]  I2=12%
+   omit Omitting Alshaikh 2025   RR 0.84 [0.42, 1.71]  I2=2%
+   omit Omitting Ojha 2025 (FEED1) RR 0.92 [0.37, 2.30]  I2=14%
+   omit Omitting Nangia 2026     RR 0.94 [0.45, 1.93]  I2=0%
+   omit Omitting Mishra 2026     RR 0.74 [0.35, 1.55]  I2=0%
+
+All-cause mortality before discharge
+   omit Omitting Jajoo 2022      RR 0.96 [0.57, 1.60]  I2=10%
+   omit Omitting Raman 2023      RR 1.03 [0.68, 1.54]  I2=0%
+   omit Omitting Razzaghy 2024   RR 1.00 [0.66, 1.51]  I2=0%
+   omit Omitting Sahu 2024       RR 1.05 [0.69, 1.58]  I2=0%
+   omit Omitting Ojha 2025 (FEED1) RR 0.97 [0.56, 1.71]  I2=13%
+   omit Omitting Nangia 2026     RR 1.18 [0.76, 1.83]  I2=0%
+   omit Omitting Mishra 2026     RR 0.75 [0.36, 1.57]  I2=0%
+
+Culture-positive late-onset sepsis
+   omit Omitting Sanghvi 2013    RR 0.63 [0.35, 1.15]  I2=50%
+   omit Omitting Nangia 2019     RR 0.66 [0.34, 1.28]  I2=53%
+   omit Omitting Jajoo 2022      RR 0.68 [0.37, 1.24]  I2=51%
+   omit Omitting Raman 2023      RR 0.66 [0.35, 1.22]  I2=54%
+   omit Omitting Razzaghy 2024   RR 0.57 [0.30, 1.07]  I2=54%
+   omit Omitting Sahu 2024       RR 0.78 [0.47, 1.31]  I2=36%
+   omit Omitting Ojha 2025 (FEED1) RR 0.46 [0.20, 1.01]  I2=45%
+   omit Omitting Nangia 2026     RR 0.72 [0.39, 1.32]  I2=47%
+   omit Omitting Mishra 2026     RR 0.47 [0.19, 1.20]  I2=57%
+
+Feed intolerance
+   omit Omitting Sanghvi 2013    RR 0.73 [0.54, 0.99]  I2=35%
+   omit Omitting Zecca 2014      RR 0.72 [0.54, 0.95]  I2=28%
+   omit Omitting Bora 2017       RR 0.66 [0.52, 0.83]  I2=0%
+   omit Omitting Nangia 2019     RR 0.76 [0.56, 1.05]  I2=29%
+   omit Omitting Jajoo 2022      RR 0.72 [0.53, 0.98]  I2=35%
+   omit Omitting Raman 2023      RR 0.71 [0.53, 0.95]  I2=32%
+   omit Omitting Razzaghy 2024   RR 0.68 [0.51, 0.92]  I2=26%
+   omit Omitting Sahu 2024       RR 0.76 [0.57, 1.02]  I2=24%
+   omit Omitting Alshaikh 2025   RR 0.72 [0.53, 0.98]  I2=36%
+   omit Omitting Nangia 2026     RR 0.78 [0.57, 1.05]  I2=22%
+   omit Omitting Mishra 2026     RR 0.72 [0.51, 1.01]  I2=34%
+
+Hypoglycaemia
+   omit Omitting Zecca 2014      RR 1.14 [0.72, 1.80]  I2=0%
+   omit Omitting Raman 2023      RR 0.75 [0.31, 1.82]  I2=56%
+   omit Omitting Razzaghy 2024   RR 0.61 [0.23, 1.60]  I2=34%
+   omit Omitting Sahu 2024       RR 0.82 [0.31, 2.16]  I2=52%
+   omit Omitting Alshaikh 2025   RR 0.66 [0.24, 1.80]  I2=56%
+   omit Omitting Mishra 2026     RR 0.77 [0.29, 2.04]  I2=56%
+
+Duration of hospital stay (days)
+   omit Omitting Sanghvi 2013    MD  -1.97 [ -3.53,  -0.41]  I2=73%
+   omit Omitting Zecca 2014      MD  -4.47 [ -7.45,  -1.50]  I2=92%
+   omit Omitting Bora 2017       MD  -4.74 [ -8.00,  -1.49]  I2=92%
+   omit Omitting Raman 2023      MD  -4.34 [ -7.41,  -1.27]  I2=91%
+   omit Omitting Razzaghy 2024   MD  -3.73 [ -6.27,  -1.19]  I2=91%
+   omit Omitting Alshaikh 2025   MD  -3.64 [ -6.17,  -1.10]  I2=91%
+   omit Omitting Ojha 2025 (FEED1) MD  -4.94 [ -7.75,  -2.14]  I2=88%
+
+Time to attain full enteral feeds (days)
+   omit Omitting Nangia 2019     MD  -1.81 [ -2.76,  -0.86]  I2=80%
+   omit Omitting Sahu 2024       MD  -2.06 [ -3.25,  -0.86]  I2=92%
+   omit Omitting Alshaikh 2025   MD  -2.57 [ -4.17,  -0.96]  I2=93%
+   omit Omitting Ojha 2025 (FEED1) MD  -2.70 [ -3.81,  -1.60]  I2=76%
+   omit Omitting Nangia 2026     MD  -2.34 [ -3.76,  -0.91]  I2=92%
+
+Time to regain birth weight (days)
+   omit Omitting Sanghvi 2013    MD  -1.73 [ -3.21,  -0.26]  I2=82%
+   omit Omitting Zecca 2014      MD  -2.94 [ -6.01,   0.13]  I2=95%
+   omit Omitting Bora 2017       MD  -3.26 [ -6.33,  -0.19]  I2=94%
+   omit Omitting Sahu 2024       MD  -2.54 [ -5.25,   0.16]  I2=95%
+   omit Omitting Alshaikh 2025   MD  -3.64 [ -6.24,  -1.05]  I2=95%
+
+
+Interpretation: no single trial drives any conclusion, but several outcomes are fragile. For feed
+ intolerance every leave-one-out estimate stays at or below 0.78 and the pooled effect loses conventional
+ significance only when Nangia 2019, Nangia 2026, Mishra 2026 or Sahu 2024 is omitted (upper limits
+ 1.01-1.05), so significance rests on no one trial but is not robust to removing any of the larger
+ contributors. For sepsis the estimate strengthens to RR 0.46 (0.20-1.01) when FEED1, the only
+ high-income trial, is omitted, consistent with the setting subgroup effect. Enterocolitis, mortality and
+ hypoglycaemia remain non-significant under every omission; hypoglycaemia flips above unity only when
+ Zecca 2014 is dropped, and Bora 2017 accounts for the entire residual heterogeneity in feed intolerance.
+ For length of stay, omitting Sanghvi 2013 halves the effect from -3.94 to -1.97 days and reduces I2 from
+ 90% to 73%, so that early trial contributes much of both the magnitude and the heterogeneity. Every
+ length-of-stay and time-to-full-feeds omission remains significant; birth-weight regain loses
+ significance when Zecca 2014 or Sahu 2024 is omitted.
+
+S6. SMALL-STUDY EFFECTS AND FUNNEL PLOT ASYMMETRY
+---------------------------------------------------------------------------------------------------------------- 
+Cochrane guidance advises against formal asymmetry testing with fewer than 10 trials. Only feed
+intolerance reaches that threshold, so all tests below are exploratory and reported for completeness.
+
+Necrotising enterocolitis                  k= 8  Egger p=0.8614   Begg-Mazumdar p=0.6207
+All-cause mortality before discharge       k= 6  Egger p=0.7831   Begg-Mazumdar p=0.8510
+Culture-positive late-onset sepsis         k= 8  Egger p=0.0759   Begg-Mazumdar p=0.4579
+Feed intolerance                           k=10  Egger p=0.3663   Begg-Mazumdar p=0.2449
+Hypoglycaemia                              k= 6  Egger p=0.1088   Begg-Mazumdar p=0.1885
+Duration of hospital stay (days)           k= 7  Egger p=0.0841   Begg-Mazumdar p=0.1765
+Time to attain full enteral feeds (days)   k= 5  Egger p=0.0664   Begg-Mazumdar p=0.1416
+Time to regain birth weight (days)         k= 5  Egger p=0.4190   Begg-Mazumdar p=0.6242
+
+Trim-and-fill (exploratory, feed intolerance only - the single outcome with k>=10):
+   observed          RR 0.72 [0.54, 0.95], k=10
+   trim-and-fill     RR 0.65 [0.47, 0.90], k=12 (2 imputed)
+
+Interpretation: no test reaches conventional significance. The borderline Egger p-values for sepsis
+ (0.076), length of stay (0.084) and time to full feeds (0.066) are computed on 5-8 trials, where the
+ test has almost no power and is strongly influenced by the true heterogeneity already documented; they
+ cannot distinguish publication bias from genuine between-trial variation. For feed intolerance, the only
+ adequately powered outcome, both tests are clearly non-significant, but trim-and-fill nonetheless imputes
+ two hypothetical unpublished trials and moves the estimate away from the null (RR 0.65, 95% CI 0.47 to
+ 0.90) rather than towards it, so the observed RR of 0.72 is not an artefact of missing small negative
+ trials on this analysis. Visual inspection of the funnel plots shows the small trials from lower-income
+ settings clustered towards larger benefit for the feeding-progression outcomes, which is the same signal
+ the setting subgroup analysis captures; for length of stay Sanghvi 2013 sits far outside the funnel on
+ the benefit side. Publication bias cannot be excluded for any outcome given that most trials are small
+ and single-centre, and this is reflected in the GRADE judgements.

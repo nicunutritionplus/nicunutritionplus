@@ -1,0 +1,16 @@
+stage,n
+"Records identified: MEDLINE/PubMed, 9 search strands (with overlap)",2957
+Records identified: ClinicalTrials.gov register,67
+Unique database records after de-duplication,2174
+"Records removed before screening (withdrawn from PubMed, PMID 34591437)",1
+Records screened at title and abstract,2173
+Records excluded at title and abstract,2160
+Reports sought for full-text retrieval,13
+Reports not retrieved,0
+Reports assessed for eligibility at full text,13
+Reports excluded at full text,1
+Studies included in the review,12
+Studies contributing to at least one pooled analysis,12
+Register records: duplicate registrations of included trials,4
+Register records: not eligible,63
+Register records: eligible ongoing trials awaiting results,0
