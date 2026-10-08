@@ -90,9 +90,14 @@
   /* ============ HEADER ============ */
   header.site {
     position: sticky; top: 0; z-index: 50;
-    background: color-mix(in srgb, var(--bg) 88%, transparent);
-    backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
+  }
+  /* Frosted background on a separate layer: a backdrop-filter on the header itself
+     would make the fixed mobile menu size itself to the header instead of the screen. */
+  header.site::before {
+    content: ""; position: absolute; inset: 0; z-index: -1;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
   }
   .nav-row {
     display: flex; align-items: center; justify-content: space-between;
@@ -123,7 +128,7 @@
   .nav-toggle { display: none; }
 
   @media (max-width: 880px) {
-    nav.links { position: fixed; inset: 60px 0 0 0; background: var(--bg); flex-direction: column;
+    nav.links { position: fixed; inset: 60px 0 0 0; background: var(--bg); flex-direction: column; overflow-y: auto;
       align-items: flex-start; padding: 1.5rem clamp(1.25rem,4vw,3rem); gap: 1.1rem; transform: translateY(-8px);
       opacity: 0; pointer-events: none; transition: opacity .18s ease, transform .18s ease; }
     nav.links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
