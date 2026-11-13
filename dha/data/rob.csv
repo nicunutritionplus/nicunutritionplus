@@ -1,0 +1,18 @@
+trial,D1 randomisation,D2 deviations,D3 missing data,D4 outcome measurement,D5 selective reporting,Overall,rationale
+DINO (Makrides 2009),Low,Low,Low,Low,Low,Low,"Central randomisation, double-blind tuna vs soy oil capsules; 93.5% follow-up."
+Henriksen 2008 (Oslo),Low,Low,Some concerns,Low,Low,Some concerns,Double-blind placebo oil; attrition at follow-up visits.
+N3RO (Collins 2017),Low,Low,Low,Low,Low,Low,Blinded matched soy emulsion; physiological BPD definition; multiple imputation.
+MOBYDIck (Marc 2020),Low,Some concerns,Low,Low,Low,Some concerns,Double-blind; stopped early for possible harm (truncation inflates effects); maternal adherence ~73%.
+Mega Donna Mega (Hellström 2021),Low,Some concerns,Low,Some concerns,Low,Some concerns,"Open-label, no placebo; ROP graded by masked ophthalmologists per report, BPD/respiratory care unmasked."
+ImNuT (Wendel 2023),Low,Low,Low,Low,Some concerns,Some concerns,Double-blind MCT placebo; neonatal morbidities are secondary outcomes of a trial powered for brain MRI.
+Bernabe-García 2019 (ROP),Low,Low,Some concerns,Low,Low,Some concerns,Double-blind sunflower-oil placebo; per-protocol emphasis.
+Bernabe-García 2021 (NEC),Low,Low,Some concerns,Low,Low,Some concerns,Double-blind; NEC primary analysis per-protocol (ITT for composite only).
+Khalesi 2018,Some concerns,Some concerns,Some concerns,Some concerns,Some concerns,High,Placebo was sterile water (not matched oil); sparse methods; outcome framed as 'treatment'.
+Abou El Fadl 2021,Some concerns,High,Some concerns,Some concerns,Some concerns,High,"Open-label, no placebo; 7/67 not analysed; NEC limited to stage I."
+Afroz 2025 (pilot),Some concerns,High,Some concerns,Some concerns,Some concerns,High,"Open-label pilot, no placebo; underpowered."
+Sabzevari 2026,Some concerns,High,Low,Some concerns,High,High,Open-label vs standard care; registration dated 10 Jan 2026 (likely retrospective); NEC stage not restricted.
+Baack 2016,Low,Low,Low,Low,Some concerns,Some concerns,Double-blind MCT placebo; clinical outcomes reported as adverse events.
+Robinson 2016 (pilot),Low,Low,Low,Low,Some concerns,Some concerns,Double-blind pilot; biochemical primary outcome.
+Frost 2021 (pilot),Low,Low,Low,Low,Some concerns,Some concerns,Double-blind pilot; biochemical primary outcome.
+Omega Tots (Keim 2018),Low,Low,Low,Low,Low,Low,Fully masked placebo; 89.7% primary-outcome data.
+Preemie Tots (Boone 2017),Low,Low,Some concerns,Low,Some concerns,Some concerns,Pilot (n=31); multiple secondary reports.

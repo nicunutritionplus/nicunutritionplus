@@ -1,0 +1,9 @@
+Outcome,Risk with control (per 1000),Risk with LCPUFA (per 1000),Relative effect (95% CI),No. of participants (studies),Certainty (GRADE),Comments
+BPD at 36 weeks' PMA,418,461 (398 to 534),RR 1.10 (0.95 to 1.28),"1657+ (6 RCTs, 1 as reported RR)",⊕⊕⊕◯ Moderate,Downgraded once for imprecision (CI spans no effect and a 28% relative increase). DHA-alone subtotal RR 1.16 (1.04–1.29); DHA+ARA RR 0.92 (0.69–1.23).
+Severe ROP (stage ≥3 / treated),199,109 (81 to 147),RR 0.55 (0.40 to 0.74),"547+ (5 RCTs, 1 as reported RR)",⊕⊕◯◯ Low,Downgraded for risk of bias (open-label largest count-based trial; 2 high-risk trials) and suspected selective availability (severe-ROP counts unavailable from N3RO and MOBYDIck).
+"ROP, any stage",380,316 (261 to 382),RR 0.83 (0.69 to 1.00),"607+ (6 RCTs, 1 as reported RR)",⊕⊕◯◯ Low,Downgraded for risk of bias and imprecision.
+NEC (Bell ≥II),122,84 (50 to 140),RR 0.69 (0.41 to 1.15),648 (4 RCTs),⊕◯◯◯ Very low,"Downgraded for risk of bias (most weight from an open-label trial with version-dependent counts), imprecision and inconsistency; N3RO/MOBYDIck counts unavailable."
+Late-onset sepsis,506,467 (399 to 547),RR 0.92 (0.79 to 1.08),649 (5 RCTs),⊕⊕◯◯ Low,Downgraded for imprecision and inconsistent definitions (culture-proven vs suspected).
+Death before discharge,86,68 (45 to 103),RR 0.79 (0.52 to 1.19),"730+ (7 RCTs, 1 as reported RR)",⊕⊕◯◯ Low,Downgraded twice for imprecision; N3RO mortality counts unavailable. Subgroup difference (P = 0.04) not considered credible (small trials).
+"Bayley cognitive/MDI, 18–22 mo",Mean score ~92–100,MD 1.02 higher (1.10 lower to 3.14 higher),—,(2 RCTs),⊕⊕◯◯ Low,Downgraded for imprecision and for selective availability (only 2 of ≥4 high-dose trials report compatible data).
+"Full-scale IQ, 5–7 y",Mean score ~92–100,MD 1.47 higher (2.20 lower to 5.14 higher),—,(2 RCTs),⊕⊕◯◯ Low,Downgraded for inconsistency (I² 70%: N3RO +3.45 vs DINO −0.30) and imprecision.
