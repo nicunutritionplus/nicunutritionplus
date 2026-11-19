@@ -1,0 +1,81 @@
+ref,study,genus,node,outcome,e1,n1,e2,n2,src
+102,Totsu (2014),Bifidobacterium only,SinglePrb,ACM,2,153,0,130,legacy
+102,Totsu (2014),Bifidobacterium only,SinglePrb,NEC,0,153,0,130,legacy
+102,Totsu (2014),Bifidobacterium only,SinglePrb,LOS,6,153,13,130,legacy
+11,Bin-Nun (2005),Bifidobacterium only,MultiPrb,NEC,3,72,12,73,legacy
+11,Bin-Nun (2005),Bifidobacterium only,MultiPrb,NRM,0,72,3,73,legacy
+110,Wu (2022),Lactobacillus only,MultiPrb,NEC,2,250,12,250,legacy
+110,Wu (2022),Lactobacillus only,MultiPrb,FIT,15,250,30,250,legacy
+112,Xu (2016),Other genus only,SinglePrb,NEC,0,51,0,49,legacy
+12,Braga (2011),Lactobacillus + Bifidobacterium,MultiPrb,NEC,0,119,4,112,legacy
+13,Chowdhury (2016),Lactobacillus + Bifidobacterium,MultiPrb,NEC,1,52,6,50,legacy
+"16,17",Costeloe (2016),Bifidobacterium only,SinglePrb,ACM,54,650,56,660,legacy
+"16,17",Costeloe (2016),Bifidobacterium only,SinglePrb,NEC,61,650,66,660,legacy
+"16,17",Costeloe (2016),Bifidobacterium only,SinglePrb,LOS,73,650,77,660,legacy
+18,Cui (2019),Lactobacillus only,SinglePrb,NEC,1,57,5,57,legacy
+18,Cui (2019),Lactobacillus only,SinglePrb,LOS,2,57,4,57,legacy
+19,Dani (2002),Lactobacillus only,SinglePrb,NEC,4,295,8,290,legacy
+19,Dani (2002),Lactobacillus only,SinglePrb,LOS,11,295,9,290,legacy
+23,Demirel (2013),Other genus only,SinglePrb,ACM,5,135,5,136,legacy
+23,Demirel (2013),Other genus only,SinglePrb,NEC,6,135,7,136,legacy
+27,Dongol Singh (2017),Lactobacillus only,SinglePrb,NEC,6,37,10,35,legacy
+29,Fernández-Carrocera (2013),Lactobacillus + Bifidobacterium,MultiPrb,NEC,6,75,12,75,legacy
+33,Güney-Varal (2017),Lactobacillus + Bifidobacterium,MultiPrb&OLGS,ACM,1,70,9,40,legacy
+33,Güney-Varal (2017),Lactobacillus + Bifidobacterium,MultiPrb&OLGS,NEC,0,70,4,40,legacy
+43,Jacobs (2013),Bifidobacterium only,MultiPrb,NEC,11,548,24,551,legacy
+45,Kaban (2019),Lactobacillus only,SinglePrb,ACM,1,47,4,47,legacy
+45,Kaban (2019),Lactobacillus only,SinglePrb,NEC,0,47,3,47,legacy
+45,Kaban (2019),Lactobacillus only,SinglePrb,LOS,1,47,3,47,legacy
+45,Kaban (2019),Lactobacillus only,SinglePrb,FIT,4,47,12,47,legacy
+46,Kanic (2015),Lactobacillus + Bifidobacterium,MultiPrb,LOS,16,40,29,40,legacy
+50,Lin (2005),Lactobacillus + Bifidobacterium,MultiPrb,NEC,4,180,14,187,legacy
+51,Lin (2008),Lactobacillus + Bifidobacterium,MultiPrb,NEC,2,222,10,221,legacy
+"53,54",Manzoni (2014),Lactobacillus only,SinglePrb&Lactoferrin,LOS,7,238,29,258,legacy
+57,Mihatsch (2010),Bifidobacterium only,SinglePrb,NEC,2,91,4,89,legacy
+63,Nandhini (2015),Lactobacillus + Bifidobacterium,MultiPrb&OLGS,NEC,8,108,16,110,legacy
+66,Oncel (2014),Lactobacillus only,SinglePrb,NEC,8,200,10,200,legacy
+66,Oncel (2014),Lactobacillus only,SinglePrb,LOS,13,200,25,200,legacy
+66,Oncel (2014),Lactobacillus only,SinglePrb,FIT,56,200,79,200,legacy
+67,Oshiro (2019),Bifidobacterium only,SinglePrb,NEC,0,17,0,18,legacy
+67,Oshiro (2019),Bifidobacterium only,SinglePrb,LOS,0,17,3,18,legacy
+68,Patole (2014),Bifidobacterium only,SinglePrb,ACM,0,79,0,80,legacy
+68,Patole (2014),Bifidobacterium only,SinglePrb,NEC,0,79,1,80,legacy
+68,Patole (2014),Bifidobacterium only,SinglePrb,LOS,17,79,12,80,legacy
+70,Qiao (2016),Lactobacillus + Bifidobacterium,MultiPrb,FIT,4,30,14,30,legacy
+79,Roy (2014),Lactobacillus + Bifidobacterium,MultiPrb,LOS,31,56,42,56,legacy
+81,Saengtawesin (2014),Lactobacillus + Bifidobacterium,MultiPrb,ACM,0,31,0,29,legacy
+81,Saengtawesin (2014),Lactobacillus + Bifidobacterium,MultiPrb,NEC,1,31,1,29,legacy
+"83,84",Sari (2011),Other genus only,SinglePrb,FIT,49,121,70,121,legacy
+87,Serce-Pehlevan (2020) A,Lactobacillus + Bifidobacterium,MultiPrb&OLGS&Lactoferrin,NEC,2,104,11,104,legacy
+87,Serce-Pehlevan (2020) A,Lactobacillus + Bifidobacterium,MultiPrb&OLGS&Lactoferrin,LOS,27,104,18,104,legacy
+93,Sinha (2015),Lactobacillus + Bifidobacterium,MultiPrb,ACM,1,668,2,672,legacy
+95-97,Sowden (2022),Lactobacillus + Bifidobacterium,MultiPrb,NEC,0,100,2,100,legacy
+95-97,Sowden (2022),Lactobacillus + Bifidobacterium,MultiPrb,NRM,0,100,1,100,legacy
+99,Strus (2018),Lactobacillus + Bifidobacterium,MultiPrb,ACM,2,80,4,73,legacy
+99,Strus (2018),Lactobacillus + Bifidobacterium,MultiPrb,NEC,5,80,1,73,legacy
+99,Strus (2018),Lactobacillus + Bifidobacterium,MultiPrb,LOS,11,80,7,73,legacy
+99,Strus (2018),Lactobacillus + Bifidobacterium,MultiPrb,NRM,1,80,0,73,legacy
+94,Sreenivasa 2015,Lactobacillus + Bifidobacterium,MultiPrb&OLGS,ACM,0,100,3,100,tierB
+94,Sreenivasa 2015,Lactobacillus + Bifidobacterium,MultiPrb&OLGS,NEC,0,100,7,100,tierB
+94,Sreenivasa 2015,Lactobacillus + Bifidobacterium,MultiPrb&OLGS,LOS,28,100,42,100,tierB
+63,Nandhini 2015,Lactobacillus + Bifidobacterium,MultiPrb&OLGS,ACM,10,108,9,110,tierB
+63,Nandhini 2015,Lactobacillus + Bifidobacterium,MultiPrb&OLGS,LOS,4,108,4,110,tierB
+33,Guney-Varal 2017,Lactobacillus + Bifidobacterium,MultiPrb&OLGS,LOS,12,70,14,40,tierB
+33,Guney-Varal 2017,Lactobacillus + Bifidobacterium,MultiPrb&OLGS,NRM,0,70,3,40,tierB
+33,Guney-Varal 2017,Lactobacillus + Bifidobacterium,MultiPrb&OLGS,FIT,24,70,31,40,tierB
+39102225,Van Rossum (2024) PRIMAL,Lactobacillus + Bifidobacterium,MultiPrb,ACM,1,316,0,322,new
+39102225,Van Rossum (2024) PRIMAL,Lactobacillus + Bifidobacterium,MultiPrb,NEC,0,316,1,322,new
+39102225,Van Rossum (2024) PRIMAL,Lactobacillus + Bifidobacterium,MultiPrb,LOS,8,316,12,322,new
+39287261,Mahboobipour (2024),Lactobacillus + Bifidobacterium,MultiPrb&OLGS,ACM,1,59,0,59,new
+39287261,Mahboobipour (2024),Lactobacillus + Bifidobacterium,MultiPrb&OLGS,NEC,1,59,5,59,new
+39287261,Mahboobipour (2024),Lactobacillus + Bifidobacterium,MultiPrb&OLGS,FIT,9,59,33,59,new
+41721054,Neu (2026) Connection,Lactobacillus only,SinglePrb,ACM,66,1066,89,1051,new
+41721054,Neu (2026) Connection,Lactobacillus only,SinglePrb,NEC,93,1066,107,1051,new
+41721054,Neu (2026) Connection,Lactobacillus only,SinglePrb,NRM,12,1066,22,1051,new
+41533318,Shah (2026) LGG,Lactobacillus only,SinglePrb,ACM,5,115,8,121,new
+41533318,Shah (2026) LGG,Lactobacillus only,SinglePrb,NEC,13,115,13,121,new
+41533318,Shah (2026) LGG,Lactobacillus only,SinglePrb,LOS,22,115,21,121,new
+41533318,Shah (2026) LGG,Lactobacillus only,SinglePrb,FIT,17,115,19,121,new
+ISRCTN96620855,Voulgari-Kokota / NutriBrain (2026),Bifidobacterium only,SinglePrb&OLGS,ACM,3,50,3,49,new
+ISRCTN96620855,Voulgari-Kokota / NutriBrain (2026),Bifidobacterium only,SinglePrb&OLGS,NEC,2,44,1,40,new
+ISRCTN96620855,Voulgari-Kokota / NutriBrain (2026),Bifidobacterium only,SinglePrb&OLGS,LOS,9,44,7,40,new

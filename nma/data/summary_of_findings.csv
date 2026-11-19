@@ -1,0 +1,31 @@
+outcome,intervention,assumed_risk,corresponding_risk,RR,trials,participants,certainty,reasons
+All-cause mortality,Multistrain probiotic,56 per 1000,37 per 1000 (30 to 47),0.67 (0.53 to 0.85),36,9259,Moderate,no domain downgraded
+All-cause mortality,Single-strain probiotic,56 per 1000,44 per 1000 (37 to 52),0.80 (0.67 to 0.94),28,8548,Moderate,no domain downgraded
+All-cause mortality,Multistrain synbiotic,56 per 1000,38 per 1000 (17 to 80),0.68 (0.31 to 1.44),4,646,Very low,imprecision (CI includes no effect); few contributing trials
+All-cause mortality,Single-strain synbiotic,56 per 1000,29 per 1000 (13 to 62),0.52 (0.24 to 1.12),2,299,Very low,imprecision (CI includes no effect); few contributing trials
+All-cause mortality,Lactoferrin,56 per 1000,50 per 1000 (36 to 69),0.91 (0.66 to 1.25),12,5667,Low,imprecision (CI includes no effect)
+All-cause mortality,Prebiotic (oligosaccharides),56 per 1000,25 per 1000 (10 to 57),0.44 (0.19 to 1.03),4,474,Very low,imprecision (CI includes no effect); few contributing trials
+Necrotising enterocolitis (Bell stage ≥II),Multistrain probiotic,63 per 1000,25 per 1000 (19 to 32),0.39 (0.31 to 0.50),36,9462,Moderate,no domain downgraded
+Necrotising enterocolitis (Bell stage ≥II),Single-strain probiotic,63 per 1000,45 per 1000 (38 to 53),0.71 (0.61 to 0.84),36,9053,Low,incoherence (direct vs indirect differ)
+Necrotising enterocolitis (Bell stage ≥II),Multistrain synbiotic,63 per 1000,10 per 1000 (4 to 24),0.16 (0.06 to 0.38),7,924,Low,imprecision (very wide CI)
+Necrotising enterocolitis (Bell stage ≥II),Single-strain synbiotic,63 per 1000,28 per 1000 (14 to 57),0.45 (0.22 to 0.90),3,344,Very low,imprecision (very wide CI); few contributing trials
+Necrotising enterocolitis (Bell stage ≥II),Lactoferrin,63 per 1000,49 per 1000 (32 to 73),0.78 (0.51 to 1.17),9,5282,Low,imprecision (CI includes no effect)
+Necrotising enterocolitis (Bell stage ≥II),Prebiotic (oligosaccharides),63 per 1000,76 per 1000 (47 to 121),1.21 (0.74 to 1.93),5,709,Low,imprecision (CI includes no effect)
+Culture-proven late-onset sepsis,Multistrain probiotic,156 per 1000,123 per 1000 (103 to 145),0.79 (0.66 to 0.93),29,8646,Moderate,no domain downgraded
+Culture-proven late-onset sepsis,Single-strain probiotic,156 per 1000,133 per 1000 (116 to 153),0.85 (0.74 to 0.98),32,6949,Moderate,no domain downgraded
+Culture-proven late-onset sepsis,Multistrain synbiotic,156 per 1000,113 per 1000 (65 to 191),0.73 (0.41 to 1.22),4,631,Very low,imprecision (CI includes no effect); few contributing trials
+Culture-proven late-onset sepsis,Single-strain synbiotic,156 per 1000,122 per 1000 (77 to 188),0.78 (0.49 to 1.20),2,284,Very low,imprecision (CI includes no effect); few contributing trials
+Culture-proven late-onset sepsis,Lactoferrin,156 per 1000,95 per 1000 (73 to 123),0.61 (0.47 to 0.79),12,5511,Moderate,no domain downgraded
+Culture-proven late-onset sepsis,Prebiotic (oligosaccharides),156 per 1000,128 per 1000 (91 to 177),0.82 (0.59 to 1.13),5,674,Low,imprecision (CI includes no effect)
+NEC-related mortality,Multistrain probiotic,13 per 1000,7 per 1000 (4 to 14),0.55 (0.29 to 1.04),18,4916,Low,imprecision (CI includes no effect)
+NEC-related mortality,Single-strain probiotic,13 per 1000,9 per 1000 (6 to 14),0.65 (0.42 to 1.01),11,5778,Low,imprecision (CI includes no effect)
+NEC-related mortality,Multistrain synbiotic,13 per 1000,2 per 1000 (0 to 20),0.17 (0.02 to 1.49),2,213,Very low,imprecision (CI includes no effect); few contributing trials
+NEC-related mortality,Single-strain synbiotic,13 per 1000,29 per 1000 (5 to 143),2.14 (0.39 to 10.65),1,200,Very low,imprecision (CI includes no effect); few contributing trials
+NEC-related mortality,Lactoferrin,13 per 1000,15 per 1000 (0 to 446),1.13 (0.02 to 33.17),1,49,Very low,imprecision (CI includes no effect); few contributing trials
+NEC-related mortality,Prebiotic (oligosaccharides),13 per 1000,6 per 1000 (1 to 42),0.41 (0.05 to 3.12),1,200,Very low,imprecision (CI includes no effect); few contributing trials
+Feeding intolerance,Multistrain probiotic,245 per 1000,140 per 1000 (104 to 184),0.57 (0.43 to 0.75),6,1275,Moderate,no domain downgraded
+Feeding intolerance,Single-strain probiotic,245 per 1000,140 per 1000 (112 to 174),0.57 (0.46 to 0.71),13,3052,Low,incoherence (direct vs indirect differ)
+Feeding intolerance,Multistrain synbiotic,245 per 1000,53 per 1000 (31 to 92),0.22 (0.12 to 0.38),3,287,Very low,imprecision (very wide CI); few contributing trials
+Feeding intolerance,Single-strain synbiotic,245 per 1000,140 per 1000 (66 to 275),0.57 (0.27 to 1.12),2,261,Very low,imprecision (CI includes no effect); few contributing trials
+Feeding intolerance,Lactoferrin,245 per 1000,78 per 1000 (38 to 154),0.32 (0.15 to 0.63),2,210,Very low,imprecision (very wide CI); few contributing trials
+Feeding intolerance,Prebiotic (oligosaccharides),245 per 1000,162 per 1000 (74 to 318),0.66 (0.30 to 1.30),2,275,Very low,imprecision (CI includes no effect); few contributing trials

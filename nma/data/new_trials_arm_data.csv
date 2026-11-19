@@ -1,0 +1,15 @@
+study,pmid,node,n,ACM,NEC,LOS,NRM,FIT,note,source
+Van Rossum (2024) PRIMAL,39102225,MultiPrb,316,1,0,8.0,,,Table: NEC>=Bell II NA(=0)/1; Death 1/NA(=0); culture-proven LOS 8/316 vs 12/322 (unchanged),new_2023plus
+Van Rossum (2024) PRIMAL,39102225,PLC,322,0,1,12.0,,,same,new_2023plus
+Mahboobipour (2024),39287261,MultiPrb&OLGS,59,1,1,,,9.0,PediLact multistrain+FOS; stage II NEC 1 vs 5; FIT 9 vs 33 (unchanged),new_2023plus
+Mahboobipour (2024),39287261,PLC,59,0,5,,,33.0,same,new_2023plus
+Ariff (2025),40507041,Lactoferrin,203,2,2,6.0,,,FULL TEXT Table 2: 150mg+300mg merged. Mortality 0+2; NEC 0+2; culture-proven sepsis 1+5 (CORRECTED from 7 - the '6 cases' in the Discussion contradicts Table 2's 5 (5%)). Table 2 denominators are completers (99/95/99); randomised 102/102/101 used per review convention,new_2023plus
+Ariff (2025),40507041,PLC,102,0,3,8.0,,,"FULL TEXT Table 2: mortality 0, NEC 3, culture-proven sepsis 8",new_2023plus
+Plaza-Astasio (2025),41097231,Lactoferrin,50,2,3,11.0,,,FULL TEXT Table 4: LOS 11/50 (22%); NEC 3/50 (modified Bell staging); mortality 2/50. LOS and NEC are NEW - tables were stripped from the open-access HTML,new_2023plus
+Plaza-Astasio (2025),41097231,PLC,53,0,2,21.0,,,FULL TEXT Table 4: LOS 21/53 (39.6%); NEC 2/53; mortality 0/53,new_2023plus
+Neu (2026) Connection,41721054,SinglePrb,1066,66,93,,12.0,,"FULL TEXT Tables 2 and 4, mITT n=1066 (CORRECTED from assumed 1079). ACM 66/1066; NEC by radiograph or surgery/autopsy 93/1066; death by NEC or intestinal perforation 12/1066. Feeding intolerance reported as days only; LOS not an outcome",new_2023plus
+Neu (2026) Connection,41721054,PLC,1051,89,107,,22.0,,"FULL TEXT, mITT n=1051 (CORRECTED from assumed 1079). ACM 89/1051; NEC 107/1051; NEC/perforation death 22/1051",new_2023plus
+Shah (2026) LGG,41533318,SinglePrb,115,5,13,22.0,,17.0,"FULL TEXT Table 2 (per-protocol, n=115): ACM 5, NEC stage>=II 13, culture-positive sepsis 22, feed-intolerance episodes 17. NEWLY INCLUDED - abstract gave only the composite. NOTE: the paper's own reported RRs are inconsistent with these counts (e.g. sepsis RR 0.89 reported vs 1.10 computed); counts used, as they match the printed percentages",new_2023plus
+Shah (2026) LGG,41533318,PLC,121,8,13,21.0,,19.0,"FULL TEXT Table 2 (n=121): ACM 8, NEC stage>=II 13, culture-positive sepsis 21, feed intolerance 19",new_2023plus
+Voulgari-Kokota / NutriBrain (2026),ISRCTN96620855,SinglePrb&OLGS,50,3,2,9.0,,,"USER-SUPPLIED counts (not in the attached secondary-analysis PDF, whose Table 1 reports no clinical outcomes). Intervention = B. breve M-16V (SINGLE strain) + scGOS/lcFOS + L-glutamine -> node SinglePrb&OLGS; L-glutamine has no node in this review. Deaths 3/50 are from the full randomised set; NEC 2 and sepsis 9 have denominator 44 (metagenome subset), a POST-RANDOMISATION subset - see sensitivity scenario F",new_2023plus
+Voulgari-Kokota / NutriBrain (2026),ISRCTN96620855,PLC,49,3,1,7.0,,,USER-SUPPLIED. Control = maltodextrin/casein/whey placebo. Deaths 3/49 full randomised set; NEC 1 and sepsis 7 have denominator 40 (metagenome subset),new_2023plus

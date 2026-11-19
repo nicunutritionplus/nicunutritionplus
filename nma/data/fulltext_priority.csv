@@ -1,0 +1,99 @@
+study,pmid,doi,priority,what_is_missing,n,coverage,pmc_open_access,nodes,heterogeneous_comparisons
+Neu (2026) Connection Study,41721054,10.1038/s41390-026-04826-7,"A — new trial, missing numbers",NEC event counts per arm (only RR 0.85 given); exact 1:1 allocation to confirm the 67/1079 and 92/1079 deaths derived from percentages,2158,,,,
+Plaza-Astasio (2025),41097231,10.3390/nu17193154,"A — new trial, missing numbers",culture-proven sepsis counts per arm (only aRR 0.54 and a 39.6% placebo rate given); severe NEC counts,103,,,,
+Ariff (2025),40507041,10.3390/nu17111845,"A — new trial, missing numbers",all-cause mortality counts per arm; resolve the 5-vs-6 discrepancy for 300 mg sepsis cases,305,,,,
+Mishra/LGG VLBW (2026),41533318,10.1007/s13312-025-00252-w,"A — new trial, missing numbers","disaggregate the composite outcome into mortality, NEC and sepsis — would add a whole trial to three networks",236,,,,
+NutriBrain (ISRCTN96620855),—,—,"A — new trial, missing numbers","primary clinical-outcomes paper, apparently unpublished; would add a multistrain+oligosaccharide trial",99,,,,
+Sreenivasa (2015),,,"B — fixes the worst divergence (mortality, multistrain+oligosaccharides)","all cause mortality,severe NEC,culture proven LOS",200,none,,MultiPrb&OLGS vs PLC,"all_cause_mortality,culture_proven_LOS"
+Nandhini (2015),25754214.0,,"B — fixes the worst divergence (mortality, multistrain+oligosaccharides)","all cause mortality,culture proven LOS",218,abstract,,MultiPrb&OLGS vs PLC,"all_cause_mortality,culture_proven_LOS"
+Güney-Varal (2017),29168358.0,,"B — fixes the worst divergence (mortality, multistrain+oligosaccharides)","culture proven LOS,NEC related mortality,feeding intolerance",110,abstract,,MultiPrb&OLGS vs PLC,"all_cause_mortality,culture_proven_LOS"
+Tarnow-Mordi (2020),32407710.0,,"C — fixes the sepsis heterogeneity (lactoferrin vs placebo, I2=56%)","all cause mortality,severe NEC,culture proven LOS",1541,abstract,,Lactoferrin vs PLC,culture_proven_LOS
+Manzoni (2014),16705580.0,,"C — fixes the sepsis heterogeneity (lactoferrin vs placebo, I2=56%)","all cause mortality,severe NEC",743,abstract,,Lactoferrin vs PLC vs SinglePrb&Lactoferrin,culture_proven_LOS
+Ochoa (2020),32037149.0,,"C — fixes the sepsis heterogeneity (lactoferrin vs placebo, I2=56%)","severe NEC,culture proven LOS",414,fulltext,PMC7096260,Lactoferrin vs PLC,culture_proven_LOS
+ELFIN (2019),30635141.0,,"C — fixes the sepsis heterogeneity (lactoferrin vs placebo, I2=56%)","all cause mortality,severe NEC,culture proven LOS",2199,fulltext,PMC6356450,Lactoferrin vs PLC,culture_proven_LOS
+Dehghan (2018),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,culture proven LOS",66,none,,MultiPrb vs PLC,culture_proven_LOS
+Di (2010),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,NEC related mortality",355,none,,MultiPrb vs PLC,
+Rashid (2020),,,D — no text at all; blocks any trial-level reconstruction,culture proven LOS,230,none,,PLC vs SinglePrb,
+Akhter (2019),,,D — no text at all; blocks any trial-level reconstruction,"severe NEC,feeding intolerance",220,none,,PLC vs SinglePrb,
+Hikaru (2010),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,culture proven LOS",208,none,,PLC vs SinglePrb,
+Huang (2009),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,NEC related mortality",183,none,,PLC vs SinglePrb,
+Punnahitananda (2006),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,NEC related mortality",174,none,,MultiPrb vs PLC,
+Ren (2010),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,NEC related mortality",150,none,,MultiPrb vs PLC,
+Sadowska-Krawczenko (2012),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,culture proven LOS",55,none,,PLC vs SinglePrb,
+Rehman (2018),,,D — no text at all; blocks any trial-level reconstruction,severe NEC,146,none,,MultiPrb vs PLC,
+Deng (2010),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,NEC related mortality",125,none,,MultiPrb vs PLC,
+Zhou (2012),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,NEC related mortality",125,none,,MultiPrb vs PLC,
+Megahed (2021),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,culture proven LOS,feeding intolerance",80,none,,Lactoferrin vs PLC,culture_proven_LOS
+Bayani (2021),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC",76,none,,PLC vs SinglePrb,
+Yang (2011),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,NEC related mortality",62,none,,MultiPrb vs PLC,
+Shadkam (2015),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,culture proven LOS",60,none,,PLC vs SinglePrb,
+Jalali (2020),,,D — no text at all; blocks any trial-level reconstruction,all cause mortality,58,none,,MultiPrb vs PLC,
+Hernandez-Enriquez (2016),,,D — no text at all; blocks any trial-level reconstruction,severe NEC,44,none,,PLC vs SinglePrb,
+Amini (2017),,,D — no text at all; blocks any trial-level reconstruction,severe NEC,115,none,,MultiPrb&OLGS vs PLC,
+Ke (2008),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,NEC related mortality",884,none,,MultiPrb vs PLC,
+Hariharan (2016),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,culture proven LOS,feeding intolerance",196,none,,MultiPrb vs PLC,culture_proven_LOS
+Arora (2017),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality",150,none,,MultiPrb vs PLC,culture_proven_LOS
+Dashti (2014),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,culture proven LOS",136,none,,MultiPrb vs PLC,culture_proven_LOS
+Xiao-yuan (2007),,,D — no text at all; blocks any trial-level reconstruction,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality",524,none,,MultiPrb vs PLC,culture_proven_LOS
+Kitajima (1997),9135288.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality",91,abstract,PMC1720633,PLC vs SinglePrb,
+Shashidhar (2017),28368269.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC",96,abstract,,MultiPrb vs PLC,
+Xu (2016),26946967.0,,E — needed only for a complete trial-level dataset and meta-regression,culture proven LOS,100,abstract,,PLC vs SinglePrb,
+Westerbeek (2011),21449921.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",113,abstract,,OLGS vs PLC,
+Dilli (2015),25596096.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality,feeding intolerance",400,abstract,,OLGS vs PLC vs SinglePrb vs SinglePrb&OLGS,feeding_intolerance
+Lin (2005),18829790.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS",367,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Hua (2014),24927436.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,feeding intolerance",257,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Wejryd (2018),29999201.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",134,abstract,,PLC vs SinglePrb,
+Braga (2011),20980486.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS",231,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Hays (2016),26220763.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",197,abstract,,MultiPrb vs PLC vs SinglePrb,culture_proven_LOS
+Modi (2010),20639792.0,,E — needed only for a complete trial-level dataset and meta-regression,severe NEC,154,abstract,,OLGS vs PLC,
+Gomez-Rodriguez (2019),30898471.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS",90,abstract,,MultiPrb vs SinglePrb,
+Underwood (2009),19179885.0,,E — needed only for a complete trial-level dataset and meta-regression,"severe NEC,feeding intolerance",90,fulltext,PMC2743418,MultiPrb&OLGS vs PLC vs SinglePrb&OLGS,
+Roy (2014),24678479.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC",112,fulltext,PMC3938875,MultiPrb vs PLC,culture_proven_LOS
+Dasopoulou (2013),24233255.0,,E — needed only for a complete trial-level dataset and meta-regression,"severe NEC,culture proven LOS",167,abstract,,OLGS vs PLC,
+Manzoni (2006),24709463.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",80,abstract,,PLC vs SinglePrb,
+Stratiki (2007),17229535.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",77,abstract,,PLC vs SinglePrb,
+Lin (2008),15629973.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS,NEC related mortality",443,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Dongol Singh (2017),30580349.0,,E — needed only for a complete trial-level dataset and meta-regression,all cause mortality,72,abstract,,PLC vs SinglePrb,
+Mohan (2008),18552710.0,,E — needed only for a complete trial-level dataset and meta-regression,severe NEC,69,abstract,,PLC vs SinglePrb,
+Wu (2022),32211042.0,,E — needed only for a complete trial-level dataset and meta-regression,culture proven LOS,500,fulltext,PMC7085826,MultiPrb vs PLC,culture_proven_LOS
+Reyes (2014),24878915.0,,E — needed only for a complete trial-level dataset and meta-regression,"severe NEC,culture proven LOS",1099,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Jacobs (2013),24249817.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS,NEC related mortality",1099,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Matin (2022),35639151.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS,feeding intolerance",52,abstract,,PLC vs SinglePrb,
+Serce-Pehlevan (2020) B,31984696.0,,E — needed only for a complete trial-level dataset and meta-regression,"severe NEC,culture proven LOS",50,abstract,,MultiPrb&OLGS&Lactoferrin vs PLC,
+Chrzanowska-Lisiewska (2012),22055271.0,,E — needed only for a complete trial-level dataset and meta-regression,"severe NEC,culture proven LOS",47,abstract,,PLC vs SinglePrb,
+Sinha (2015),26163028.0,,E — needed only for a complete trial-level dataset and meta-regression,culture proven LOS,1340,fulltext,PMC4499724,MultiPrb vs PLC,culture_proven_LOS
+Reuman (1986),3099269.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC",30,abstract,,PLC vs SinglePrb,
+Costalos (2003),14580749.0,,E — needed only for a complete trial-level dataset and meta-regression,"severe NEC,culture proven LOS,feeding intolerance",87,abstract,,PLC vs SinglePrb,
+Hascoët (2022),22441111.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS",86,abstract,,OLGS vs PLC,
+Mihatsch (2010),20234140.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS,NEC related mortality",180,abstract,,PLC vs SinglePrb,
+Ochoa (2015),25973934.0,,E — needed only for a complete trial-level dataset and meta-regression,all cause mortality,190,fulltext,PMC4435832,Lactoferrin vs PLC,culture_proven_LOS
+Kaur (2015),26224129.0,,E — needed only for a complete trial-level dataset and meta-regression,feeding intolerance,130,abstract,,Lactoferrin vs PLC,culture_proven_LOS
+van Neikerk (2015),25724213.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality",108,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Serce (2013) B,25596096.0,,E — needed only for a complete trial-level dataset and meta-regression,"severe NEC,culture proven LOS,NEC related mortality",103,abstract,,MultiPrb&OLGS vs PLC,culture_proven_LOS
+Al-Hosni (2012),21546942.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",101,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Rouge (2009),19369375.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality",94,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Kanic (2015),26373743.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC",80,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Barrington (2016),26938920.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",79,abstract,,Lactoferrin vs PLC,culture_proven_LOS
+van Neikerk (2014),24613436.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality",74,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Bin-Nun (2005),16126048.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS",145,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Alshaikh (2022),35314794.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS,feeding intolerance",62,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Saengtawesin (2014),25391168.0,,E — needed only for a complete trial-level dataset and meta-regression,"culture proven LOS,NEC related mortality",60,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Akin (2014),24839144.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",47,abstract,,Lactoferrin vs PLC,culture_proven_LOS
+Moreno-Sanz (2022),35221319.0,,E — needed only for a complete trial-level dataset and meta-regression,culture proven LOS,27,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Sherman (2016),27260839.0,,E — needed only for a complete trial-level dataset and meta-regression,culture proven LOS,119,fulltext,PMC4981514,Lactoferrin vs PLC,culture_proven_LOS
+Costeloe (2016),26628328.0,,E — needed only for a complete trial-level dataset and meta-regression,NEC related mortality,1310,abstract,,PLC vs SinglePrb,
+Rojas (2012),23071204.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,feeding intolerance",750,abstract,,PLC vs SinglePrb,
+Dani (2002),12169832.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,NEC related mortality",585,abstract,,PLC vs SinglePrb,
+Oncel (2014),24309022.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,NEC related mortality",400,abstract,,PLC vs SinglePrb,
+Dutta (2014),25519197.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",149,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Totsu (2014),24617812.0,,E — needed only for a complete trial-level dataset and meta-regression,NEC related mortality,283,fulltext,PMC4285294,PLC vs SinglePrb,
+Demirel (2013),24028629.0,,E — needed only for a complete trial-level dataset and meta-regression,"culture proven LOS,feeding intolerance",271,abstract,,PLC vs SinglePrb,
+Romeo (2011),20410904.0,,E — needed only for a complete trial-level dataset and meta-regression,"culture proven LOS,feeding intolerance",249,fulltext,PMC3016918,PLC vs SinglePrb,
+Tewari (2015),26246087.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,feeding intolerance",244,abstract,,PLC vs SinglePrb,
+Sari (2011),21245887.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality",242,abstract,,PLC vs SinglePrb,
+Fernández-Carrocera (2013),22556209.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,culture proven LOS",150,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Serce (2013) A,24041815.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS,NEC related mortality",208,abstract,,PLC vs SinglePrb,
+Samanta (2009),18842610.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,severe NEC,culture proven LOS",186,abstract,,MultiPrb vs PLC,culture_proven_LOS
+Sowden (2022),36014810.0,,E — needed only for a complete trial-level dataset and meta-regression,"all cause mortality,feeding intolerance",200,fulltext,PMC9415863,MultiPrb vs PLC,
+Millar (1993),8285750.0,,E — needed only for a complete trial-level dataset and meta-regression,"culture proven LOS,feeding intolerance",20,abstract,PMC1029589,PLC vs SinglePrb,
+Fujii (2006),16819382.0,,E — needed only for a complete trial-level dataset and meta-regression,"severe NEC,culture proven LOS",19,abstract,,PLC vs SinglePrb,

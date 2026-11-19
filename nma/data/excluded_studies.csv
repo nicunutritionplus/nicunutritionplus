@@ -1,0 +1,8 @@
+pmid,study,exclusion_reason
+41533318,Mishra/LGG VLBW RCT (2026),eligible RCT but only a composite sepsis/NEC/mortality outcome reported; components not separable
+41310220,L. fermentum CECT5716 + B. breve CECT7263 (2026),"both arms are the same network node (high vs low dose multistrain); no control arm, contributes no information"
+42017434,Probiotics vs pentoxifylline in NEC (2026),"population = neonates with established Bell stage IIA NEC (treatment, not prophylaxis)"
+42485904,L. reuteri DSM 17938 (2026),"systematic review/meta-analysis, not a primary trial"
+41515257,School-age follow-up (2026),"long-term follow-up of Athalye-Jape 2022 (ref 8), already in the network"
+42841652,NutriBrain synbiotic microbiome substudy (2026),secondary microbiome/MRI analysis of ISRCTN96620855; no NEC/sepsis/mortality data published
+39376813,Cureus probiotics vs placebo (2024),"self-described prospective cohort design, not randomised"
