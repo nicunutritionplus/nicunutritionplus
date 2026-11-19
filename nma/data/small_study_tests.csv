@@ -1,0 +1,6 @@
+outcome,k,slope,p
+NEC_related_mortality,7,0.283,0.266
+all_cause_mortality,11,-0.321,0.638
+culture_proven_LOS,8,-0.393,0.216
+feeding_intolerance,7,0.008,0.936
+severe_NEC,8,-0.131,0.219

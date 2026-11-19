@@ -1,0 +1,247 @@
+outcome,scenario,treat,RR,RR_lo,RR_hi
+all_cause_mortality,1. Primary analysis,Lactoferrin,0.9079375726270609,0.6565902649807533,1.2485749812344282
+all_cause_mortality,1. Primary analysis,MultiPrb,0.6718269356775821,0.5321318946064846,0.8464175156414302
+all_cause_mortality,1. Primary analysis,MultiPrb&Lactoferrin,0.6494964736471136,0.039663131180075605,6.987517263911226
+all_cause_mortality,1. Primary analysis,MultiPrb&OLGS,0.6774215880223211,0.3106296159039017,1.4420128921673807
+all_cause_mortality,1. Primary analysis,MultiPrb&OLGS&Lactoferrin,1.9464582570093656,0.5157649685449358,5.986776423116181
+all_cause_mortality,1. Primary analysis,OLGS,0.4437340790840112,0.18720622551910926,1.0314250625036154
+all_cause_mortality,1. Primary analysis,SinglePrb,0.7954770661738014,0.6711148623400621,0.9416320911086222
+all_cause_mortality,1. Primary analysis,SinglePrb&Lactoferrin,0.8068981596463546,0.42207416353782634,1.5123931801356036
+all_cause_mortality,1. Primary analysis,SinglePrb&OLGS,0.5230995647442939,0.23929998621319348,1.1222052851016169
+all_cause_mortality,2. Random effects across contrasts,Lactoferrin,0.7700423524790645,0.35404852489213523,1.6296693956832813
+all_cause_mortality,2. Random effects across contrasts,MultiPrb,0.6160919420352055,0.30115010808852666,1.2373703709931652
+all_cause_mortality,2. Random effects across contrasts,MultiPrb&Lactoferrin,0.59555034772584,0.02977467897273112,7.4529869593336
+all_cause_mortality,2. Random effects across contrasts,MultiPrb&OLGS,0.5698981394914722,0.21700852128873224,1.4498510519112853
+all_cause_mortality,2. Random effects across contrasts,MultiPrb&OLGS&Lactoferrin,1.9464582570093651,0.4154708695239766,6.9039066225508465
+all_cause_mortality,2. Random effects across contrasts,OLGS,0.44597131399683954,0.15825803543033629,1.2209504148593067
+all_cause_mortality,2. Random effects across contrasts,SinglePrb,0.7887116689235991,0.4130898801913747,1.477194939917729
+all_cause_mortality,2. Random effects across contrasts,SinglePrb&Lactoferrin,0.8072051331897047,0.3213791796514373,1.9465770445088426
+all_cause_mortality,2. Random effects across contrasts,SinglePrb&OLGS,0.5443637351637185,0.20579318548642722,1.3962396389327187
+all_cause_mortality,3. Excluding the Connection Study,Lactoferrin,0.9079375726270603,0.6565902649807527,1.2485749812344282
+all_cause_mortality,3. Excluding the Connection Study,MultiPrb,0.6738160189043659,0.5336363205302119,0.849029087814018
+all_cause_mortality,3. Excluding the Connection Study,MultiPrb&Lactoferrin,0.6514219285428362,0.039784312232110604,7.000709203763163
+all_cause_mortality,3. Excluding the Connection Study,MultiPrb&OLGS,0.6774215880223207,0.3106296159039015,1.44201289216738
+all_cause_mortality,3. Excluding the Connection Study,MultiPrb&OLGS&Lactoferrin,1.9464582570093656,0.5157649685449356,5.986776423116183
+all_cause_mortality,3. Excluding the Connection Study,OLGS,0.44863552131030515,0.18919261547210678,1.0430202723513797
+all_cause_mortality,3. Excluding the Connection Study,SinglePrb,0.825765308865276,0.6752575849753474,1.0078678678862
+all_cause_mortality,3. Excluding the Connection Study,SinglePrb&Lactoferrin,0.8068981596463547,0.42207416353782634,1.5123931801356039
+all_cause_mortality,3. Excluding the Connection Study,SinglePrb&OLGS,0.5287679111253291,0.24178319423143244,1.1346233262879672
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,Lactoferrin,0.9079375726270609,0.6565902649807533,1.2485749812344282
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,MultiPrb,0.6718269356775821,0.5321318946064846,0.8464175156414302
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,MultiPrb&Lactoferrin,0.6494964736471136,0.039663131180075605,6.987517263911226
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS,0.6774215880223211,0.3106296159039017,1.4420128921673807
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS&Lactoferrin,1.9464582570093656,0.5157649685449358,5.986776423116181
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,OLGS,0.4437340790840112,0.18720622551910926,1.0314250625036154
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,SinglePrb,0.7954770661738014,0.6711148623400621,0.9416320911086222
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,SinglePrb&Lactoferrin,0.8068981596463546,0.42207416353782634,1.5123931801356036
+all_cause_mortality,4. Connection NEC = surgery/autopsy only,SinglePrb&OLGS,0.5230995647442939,0.23929998621319348,1.1222052851016169
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,Lactoferrin,0.9079375726270609,0.6565902649807533,1.2485749812344282
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,MultiPrb,0.6718269356775821,0.5321318946064846,0.8464175156414302
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&Lactoferrin,0.6494964736471136,0.039663131180075605,6.987517263911226
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS,0.6774215880223211,0.3106296159039017,1.4420128921673807
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS&Lactoferrin,1.9464582570093656,0.5157649685449358,5.986776423116181
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,OLGS,0.4437340790840112,0.18720622551910926,1.0314250625036154
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,SinglePrb,0.7954770661738014,0.6711148623400621,0.9416320911086222
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,SinglePrb&Lactoferrin,0.8068981596463546,0.42207416353782634,1.5123931801356036
+all_cause_mortality,5. NutriBrain NEC/sepsis subset dropped,SinglePrb&OLGS,0.5230995647442939,0.23929998621319348,1.1222052851016169
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,Lactoferrin,0.9079375726270612,0.6565902649807533,1.2485749812344293
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb,0.6718269356775822,0.5321318946064846,0.8464175156414302
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&Lactoferrin,0.6494964736471551,0.03966313118007814,6.987517263911521
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS,0.6068110354861358,0.09148389343583592,3.4635140606394117
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS&Lactoferrin,1.9464582570093674,0.5157649685449363,5.986776423116188
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,OLGS,0.4437340790840115,0.18720622551910931,1.0314250625036163
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb,0.7954770661738014,0.6711148623400619,0.9416320911086224
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb&Lactoferrin,0.8068981596463544,0.42207416353782623,1.5123931801356032
+all_cause_mortality,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb&OLGS,0.5230995647442942,0.23929998621319365,1.1222052851016178
+severe_NEC,1. Primary analysis,Lactoferrin,0.77848185462669794,0.5148059553702163,1.1669781937866048
+severe_NEC,1. Primary analysis,MultiPrb,0.39440921234439413,0.309597584902937,0.5017075581688152
+severe_NEC,1. Primary analysis,MultiPrb&Lactoferrin,0.7697483345771857,0.0681660040340407,5.971875224570416
+severe_NEC,1. Primary analysis,MultiPrb&OLGS,0.15596552453036192,0.06301193881713811,0.3827321779604885
+severe_NEC,1. Primary analysis,MultiPrb&OLGS&Lactoferrin,0.2520316622788328,0.02287210250156295,2.426697645686641
+severe_NEC,1. Primary analysis,OLGS,1.2089208798711406,0.7416101946571285,1.933193288139755
+severe_NEC,1. Primary analysis,SinglePrb,0.7120670506166142,0.6051061519643526,0.8369015835376451
+severe_NEC,1. Primary analysis,SinglePrb&Lactoferrin,0.052755771224861456,0.006917243389844975,0.39481619127223333
+severe_NEC,1. Primary analysis,SinglePrb&OLGS,0.45163137911400886,0.2233115674191676,0.9000067120062618
+severe_NEC,2. Random effects across contrasts,Lactoferrin,0.7674457351620727,0.37243570640552914,1.5399131163516622
+severe_NEC,2. Random effects across contrasts,MultiPrb,0.41800105469728754,0.22619146609069513,0.7645406601765493
+severe_NEC,2. Random effects across contrasts,MultiPrb&Lactoferrin,0.8146133383602446,0.06277966407741242,6.742060130063527
+severe_NEC,2. Random effects across contrasts,MultiPrb&OLGS,0.16150812969307704,0.055687012876257075,0.4625561881758835
+severe_NEC,2. Random effects across contrasts,MultiPrb&OLGS&Lactoferrin,0.25203166227883256,0.0211196349772603,2.5954742833362867
+severe_NEC,2. Random effects across contrasts,OLGS,1.2744413853280792,0.6558401271532963,2.3853392051349056
+severe_NEC,2. Random effects across contrasts,SinglePrb,0.5324576399726318,0.30924324769854766,0.9074245738033951
+severe_NEC,2. Random effects across contrasts,SinglePrb&Lactoferrin,0.0523945250117216,0.006412377158280484,0.41941706791756533
+severe_NEC,2. Random effects across contrasts,SinglePrb&OLGS,0.4441305978019763,0.1963089226347213,0.9852015906369995
+severe_NEC,3. Excluding the Connection Study,Lactoferrin,0.7784818546266986,0.5148059553702168,1.166978193786606
+severe_NEC,3. Excluding the Connection Study,MultiPrb,0.39333950745522517,0.30874577941280384,0.500368305588481
+severe_NEC,3. Excluding the Connection Study,MultiPrb&Lactoferrin,0.7677109834818218,0.06797708288456632,5.9614962568501975
+severe_NEC,3. Excluding the Connection Study,MultiPrb&OLGS,0.15563332662566254,0.06287668376455358,0.38193019016044216
+severe_NEC,3. Excluding the Connection Study,MultiPrb&OLGS&Lactoferrin,0.25203166227883206,0.022872102501562873,2.4266976456866356
+severe_NEC,3. Excluding the Connection Study,OLGS,1.1930875370451424,0.7313756854761648,1.9096280859901862
+severe_NEC,3. Excluding the Connection Study,SinglePrb,0.6494302441468752,0.5311850817951129,0.7926417375807566
+severe_NEC,3. Excluding the Connection Study,SinglePrb&Lactoferrin,0.052755771224861456,0.006917243389844975,0.3948161912722335
+severe_NEC,3. Excluding the Connection Study,SinglePrb&OLGS,0.44263801679468023,0.21869815714217986,0.8829895878109615
+severe_NEC,4. Connection NEC = surgery/autopsy only,Lactoferrin,0.77848185462669794,0.5148059553702163,1.1669781937866048
+severe_NEC,4. Connection NEC = surgery/autopsy only,MultiPrb,0.39440921234439413,0.309597584902937,0.5017075581688152
+severe_NEC,4. Connection NEC = surgery/autopsy only,MultiPrb&Lactoferrin,0.7697483345771857,0.0681660040340407,5.971875224570416
+severe_NEC,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS,0.15596552453036192,0.06301193881713811,0.3827321779604885
+severe_NEC,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS&Lactoferrin,0.2520316622788328,0.02287210250156295,2.426697645686641
+severe_NEC,4. Connection NEC = surgery/autopsy only,OLGS,1.2089208798711406,0.7416101946571285,1.933193288139755
+severe_NEC,4. Connection NEC = surgery/autopsy only,SinglePrb,0.7120670506166142,0.6051061519643526,0.8369015835376451
+severe_NEC,4. Connection NEC = surgery/autopsy only,SinglePrb&Lactoferrin,0.052755771224861456,0.006917243389844975,0.39481619127223333
+severe_NEC,4. Connection NEC = surgery/autopsy only,SinglePrb&OLGS,0.45163137911400886,0.2233115674191676,0.9000067120062618
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,Lactoferrin,0.7784818546266989,0.514805955370217,1.1669781937866062
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,MultiPrb,0.3943907885769379,0.3095830402485777,0.5016842900272115
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&Lactoferrin,0.7697132470829656,0.06816275285361041,5.971696480515218
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS,0.1537652002152136,0.06209977093303566,0.3775167512126582
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS&Lactoferrin,0.25203166227882595,0.022872102501562266,2.426697645686589
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,OLGS,1.180563415405819,0.7225468610308983,1.8927536565244625
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,SinglePrb,0.7109424806829608,0.6041316835633188,0.8356071930737934
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,SinglePrb&Lactoferrin,0.05275577122486132,0.00691724338984495,0.3948161912722326
+severe_NEC,5. NutriBrain NEC/sepsis subset dropped,SinglePrb&OLGS,0.394899305054654,0.18857064433848206,0.8152869060925193
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,Lactoferrin,0.77848185462669794,0.5148059553702163,1.1669781937866048
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb,0.39440921234439413,0.309597584902937,0.5017075581688152
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&Lactoferrin,0.7697483345771857,0.0681660040340407,5.971875224570416
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS,0.15596552453036192,0.06301193881713811,0.3827321779604885
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS&Lactoferrin,0.2520316622788328,0.02287210250156295,2.426697645686641
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,OLGS,1.2089208798711406,0.7416101946571285,1.933193288139755
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb,0.7120670506166142,0.6051061519643526,0.8369015835376451
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb&Lactoferrin,0.052755771224861456,0.006917243389844975,0.39481619127223333
+severe_NEC,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb&OLGS,0.45163137911400886,0.2233115674191676,0.9000067120062618
+culture_proven_LOS,1. Primary analysis,Lactoferrin,0.6095418003334322,0.469170962709555,0.7863403607369581
+culture_proven_LOS,1. Primary analysis,MultiPrb,0.7862064822191378,0.66193410920419,0.9300273809589932
+culture_proven_LOS,1. Primary analysis,MultiPrb&Lactoferrin,1.0869897618137057,0.3390284807485077,2.7391500022926403
+culture_proven_LOS,1. Primary analysis,MultiPrb&OLGS,0.7251321414186179,0.4144634804523164,1.2211470537546139
+culture_proven_LOS,1. Primary analysis,MultiPrb&OLGS&Lactoferrin,1.6850775407121592,0.9842702008886377,2.641426089131221
+culture_proven_LOS,1. Primary analysis,OLGS,0.8205243502639821,0.5850974478854619,1.132230626101689
+culture_proven_LOS,1. Primary analysis,SinglePrb,0.8532217392712923,0.743149640571043,0.9767813180735462
+culture_proven_LOS,1. Primary analysis,SinglePrb&Lactoferrin,0.3414317297268935,0.1801441477166284,0.6324373196457511
+culture_proven_LOS,1. Primary analysis,SinglePrb&OLGS,0.7813169081362689,0.49253032982308526,1.2048839339839346
+culture_proven_LOS,2. Random effects across contrasts,Lactoferrin,0.6095418003334322,0.469170962709555,0.7863403607369581
+culture_proven_LOS,2. Random effects across contrasts,MultiPrb,0.7862064822191378,0.66193410920419,0.9300273809589932
+culture_proven_LOS,2. Random effects across contrasts,MultiPrb&Lactoferrin,1.0869897618137057,0.3390284807485077,2.7391500022926403
+culture_proven_LOS,2. Random effects across contrasts,MultiPrb&OLGS,0.7251321414186179,0.4144634804523164,1.2211470537546139
+culture_proven_LOS,2. Random effects across contrasts,MultiPrb&OLGS&Lactoferrin,1.6850775407121592,0.9842702008886377,2.641426089131221
+culture_proven_LOS,2. Random effects across contrasts,OLGS,0.8205243502639821,0.5850974478854619,1.132230626101689
+culture_proven_LOS,2. Random effects across contrasts,SinglePrb,0.8532217392712923,0.743149640571043,0.9767813180735462
+culture_proven_LOS,2. Random effects across contrasts,SinglePrb&Lactoferrin,0.3414317297268935,0.1801441477166284,0.6324373196457511
+culture_proven_LOS,2. Random effects across contrasts,SinglePrb&OLGS,0.7813169081362689,0.49253032982308526,1.2048839339839346
+culture_proven_LOS,3. Excluding the Connection Study,Lactoferrin,0.6095418003334322,0.469170962709555,0.7863403607369581
+culture_proven_LOS,3. Excluding the Connection Study,MultiPrb,0.7862064822191378,0.66193410920419,0.9300273809589932
+culture_proven_LOS,3. Excluding the Connection Study,MultiPrb&Lactoferrin,1.0869897618137057,0.3390284807485077,2.7391500022926403
+culture_proven_LOS,3. Excluding the Connection Study,MultiPrb&OLGS,0.7251321414186179,0.4144634804523164,1.2211470537546139
+culture_proven_LOS,3. Excluding the Connection Study,MultiPrb&OLGS&Lactoferrin,1.6850775407121592,0.9842702008886377,2.641426089131221
+culture_proven_LOS,3. Excluding the Connection Study,OLGS,0.8205243502639821,0.5850974478854619,1.132230626101689
+culture_proven_LOS,3. Excluding the Connection Study,SinglePrb,0.8532217392712923,0.743149640571043,0.9767813180735462
+culture_proven_LOS,3. Excluding the Connection Study,SinglePrb&Lactoferrin,0.3414317297268935,0.1801441477166284,0.6324373196457511
+culture_proven_LOS,3. Excluding the Connection Study,SinglePrb&OLGS,0.7813169081362689,0.49253032982308526,1.2048839339839346
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,Lactoferrin,0.6095418003334322,0.469170962709555,0.7863403607369581
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,MultiPrb,0.7862064822191378,0.66193410920419,0.9300273809589932
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,MultiPrb&Lactoferrin,1.0869897618137057,0.3390284807485077,2.7391500022926403
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS,0.7251321414186179,0.4144634804523164,1.2211470537546139
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS&Lactoferrin,1.6850775407121592,0.9842702008886377,2.641426089131221
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,OLGS,0.8205243502639821,0.5850974478854619,1.132230626101689
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,SinglePrb,0.8532217392712923,0.743149640571043,0.9767813180735462
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,SinglePrb&Lactoferrin,0.3414317297268935,0.1801441477166284,0.6324373196457511
+culture_proven_LOS,4. Connection NEC = surgery/autopsy only,SinglePrb&OLGS,0.7813169081362689,0.49253032982308526,1.2048839339839346
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,Lactoferrin,0.6095418003334316,0.4691709627095544,0.7863403607369579
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,MultiPrb,0.78591901871134,0.6616856372607599,0.929697501943625
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&Lactoferrin,1.0866136149399412,0.3388945592583898,2.738497334505024
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS,0.7251321414186157,0.414463480452315,1.221147053754611
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS&Lactoferrin,1.685077540712155,0.9842702008886345,2.6414260891312153
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,OLGS,0.8064091196659355,0.5735030978438681,1.115782728021717
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,SinglePrb,0.8505204385640713,0.7406365231242524,0.9739009158936691
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,SinglePrb&Lactoferrin,0.3414317297268945,0.18014414771662896,0.6324373196457527
+culture_proven_LOS,5. NutriBrain NEC/sepsis subset dropped,SinglePrb&OLGS,0.6943746979267202,0.4088931646875326,1.1411977491450362
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,Lactoferrin,0.6095418003334322,0.469170962709555,0.7863403607369581
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb,0.7862064822191378,0.66193410920419,0.9300273809589932
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&Lactoferrin,1.0869897618137057,0.3390284807485077,2.7391500022926403
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS,0.7251321414186179,0.4144634804523164,1.2211470537546139
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS&Lactoferrin,1.6850775407121592,0.9842702008886377,2.641426089131221
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,OLGS,0.8205243502639821,0.5850974478854619,1.132230626101689
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb,0.8532217392712923,0.743149640571043,0.9767813180735462
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb&Lactoferrin,0.3414317297268935,0.1801441477166284,0.6324373196457511
+culture_proven_LOS,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb&OLGS,0.7813169081362689,0.49253032982308526,1.2048839339839346
+NEC_related_mortality,1. Primary analysis,Lactoferrin,1.1257256974826615,0.02180372699211614,33.16768139414513
+NEC_related_mortality,1. Primary analysis,MultiPrb,0.5460393413606438,0.28683250364057034,1.0362091115809848
+NEC_related_mortality,1. Primary analysis,MultiPrb&OLGS,0.17192020629229113,0.01950614828414586,1.491336902905652
+NEC_related_mortality,1. Primary analysis,MultiPrb&OLGS&Lactoferrin,0.3331465727519545,0.013474060904921826,7.4741139820007625
+NEC_related_mortality,1. Primary analysis,OLGS,0.41193565098391915,0.05264353545628065,3.1203565173665715
+NEC_related_mortality,1. Primary analysis,SinglePrb,0.6518734352629452,0.4179688759446074,1.0148783274373503
+NEC_related_mortality,1. Primary analysis,SinglePrb&OLGS,2.1435048321042816,0.3898942199690754,10.648143685789666
+NEC_related_mortality,2. Random effects across contrasts,Lactoferrin,1.1257256974826615,0.02180372699211614,33.16768139414513
+NEC_related_mortality,2. Random effects across contrasts,MultiPrb,0.5460393413606438,0.28683250364057034,1.0362091115809848
+NEC_related_mortality,2. Random effects across contrasts,MultiPrb&OLGS,0.17192020629229113,0.01950614828414586,1.491336902905652
+NEC_related_mortality,2. Random effects across contrasts,MultiPrb&OLGS&Lactoferrin,0.3331465727519545,0.013474060904921826,7.4741139820007625
+NEC_related_mortality,2. Random effects across contrasts,OLGS,0.41193565098391915,0.05264353545628065,3.1203565173665715
+NEC_related_mortality,2. Random effects across contrasts,SinglePrb,0.6518734352629452,0.4179688759446074,1.0148783274373503
+NEC_related_mortality,2. Random effects across contrasts,SinglePrb&OLGS,2.1435048321042816,0.3898942199690754,10.648143685789666
+NEC_related_mortality,3. Excluding the Connection Study,Lactoferrin,1.1257256974826566,0.021803726992116038,33.167681394145085
+NEC_related_mortality,3. Excluding the Connection Study,MultiPrb,0.5479591384466086,0.2878231045398766,1.0399045735837633
+NEC_related_mortality,3. Excluding the Connection Study,MultiPrb&OLGS,0.1719202062922908,0.01950614828414581,1.4913369029056502
+NEC_related_mortality,3. Excluding the Connection Study,MultiPrb&OLGS&Lactoferrin,0.33314657275195475,0.013474060904921838,7.474113982000765
+NEC_related_mortality,3. Excluding the Connection Study,OLGS,0.44569774388311617,0.056316263383838994,3.4039225299679607
+NEC_related_mortality,3. Excluding the Connection Study,SinglePrb,0.7423028373143701,0.4185294738742499,1.3120989456015502
+NEC_related_mortality,3. Excluding the Connection Study,SinglePrb&OLGS,2.3168601016027757,0.4162837109545285,11.539619252167052
+NEC_related_mortality,4. Connection NEC = surgery/autopsy only,Lactoferrin,1.1257256974826615,0.02180372699211614,33.16768139414513
+NEC_related_mortality,4. Connection NEC = surgery/autopsy only,MultiPrb,0.5460393413606438,0.28683250364057034,1.0362091115809848
+NEC_related_mortality,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS,0.17192020629229113,0.01950614828414586,1.491336902905652
+NEC_related_mortality,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS&Lactoferrin,0.3331465727519545,0.013474060904921826,7.4741139820007625
+NEC_related_mortality,4. Connection NEC = surgery/autopsy only,OLGS,0.41193565098391915,0.05264353545628065,3.1203565173665715
+NEC_related_mortality,4. Connection NEC = surgery/autopsy only,SinglePrb,0.6518734352629452,0.4179688759446074,1.0148783274373503
+NEC_related_mortality,4. Connection NEC = surgery/autopsy only,SinglePrb&OLGS,2.1435048321042816,0.3898942199690754,10.648143685789666
+NEC_related_mortality,5. NutriBrain NEC/sepsis subset dropped,Lactoferrin,1.1257256974826615,0.02180372699211614,33.16768139414513
+NEC_related_mortality,5. NutriBrain NEC/sepsis subset dropped,MultiPrb,0.5460393413606438,0.28683250364057034,1.0362091115809848
+NEC_related_mortality,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS,0.17192020629229113,0.01950614828414586,1.491336902905652
+NEC_related_mortality,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS&Lactoferrin,0.3331465727519545,0.013474060904921826,7.4741139820007625
+NEC_related_mortality,5. NutriBrain NEC/sepsis subset dropped,OLGS,0.41193565098391915,0.05264353545628065,3.1203565173665715
+NEC_related_mortality,5. NutriBrain NEC/sepsis subset dropped,SinglePrb,0.6518734352629452,0.4179688759446074,1.0148783274373503
+NEC_related_mortality,5. NutriBrain NEC/sepsis subset dropped,SinglePrb&OLGS,2.1435048321042816,0.3898942199690754,10.648143685789666
+NEC_related_mortality,6. Pooled rather than trial-level synbiotic mortality data,Lactoferrin,1.1257256974826615,0.02180372699211614,33.16768139414513
+NEC_related_mortality,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb,0.5460393413606438,0.28683250364057034,1.0362091115809848
+NEC_related_mortality,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS,0.17192020629229113,0.01950614828414586,1.491336902905652
+NEC_related_mortality,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS&Lactoferrin,0.3331465727519545,0.013474060904921826,7.4741139820007625
+NEC_related_mortality,6. Pooled rather than trial-level synbiotic mortality data,OLGS,0.41193565098391915,0.05264353545628065,3.1203565173665715
+NEC_related_mortality,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb,0.6518734352629452,0.4179688759446074,1.0148783274373503
+NEC_related_mortality,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb&OLGS,2.1435048321042816,0.3898942199690754,10.648143685789666
+feeding_intolerance,1. Primary analysis,Lactoferrin,0.3176047904146586,0.15343758310925104,0.6292699648217813
+feeding_intolerance,1. Primary analysis,MultiPrb,0.5694791534668031,0.42606873191078004,0.7512358214652524
+feeding_intolerance,1. Primary analysis,MultiPrb&OLGS,0.21826159232598963,0.12470721602332502,0.3753396035937721
+feeding_intolerance,1. Primary analysis,MultiPrb&OLGS&Lactoferrin,1.0000000000000036,0.02587470986002447,3.847077880522818
+feeding_intolerance,1. Primary analysis,OLGS,0.6612802137994244,0.30311869864048846,1.2972808981298114
+feeding_intolerance,1. Primary analysis,SinglePrb,0.5718746461461992,0.45691682702303266,0.7100866725315175
+feeding_intolerance,1. Primary analysis,SinglePrb&OLGS,0.5731911737177674,0.2686759666406618,1.121301815454207
+feeding_intolerance,2. Random effects across contrasts,Lactoferrin,0.3176047904146585,0.1142434041438197,0.8091078388178178
+feeding_intolerance,2. Random effects across contrasts,MultiPrb,0.604966432284852,0.29731574180110515,1.1354078359363815
+feeding_intolerance,2. Random effects across contrasts,MultiPrb&OLGS,0.24016882329823766,0.09904556914725261,0.5543679779286443
+feeding_intolerance,2. Random effects across contrasts,MultiPrb&OLGS&Lactoferrin,1,0.024112883560109568,3.8621802472874194
+feeding_intolerance,2. Random effects across contrasts,OLGS,0.6434995589531547,0.25539510451725433,1.4047564463049966
+feeding_intolerance,2. Random effects across contrasts,SinglePrb,0.45724781795056463,0.2372291788539505,0.8368834280728088
+feeding_intolerance,2. Random effects across contrasts,SinglePrb&OLGS,0.5648183935716727,0.23137419378344487,1.2257559338981594
+feeding_intolerance,3. Excluding the Connection Study,Lactoferrin,0.3176047904146586,0.15343758310925104,0.6292699648217813
+feeding_intolerance,3. Excluding the Connection Study,MultiPrb,0.5694791534668031,0.42606873191078004,0.7512358214652524
+feeding_intolerance,3. Excluding the Connection Study,MultiPrb&OLGS,0.21826159232598963,0.12470721602332502,0.3753396035937721
+feeding_intolerance,3. Excluding the Connection Study,MultiPrb&OLGS&Lactoferrin,1.0000000000000036,0.02587470986002447,3.847077880522818
+feeding_intolerance,3. Excluding the Connection Study,OLGS,0.6612802137994244,0.30311869864048846,1.2972808981298114
+feeding_intolerance,3. Excluding the Connection Study,SinglePrb,0.5718746461461992,0.45691682702303266,0.7100866725315175
+feeding_intolerance,3. Excluding the Connection Study,SinglePrb&OLGS,0.5731911737177674,0.2686759666406618,1.121301815454207
+feeding_intolerance,4. Connection NEC = surgery/autopsy only,Lactoferrin,0.3176047904146586,0.15343758310925104,0.6292699648217813
+feeding_intolerance,4. Connection NEC = surgery/autopsy only,MultiPrb,0.5694791534668031,0.42606873191078004,0.7512358214652524
+feeding_intolerance,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS,0.21826159232598963,0.12470721602332502,0.3753396035937721
+feeding_intolerance,4. Connection NEC = surgery/autopsy only,MultiPrb&OLGS&Lactoferrin,1.0000000000000036,0.02587470986002447,3.847077880522818
+feeding_intolerance,4. Connection NEC = surgery/autopsy only,OLGS,0.6612802137994244,0.30311869864048846,1.2972808981298114
+feeding_intolerance,4. Connection NEC = surgery/autopsy only,SinglePrb,0.5718746461461992,0.45691682702303266,0.7100866725315175
+feeding_intolerance,4. Connection NEC = surgery/autopsy only,SinglePrb&OLGS,0.5731911737177674,0.2686759666406618,1.121301815454207
+feeding_intolerance,5. NutriBrain NEC/sepsis subset dropped,Lactoferrin,0.3176047904146586,0.15343758310925104,0.6292699648217813
+feeding_intolerance,5. NutriBrain NEC/sepsis subset dropped,MultiPrb,0.5694791534668031,0.42606873191078004,0.7512358214652524
+feeding_intolerance,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS,0.21826159232598963,0.12470721602332502,0.3753396035937721
+feeding_intolerance,5. NutriBrain NEC/sepsis subset dropped,MultiPrb&OLGS&Lactoferrin,1.0000000000000036,0.02587470986002447,3.847077880522818
+feeding_intolerance,5. NutriBrain NEC/sepsis subset dropped,OLGS,0.6612802137994244,0.30311869864048846,1.2972808981298114
+feeding_intolerance,5. NutriBrain NEC/sepsis subset dropped,SinglePrb,0.5718746461461992,0.45691682702303266,0.7100866725315175
+feeding_intolerance,5. NutriBrain NEC/sepsis subset dropped,SinglePrb&OLGS,0.5731911737177674,0.2686759666406618,1.121301815454207
+feeding_intolerance,6. Pooled rather than trial-level synbiotic mortality data,Lactoferrin,0.3176047904146586,0.15343758310925104,0.6292699648217813
+feeding_intolerance,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb,0.5694791534668031,0.42606873191078004,0.7512358214652524
+feeding_intolerance,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS,0.21826159232598963,0.12470721602332502,0.3753396035937721
+feeding_intolerance,6. Pooled rather than trial-level synbiotic mortality data,MultiPrb&OLGS&Lactoferrin,1.0000000000000036,0.02587470986002447,3.847077880522818
+feeding_intolerance,6. Pooled rather than trial-level synbiotic mortality data,OLGS,0.6612802137994244,0.30311869864048846,1.2972808981298114
+feeding_intolerance,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb,0.5718746461461992,0.45691682702303266,0.7100866725315175
+feeding_intolerance,6. Pooled rather than trial-level synbiotic mortality data,SinglePrb&OLGS,0.5731911737177674,0.2686759666406618,1.121301815454207
