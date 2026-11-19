@@ -902,18 +902,27 @@
   window.translation = { common: { selectedList: '{quantity} list selected', selectedLists: '{quantity} lists selected', selectedOption: '{quantity} selected', selectedOptions: '{quantity} selected' } };
   var AUTOHIDE = Boolean(0);
   (function () {
+    /* Each language has its own Brevo form, which adds the contact to that language's list. */
+    var lists = {
+      en: 'https://7221c217.sibforms.com/serve/MUIFAFgLEpix_bYfaQYCSGovBN5SbZFQ-1fmWVcNfT__8q7tI8YDtakUXKR6FK5EuFKMqPLK9pxaBOWRYWg4T2gDrKxxSkvBcr0pycVum8L6qzmLL0vAs6XA5XbaTZeaSoL-UjTBzmylECzbviTXevNBUMvOU29te72cdmVJjBoRsvzi65vDH5o4zbIyuOVMuArqMUZvqBdGIlyGow==',
+      es: 'https://7221c217.sibforms.com/serve/MUIFAJeB5FIOdicgxvetHzQtaw3D2p2eNNOeU8eue3ojTF7jeqv6qyfEA7ABVThjzfEXJJsnAJfvzKb0BsNDoJsDiZwiAL_ue8QhKHPVmn8ZN8aY9Tszfl6kHDlJnML9u9-qXJGvaYuLRbiU1JSOCLy0wg74fomt_Ur3h1Qw0nLa8qu7v25WwTXua159ssA7lDZNjZg9Cij85-CM6g=='
+    };
     var msgs = {
       en: { invalid: 'Please enter a valid email address.', required: 'This field cannot be left blank.' },
       es: { invalid: 'Introduzca un correo electrónico válido.', required: 'Este campo es obligatorio.' }
     };
     function apply() {
       var lang = document.documentElement.getAttribute('lang') === 'es' ? 'es' : 'en';
-      window.LOCALE = lang;
+      var form = document.getElementById('sib-form');
+      if (form) form.setAttribute('action', lists[lang]);
+      window.LOCALE = 'en';
       window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = window.GENERIC_INVALID_MESSAGE = window.INVALID_NUMBER = msgs[lang].invalid;
       window.REQUIRED_ERROR_MESSAGE = msgs[lang].required;
     }
     apply();
     new MutationObserver(apply).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    /* Re-check just before Brevo's script handles a submission, in case the language changed. */
+    window.addEventListener('submit', function (e) { if (e.target && e.target.id === 'sib-form') apply(); }, true);
   })();
 </script>
 <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
