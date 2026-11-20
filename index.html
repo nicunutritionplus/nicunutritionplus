@@ -435,6 +435,16 @@
     grid-column: 2; display: block !important; position: static !important; margin: 0 !important; padding: 0 !important;
   }
   #newsletter #sib-container .entry__specification { margin-left: calc(20px + 0.7rem) !important; padding: 0 !important; }
+  /* Brevo lays out the consent label with a hanging indent and the label rows side by side; undo both. */
+  #newsletter #sib-container .entry__choice,
+  #newsletter #sib-container .entry__choice label,
+  #newsletter #sib-container .entry__choice label *,
+  #newsletter #sib-container .entry__specification { text-indent: 0 !important; }
+  #newsletter #sib-container .form__label-row { display: block !important; }
+  #newsletter #sib-container .form__label-row > .entry__label {
+    display: block !important; float: none !important; width: auto !important; margin: 0 0 0.45rem !important; padding: 0 !important;
+  }
+  #newsletter #sib-container .entry__choice { display: block !important; margin: 0 !important; padding: 0 !important; }
   .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 </style>
